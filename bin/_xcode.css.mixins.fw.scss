@@ -1,0 +1,511 @@
+/***************************************************************************
+*                                                                          *
+*  XCODE CSS MIXINS FRAMEWORK                                              *
+*  @author  : xcode                                                        *
+*  @version : 1.2.4                                                        *
+*  @since   : 02.2016                                                      *
+*  @mime    : Sass/Scss                                                    *
+*  @contact : ozbilgiclevent@gmail.com                                     *
+*                                                                          *
+*--------------------------------------------------------------------------*
+*  List »                                                                  *
+*--------------------------------------------------------------------------*
+*  Functions:                                                              *
+*    @convert_em($fontPx)                                                  *
+*                                                                          *
+*  Mixins:                                                                 *
+*    @keyframes($animation-name)                                           *
+*    @transition($args...)                                                 *
+*    @opacity($opacity)                                                    *
+*    @triangle($direction, $size: 6px, $color: #222)                       *
+*    @tooltip($content: attr(data-tooltip), $direction: top)               *
+*    @prefix($property, $value)                                            *
+*    @border-radius($radius)                                               *
+*    @background-opacity($color: #000, $opacity: 0.85)                     *
+*    @text-shadow($x: 1px, $y: 1px, $blur: 2px, $color: rgba(0,0,0,.6))    *
+*    @size($width, $height: $width)                                        *
+*    @input-placeholder()                                                  *
+*    @grayscale($value)                                                    *
+*    @media($media)                                                        *
+*    @mediaQuery($minMax, $width, $eWidth: 0) Set $width: nil              *
+*                                                                          *
+*  Helpers:                                                                *
+*    %clearfix                                                             *
+*    %verticalAlign                                                        *
+*                                                                          *
+*--------------------------------------------------------------------------*/
+
+
+
+
+
+
+//-------------------------------------------------------
+//  Mixins »
+//-------------------------------------------------------
+//  ##Animations and keyframes:
+//    @keyframes($animation-name)
+//
+//    Usage:
+//      @include keyframes(slide-down) {
+//        0% { opacity: 1; }
+//        90% { opacity: 0; }
+//      }
+//
+//      .element {
+//        width: 100px;
+//        height: 100px;
+//        background: black;
+//        @include animation('slide-down 5s 3');
+//      }
+//
+//  ##Transition:
+//    @transition($args...)
+//
+//    Usage:
+//      a {
+//        color: gray;
+//        @include transition(color .3s ease);
+//        &:hover {
+//          color: black;
+//        }
+//      }
+//
+//  ##Cross browser opacity
+//    @opacity($opacity)
+//
+//    Usage:
+//      .faded-text {
+//        @include opacity(0.8);
+//      }
+//
+//  ##Triangle within a pseudo element and add positioning properties (ie. top, left)
+//    @triangle($direction, $size: 6px, $color: #222)
+//      $direction: up, down, left, right
+//
+//
+//  ##Tooltip
+//    @tooltip($content: attr(data-tooltip), $direction: top)
+//
+//    Usage:
+//      <div class="demonstration">
+//        <span class="tooltip-label" data-tooltip="A tooltip!">Hover me</span>
+//      </div>
+//
+
+//
+//  ##Input Placeholder
+//    @input-placeholder()
+//
+//    Usage:
+//      @include input-placeholder {
+//        color: #bfbfbf;
+//        font-style: italic;
+//      }
+//
+//  ##Grayscale
+//    @grayscale($value)
+//
+//    Usage:
+//      @include grayscale(20%);
+//
+
+//
+//-------------------------------------------------------
+//  Helpers »
+//-------------------------------------------------------
+//  ##Clearfix
+//    %clearfix
+//
+//    Usage:
+//      .container-with-floated-children {
+//        @extend %clearfix;
+//      }
+//
+//  ##Vertical Align
+//    %verticalAlign
+//-------------------------------------------------------
+
+@import "font";
+
+
+/**
+ *  VARIABLES »
+ */
+
+      $cellphone: cp;      //320px
+     $smartphone: sp;      //480px
+         $tablet: tablet;  //768px
+        $desktop: desktop; //992px
+    $largeScreen: ls;      //1200px
+
+  $cellphoneSize: 320px;
+ $smartphoneSize: 480px;
+     $tabletSize: 768px;
+    $desktopSize: 992px;
+$largeScreenSize: 1200px;
+
+          $white: #FFFFFF;
+          $black: #000000;
+  $baseFontPixel: 16;
+
+/**
+ *  FUNCTIONS »
+ */
+
+/**
+ *  » Pixel converts the "em" format.
+ *  Warning: Specify the base font size before use. ($baseFontPixel, Default size 16px.)
+ *  Function Name: @convert_em($fontPx)
+ *  Parameter Descriptions:
+ *  $fontPx = Font size.
+ *
+ *  Usage:
+ *    p {
+ *      font-size: convert_em(14);
+ *    }
+ */
+@function convert_em($fontPx) {
+  @return ($fontPx / $baseFontPixel) * 1em;
+}
+
+
+/**
+ *  MIXINS »
+ */
+
+/**
+ *  » CSS3 Prefix Adding.
+ *  Mixins Name: @prefix($property, $value)
+ *  Parameter Descriptions:
+ *  $property: Css property name. Ex. "opacity", "text-shadow"...
+ *  $value: For the selected attribute values. Ex. ".7", "0 1px 0 rgba(0,0,0,0.3)"...
+ *
+ *  Usage:
+ *     .box {
+ *       Width: 300px;
+ *       height: 300px;
+ *       @include prefix(border-radius, 5px);
+ *     }
+ */
+@mixin prefix($property, $value) {
+  -webkit-#{$property}: #{$value};
+     -moz-#{$property}: #{$value};
+      -ms-#{$property}: #{$value};
+       -o-#{$property}: #{$value};
+          #{$property}: #{$value};
+}
+
+
+/**
+ *  @media($media)
+ *
+ *  Usage:
+ *    input[type=button] {
+ *      @include media(desktop) {
+ *        backround: none;
+ *      }
+ *    }
+ */
+@mixin media($media) {
+  @if $media == cp {
+    @media (max-width: $cellphoneSize) {@content;}
+  }
+  @else if $media == sp {
+    @media (max-width: $smartphoneSize) {@content;}
+  }
+  @else if $media == tablet {
+    @media (max-width: $tabletSize) {@content;}
+  }
+  @else if $media == desktop {
+    @media (max-width: $desktopSize) {@content;}
+  }
+  @else if $media == ls {
+    @media (max-width: $largeScreenSize) {@content;}
+  }
+  @else {
+    @media (min-width: $largeScreenSize) {@content;}
+  }
+}
+
+
+/**
+ *  @mediaQuery($minMax, $width, $eWidth: 0)
+ *  $minMax = min or max.
+ *  $width, $eWidth = $cellphoneSize, $smartphoneSize, $tabletSize
+ *                    $desktopSize, $largeScreenSize
+ *
+ *  Usage:
+ *    nav.nav-content {
+ *      @include mediaQuery(min, $desktop) {
+ *        display: none;
+ *      }
+ *    }
+ *
+ *    h1.caption {
+ *      @include mediaQuery(max, nil, 300px) {
+ *        font-size: 20%;
+ *      }
+ *    }
+ */
+@mixin mediaQuery($minMax, $width, $eWidth: 0) {
+  @if $width == cp {$width: $cellphoneSize}
+  @else if $width == sp {$width: $smartphoneSize}
+  @else if $width == tablet {$width: $tabletSize}
+  @else if $width == desktop {$width: $desktopSize}
+  @else {$width: $largeScreenSize}
+
+  @if $eWidth > 0 {
+    @if $minMax == min {
+      @media (min-width: $eWidth) {
+        @content;
+      }
+    }
+    @else {
+      @media (max-width: $eWidth) {
+        @content;
+      }
+    }
+  }
+  @else {
+    @if $minMax == min {
+      @media (min-width: $width) {
+        @content;
+      }
+    } @else {
+      @media (max-width: $width) {
+        @content;
+      }
+    }
+  }
+}
+
+
+/**
+ *  @opacity($opacity: 0.85)
+ *
+ *  Usage:
+ *    a:hover {
+ *      @include opacity(.7)
+ *    }
+ */
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  filter: alpha(opacity = $opacity * 100); /* For IE8 and earlier */
+}
+
+
+/**
+ *  @border-radius($radius)
+ *
+ *  Usage:
+ *    div.box {
+ *      @include border-radius(15px)
+ *    }
+ */
+@mixin border-radius($radius) {
+  @include prefix('border-radius', $radius);
+}
+
+
+/**
+ *  @text-shadow($hShadow: 1px, $vShadow: 1px, $blur: 2px, $color: rgba(0,0,0,.6))
+ *
+ *  Usage:
+ *    p.text {
+ *      @include text-shadow(2px, 2px, 5px, $black)
+ *    }
+ */
+@mixin text-shadow($hShadow: 1px, $vShadow: 1px, $blur: 2px, $color: rgba(0,0,0,.6)) {
+  text-shadow: $hShadow $vShadow $blur $color;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+  @-ms-keyframes #{$animation-name} {
+    @content;
+  }
+  @-o-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+
+
+%clearfix {
+  *zoom: 1;
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin triangle($direction, $size: 6px, $color: #222){
+  content: '';
+  display: block;
+  position: absolute;
+  height: 0; width: 0;
+  @if ($direction == 'up'){
+    border-bottom: $size solid $color;
+    border-left: 1/2*$size solid transparent;
+    border-right: 1/2*$size solid transparent;
+  }
+  @else if ($direction == 'down'){
+    border-top: $size solid $color;
+    border-left: 1/2*$size solid transparent;
+    border-right: 1/2*$size solid transparent;
+  }
+  @else if ($direction == 'left'){
+    border-top: 1/2*$size solid transparent;
+    border-bottom: 1/2*$size solid transparent;
+    border-right: $size solid $color;
+  }
+  @else if ($direction == 'right'){
+    border-top: 1/2*$size solid transparent;
+    border-bottom: 1/2*$size solid transparent;
+    border-left: $size solid $color;
+  }
+}
+
+%verticalAlign {
+  &:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%; width: .1px;
+  }
+}
+
+@mixin tooltip($content: attr(data-tooltip), $direction: top) {
+  position: relative;
+  &:before, &:after {
+    display: none;
+    z-index: 98;
+  }
+  &:hover {
+    &:after { // for text bubble
+      content: $content;
+      display: block;
+      position: absolute;
+      height: 12px; // (makes total height including padding 22px)
+      padding: 6px;
+      font-size: 12px;
+      white-space: nowrap;
+      color: #fff;
+      text-shadow: 1px 1px #000;
+      background-color: #222;
+    }
+    @if ($direction == 'top'){
+      &:before {
+        @include triangle(down, 6px, #222);
+        top: -6px; margin-top: 0;
+        left: 47%;
+      }
+      &:after {
+        top: -28px;
+        left: 47%; margin-left: -20px;
+      }
+    }
+    @else if ($direction == 'bottom'){
+      &:before {
+        @include triangle(up, 6px, #222);
+        top: auto; margin-top: 0;
+        bottom: -6px;
+        left: 47%;
+      }
+      &:after {
+        bottom: -28px;
+        left: 47%; margin-left: -20px;
+      }
+    }
+  }
+}
+
+
+
+@mixin background-gradient($startColor: #3C3C3C, $endColor: #999999) {
+  background-color: $startColor;
+  background-image: -webkit-gradient(linear, left top, left bottom, from($startColor), to($endColor));
+  background-image: -webkit-linear-gradient(top, $startColor, $endColor);
+  background-image:    -moz-linear-gradient(top, $startColor, $endColor);
+  background-image:     -ms-linear-gradient(top, $startColor, $endColor);
+  background-image:      -o-linear-gradient(top, $startColor, $endColor);
+  background-image:         linear-gradient(top, $startColor, $endColor);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$startColor}', endColorStr='#{$endColor}');
+}
+
+@mixin background-opacity($color: #000, $opacity: 0.85) {
+  background: $color;
+  background: rgba($color, $opacity);
+}
+
+
+
+@mixin input-placeholder() {
+  &::-webkit-input-placeholder { @content; }
+  &:-moz-placeholder { @content; }
+  &::-moz-placeholder { @content; }
+  &:-ms-input-placeholder { @content; }
+}
+
+@mixin grayscale($value) {
+  -webkit-filter: #{"grayscale(#{$value})"};
+  -moz-filter: #{"grayscale(#{$value})"};
+  filter:#{"grayscale(#{$value})"};
+}
+
+//*********************THE END***************************
+
+@mixin font-adding($font-name, $size, $spacing: 0.5px) {
+  @if($font-name == 'm') {
+    font-family: GraphikMedium, sans-serif;
+  } @else if($font-name == 'r') {
+    font-family: GraphikRegular, sans-serif;
+  } @else {
+    font-family: GraphikSemibold, sans-serif;
+  }
+
+  font-size: $size;
+  letter-spacing: -$spacing;
+}
