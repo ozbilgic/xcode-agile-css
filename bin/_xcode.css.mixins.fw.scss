@@ -10,8 +10,8 @@
 *  Features List »                                                         *
 *--------------------------------------------------------------------------*
 *  Functions:                                                              *
-*    » Pixel converts the "em" format.                                     *
-*       - @function convert_em($fontPx) --v.1.0.0                          *
+*    » Pixel converts the "em" format. [It was added in --v.1.0.0]         *
+*       - @function convert_em($fontPx)                                    *
 *                                                                          *
 *  Mixins:                                                                 *
 *    » CSS3 Prefix Adding. [It was added in --v.1.0.0]                     *
@@ -19,7 +19,7 @@
 *    » Responsive Media Selector. [It was added in --v.1.0.0]              *
 *       - @mixin media($media)                                             *
 *    » Alternate Responsive Media Selector. [It was added in --v.1.0.0]    *
-*       - @mixin mediaQuery($minMax, $width, $eWidth: 0)                   *
+*       - @mixin media-query($minMax, $width, $eWidth: 0)                   *
 *    » Setting The Alpha Channel For Items. Support Cross Browser.         *
 *       - @mixin opacity($opacity: .85)                                    *
 *    » Set Border Radius. [It was added in --v.1.0.0]                      *
@@ -35,7 +35,7 @@
 *    » 3D Transforms. [It was added in --v.1.0.0]                          *
 *       - @mixin transform3d($method)                                      *
 *    » Change Input Placeholder Attributes. [It was added in --v.1.0.0]    *
-*       - @mixin changeInputPlaceholder()                                  *
+*       - @mixin change-input-placeholder()                                  *
 *    » Change The Color of All Images to Black and White.                  *
 *       - @mixin grayscale($value)                                         *
 *--------------------------------------------------------------------------*
@@ -156,7 +156,7 @@ $baseFontPixel:   16px    !default;
 /**
  *  » Alternate Responsive Media Selector.
  *    - This selective media can be entered in any desired resolution.
- *  Mixins Name: @mediaQuery($minMax, $width, $eWidth: 0)
+ *  Mixins Name: @media-query($minMax, $width, $eWidth: 0)
  *  Parameter Descriptions:
  *  $minMax = min or max. (min-width, max-width)
  *  $width, $eWidth = $cellphoneSize, $smartphoneSize, $tabletSize
@@ -165,18 +165,18 @@ $baseFontPixel:   16px    !default;
  *
  *  Usage:
  *    nav.nav-content {
- *      @include mediaQuery(min, $desktop) {
+ *      @include media-query(min, $desktop) {
  *        display: none;
  *      }
  *    }
  *
  *    h1.caption {
- *      @include mediaQuery(max, nil, 300px) {
+ *      @include media-query(max, nil, 300px) {
  *        font-size: 20%;
  *      }
  *    }
  */
-@mixin mediaQuery($minMax, $width, $eWidth: 0) {
+@mixin media-query($minMax, $width, $eWidth: 0) {
   @if $width == cp {$width: $cellphoneSize}
   @else if $width == sp {$width: $smartphoneSize}
   @else if $width == tablet {$width: $tabletSize}
@@ -402,7 +402,7 @@ $baseFontPixel:   16px    !default;
 
 /**
  *  » Change Input Placeholder Attributes.
- *  Mixins Name: changeInputPlaceholder()
+ *  Mixins Name: change-input-placeholder()
  *  Supported placeholder styles: {
  *      font
  *      color
@@ -419,12 +419,12 @@ $baseFontPixel:   16px    !default;
  *
  *  Usage:
  *    input[type="email"] {
- *      @include changeInputPlaceholder() {
+ *      @include change-input-placeholder() {
  *        color: orange;
  *      }
  *    }
  */
-@mixin changeInputPlaceholder() {
+@mixin change-input-placeholder() {
   &::-webkit-input-placeholder { @content; }
   &::-moz-placeholder { @content; }
   &:-moz-placeholder { @content; }
@@ -448,4 +448,36 @@ $baseFontPixel:   16px    !default;
 @mixin grayscale($value) {
   -webkit-filter: "grayscale(#{$value})";
   filter: "grayscale(#{$value})";
+}
+
+
+/*TODO: Not ready*/
+/**
+ *  » Navigation Bar
+ */
+@mixin navigation-bar($direction: horizontal) {
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+
+    li a {
+      display: block;
+      color: #000;
+      padding: 8px 0 8px 16px;
+      text-decoration: none;
+
+      .active {
+        background-color: #4CAF50;
+        color: white;
+      }
+
+      &:hover:not(.active) {
+        background-color: #555;
+        color: white;
+      }
+    }
+  }
 }

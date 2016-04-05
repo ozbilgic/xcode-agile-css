@@ -2,13 +2,15 @@
 **Agile CSS coding library.**
 
 
-### Version
----
+Version
+----
+
 1.0.0
 
 
-### Functions
----
+Functions
+----
+
 ##### `» Pixel converts the "em" format.`
 * **Warning:** Specify the base font size before use. ($baseFontPixel, Default size 16px.)
 * **Function Name:** @convert_em($fontPx)
@@ -24,8 +26,9 @@ p {
 ```
 
 
-### Mixins
----
+Mixins
+----
+
 ##### `» CSS3 Prefix Adding.`
 * **Mixins Name:** @prefix($property, $value)
 
@@ -286,6 +289,13 @@ img.poster {
 	@include grayscale(20%);
 }
 ```
+
+
+Version History
+----
+
+**v.1.0.0**
+* First version.
 
 
 License
