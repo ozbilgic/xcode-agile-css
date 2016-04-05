@@ -1,153 +1,73 @@
 /***************************************************************************
-*                                                                          *
 *  XCODE CSS MIXINS FRAMEWORK                                              *
 *  @author  : xcode                                                        *
-*  @version : 1.2.4                                                        *
+*  @version : 1.0.0                                                        *
 *  @since   : 02.2016                                                      *
 *  @mime    : Sass/Scss                                                    *
 *  @contact : ozbilgiclevent@gmail.com                                     *
 *                                                                          *
 *--------------------------------------------------------------------------*
-*  List »                                                                  *
+*  Features List »                                                         *
 *--------------------------------------------------------------------------*
 *  Functions:                                                              *
-*    @convert_em($fontPx)                                                  *
+*    » Pixel converts the "em" format.                                     *
+*       - @function convert_em($fontPx) --v.1.0.0                          *
 *                                                                          *
 *  Mixins:                                                                 *
-*    @keyframes($animation-name)                                           *
-*    @transition($args...)                                                 *
-*    @opacity($opacity)                                                    *
-*    @triangle($direction, $size: 6px, $color: #222)                       *
-*    @tooltip($content: attr(data-tooltip), $direction: top)               *
-*    @prefix($property, $value)                                            *
-*    @border-radius($radius)                                               *
-*    @background-opacity($color: #000, $opacity: 0.85)                     *
-*    @text-shadow($x: 1px, $y: 1px, $blur: 2px, $color: rgba(0,0,0,.6))    *
-*    @size($width, $height: $width)                                        *
-*    @input-placeholder()                                                  *
-*    @grayscale($value)                                                    *
-*    @media($media)                                                        *
-*    @mediaQuery($minMax, $width, $eWidth: 0) Set $width: nil              *
-*                                                                          *
-*  Helpers:                                                                *
-*    %clearfix                                                             *
-*    %verticalAlign                                                        *
-*                                                                          *
-*--------------------------------------------------------------------------*/
+*    » CSS3 Prefix Adding. [It was added in --v.1.0.0]                     *
+*       - @mixin prefix($property, $value)                                 *
+*    » Responsive Media Selector. [It was added in --v.1.0.0]              *
+*       - @mixin media($media)                                             *
+*    » Alternate Responsive Media Selector. [It was added in --v.1.0.0]    *
+*       - @mixin mediaQuery($minMax, $width, $eWidth: 0)                   *
+*    » Setting The Alpha Channel For Items. Support Cross Browser.         *
+*       - @mixin opacity($opacity: .85)                                    *
+*    » Set Border Radius. [It was added in --v.1.0.0]                      *
+*       - @mixin border-radius($radius)                                    *
+*    » Set Shorthand Animation. [It was added in --v.1.0.0]                *
+*       - @mixin animation($args...)                                       *
+*    » Animation Creator. [It was added in --v.1.0.0]                      *
+*       - @mixin keyframes($animationName)                                 *
+*    » Transition. [It was added in --v.1.0.0]                             *
+*       - @mixin transition($args...)                                      *
+*    » 2D Transforms. [It was added in --v.1.0.0]                          *
+*       - @mixin transform2d($method)                                      *
+*    » 3D Transforms. [It was added in --v.1.0.0]                          *
+*       - @mixin transform3d($method)                                      *
+*    » Change Input Placeholder Attributes. [It was added in --v.1.0.0]    *
+*       - @mixin changeInputPlaceholder()                                  *
+*    » Change The Color of All Images to Black and White.                  *
+*       - @mixin grayscale($value)                                         *
+*--------------------------------------------------------------------------*
+*  Contributors »                                                          *
+*--------------------------------------------------------------------------*
+*  ...                                                                     *
+****************************************************************************/
 
-
-
-
-
-
-//-------------------------------------------------------
-//  Mixins »
-//-------------------------------------------------------
-//  ##Animations and keyframes:
-//    @keyframes($animation-name)
-//
-//    Usage:
-//      @include keyframes(slide-down) {
-//        0% { opacity: 1; }
-//        90% { opacity: 0; }
-//      }
-//
-//      .element {
-//        width: 100px;
-//        height: 100px;
-//        background: black;
-//        @include animation('slide-down 5s 3');
-//      }
-//
-//  ##Transition:
-//    @transition($args...)
-//
-//    Usage:
-//      a {
-//        color: gray;
-//        @include transition(color .3s ease);
-//        &:hover {
-//          color: black;
-//        }
-//      }
-//
-//  ##Cross browser opacity
-//    @opacity($opacity)
-//
-//    Usage:
-//      .faded-text {
-//        @include opacity(0.8);
-//      }
-//
-//  ##Triangle within a pseudo element and add positioning properties (ie. top, left)
-//    @triangle($direction, $size: 6px, $color: #222)
-//      $direction: up, down, left, right
-//
-//
-//  ##Tooltip
-//    @tooltip($content: attr(data-tooltip), $direction: top)
-//
-//    Usage:
-//      <div class="demonstration">
-//        <span class="tooltip-label" data-tooltip="A tooltip!">Hover me</span>
-//      </div>
-//
-
-//
-//  ##Input Placeholder
-//    @input-placeholder()
-//
-//    Usage:
-//      @include input-placeholder {
-//        color: #bfbfbf;
-//        font-style: italic;
-//      }
-//
-//  ##Grayscale
-//    @grayscale($value)
-//
-//    Usage:
-//      @include grayscale(20%);
-//
-
-//
-//-------------------------------------------------------
-//  Helpers »
-//-------------------------------------------------------
-//  ##Clearfix
-//    %clearfix
-//
-//    Usage:
-//      .container-with-floated-children {
-//        @extend %clearfix;
-//      }
-//
-//  ##Vertical Align
-//    %verticalAlign
-//-------------------------------------------------------
-
-@import "font";
 
 
 /**
  *  VARIABLES »
  */
 
-      $cellphone: cp;      //320px
-     $smartphone: sp;      //480px
-         $tablet: tablet;  //768px
-        $desktop: desktop; //992px
-    $largeScreen: ls;      //1200px
+$cellphone:       cp      !default;   //320px
+$smartphone:      sp      !default;   //480px
+$tablet:          tablet  !default;   //768px
+$desktop:         desktop !default;   //992px
+$largeScreen:     ls      !default;   //1200px
+$fullScreen:      fs      !default;   //>1200px
 
-  $cellphoneSize: 320px;
- $smartphoneSize: 480px;
-     $tabletSize: 768px;
-    $desktopSize: 992px;
-$largeScreenSize: 1200px;
+$cellphoneSize:   320px   !default;
+$smartphoneSize:  480px   !default;
+$tabletSize:      768px   !default;
+$desktopSize:     992px   !default;
+$largeScreenSize: 1200px  !default;
+$fullScreenSize:  1200px  !default;
 
-          $white: #FFFFFF;
-          $black: #000000;
-  $baseFontPixel: 16;
+$white:           #FFFFFF !default;
+$black:           #000000 !default;
+$baseFontPixel:   16px    !default;
+
 
 /**
  *  FUNCTIONS »
@@ -158,11 +78,11 @@ $largeScreenSize: 1200px;
  *  Warning: Specify the base font size before use. ($baseFontPixel, Default size 16px.)
  *  Function Name: @convert_em($fontPx)
  *  Parameter Descriptions:
- *  $fontPx = Font size.
+ *  $fontPx = Font Size.
  *
  *  Usage:
  *    p {
- *      font-size: convert_em(14);
+ *      font-size: convert_em(14px);
  *    }
  */
 @function convert_em($fontPx) {
@@ -178,8 +98,8 @@ $largeScreenSize: 1200px;
  *  » CSS3 Prefix Adding.
  *  Mixins Name: @prefix($property, $value)
  *  Parameter Descriptions:
- *  $property: Css property name. Ex. "opacity", "text-shadow"...
- *  $value: For the selected attribute values. Ex. ".7", "0 1px 0 rgba(0,0,0,0.3)"...
+ *  $property: Css property name. Ex. "transition, "border-radius"...
+ *  $value: For the selected attribute values. Ex. ".3s", "15px"...
  *
  *  Usage:
  *     .box {
@@ -198,12 +118,16 @@ $largeScreenSize: 1200px;
 
 
 /**
- *  @media($media)
+ *  » Responsive Media Selector.
+ *  Mixins Name: @media($media)
+ *  Parameter Descriptions:
+ *  $media = "$cellphone", "$smartphone", "$tablet", "$desktop",
+ *           "$largeScreen" or "nil" when full screen
  *
  *  Usage:
- *    input[type=button] {
+ *    nav[data=main-menu] {
  *      @include media(desktop) {
- *        backround: none;
+ *        display: none;
  *      }
  *    }
  */
@@ -224,16 +148,20 @@ $largeScreenSize: 1200px;
     @media (max-width: $largeScreenSize) {@content;}
   }
   @else {
-    @media (min-width: $largeScreenSize) {@content;}
+    @media (min-width: $fullScreenSize) {@content;}
   }
 }
 
 
 /**
- *  @mediaQuery($minMax, $width, $eWidth: 0)
- *  $minMax = min or max.
+ *  » Alternate Responsive Media Selector.
+ *    - This selective media can be entered in any desired resolution.
+ *  Mixins Name: @mediaQuery($minMax, $width, $eWidth: 0)
+ *  Parameter Descriptions:
+ *  $minMax = min or max. (min-width, max-width)
  *  $width, $eWidth = $cellphoneSize, $smartphoneSize, $tabletSize
- *                    $desktopSize, $largeScreenSize
+ *                    $desktopSize, $largeScreenSize, $fullScreenSize
+ *  $eWidth = Any screen resolution size.
  *
  *  Usage:
  *    nav.nav-content {
@@ -282,21 +210,27 @@ $largeScreenSize: 1200px;
 
 
 /**
- *  @opacity($opacity: 0.85)
+ *  » Setting The Alpha Channel For Items. Support Cross Browser.
+ *  Mixins Name: @opacity($opacity: .85)
+ *  Parameter Descriptions:
+ *  $opacity = 0..1
  *
  *  Usage:
  *    a:hover {
  *      @include opacity(.7)
  *    }
  */
-@mixin opacity($opacity) {
+@mixin opacity($opacity: .85) {
   opacity: $opacity;
   filter: alpha(opacity = $opacity * 100); /* For IE8 and earlier */
 }
 
 
 /**
- *  @border-radius($radius)
+ *  » Set Border Radius.
+ *  Mixins Name: @border-radius($radius)
+ *  Parameter Descriptions:
+ *  $radius = You know that ;)
  *
  *  Usage:
  *    div.box {
@@ -309,203 +243,209 @@ $largeScreenSize: 1200px;
 
 
 /**
- *  @text-shadow($hShadow: 1px, $vShadow: 1px, $blur: 2px, $color: rgba(0,0,0,.6))
+ *  » Set Shorthand Animation.
+ *  Tip: You can use this feature with keyframes
+ *  Mixins Name: @animation($args...)
+ *  Parameter Descriptions:
+ *  $args = {
+ *            Animation name,
+ *            Duration,
+ *            Timing function,
+ *            Delay,
+ *            Iteration count,
+ *            Direction
+ *          }
  *
  *  Usage:
- *    p.text {
- *      @include text-shadow(2px, 2px, 5px, $black)
+ *    div.anim {
+ *      width: 100px;
+ *      height: 100px;
+ *      position: relative;
+ *      background-color: red;
+ *      @include animation('example 4s 3 alternate');
  *    }
  */
-@mixin text-shadow($hShadow: 1px, $vShadow: 1px, $blur: 2px, $color: rgba(0,0,0,.6)) {
-  text-shadow: $hShadow $vShadow $blur $color;
+@mixin animation($args...) {
+  @include prefix('animation', $args);
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-@mixin keyframes($animation-name) {
-  @-webkit-keyframes #{$animation-name} {
+/**
+ *  » Animation Creator.
+ *  Mixins Name: keyframes($animationName)
+ *  Tip: See those for features (Link: http://www.w3schools.com/cssref/css_animatable.asp)
+ *  Parameter Descriptions:
+ *  $animationName = Name of the animation. You can put any name.
+ *
+ *  Usage:
+ *    @include keyframes(example) {
+ *      0%   {background-color: red; left:0px; top:0px;}
+ *      25%  {background-color: yellow; left:200px; top:0px;}
+ *      50%  {background-color: blue; left:200px; top:200px;}
+ *      75%  {background-color: green; left:0px; top:200px;}
+ *      100% {background-color: red; left:0px; top:0px;}
+ *    }
+ *
+ *    div.anim {
+ *      width: 100px;
+ *      height: 100px;
+ *      position: relative;
+ *      background-color: red;
+ *      @include animation('example 4s 3 alternate');
+ *    }
+ */
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{$animationName} {
     @content;
   }
-  @-moz-keyframes #{$animation-name} {
+  @-moz-keyframes #{$animationName} {
     @content;
   }
-  @-ms-keyframes #{$animation-name} {
+  @-ms-keyframes #{$animationName} {
     @content;
   }
-  @-o-keyframes #{$animation-name} {
+  @-o-keyframes #{$animationName} {
     @content;
   }
-  @keyframes #{$animation-name} {
+  @keyframes #{$animationName} {
     @content;
   }
 }
 
-@mixin animation($str) {
-  -webkit-animation: #{$str};
-  -moz-animation: #{$str};
-  -ms-animation: #{$str};
-  -o-animation: #{$str};
-  animation: #{$str};
-}
 
+/**
+ *  » Transition.
+ *  Mixins Name: @transition($args...)
+ *  Parameter Descriptions:
+ *  $args = {
+ *            Property,
+ *            Duration,
+ *            Timing function,
+ *            Delay
+ *          }
+ *
+ *  Usage#1:
+ *    a {
+ *      color: gray;
+ *      @include transition(color .3s ease);
+ *
+ *      &:hover {
+ *        color: black;
+ *      }
+ *    }
+ *
+ *  Usage#2:
+ *    header.navbar {
+ *      min-height: 60px;
+ *      position: fixed;
+ *      margin: 0 auto;
+ *      @include transition(.4s);
+ *    }
+ *
+ *    .navbg-black {
+ *       background-color: #000 !important;
+ *    }
+ *
+ *    header.navbar slowly change color to adding .navbg-black class.
+ */
 @mixin transition($args...) {
-  -webkit-transition: $args;
-  -moz-transition: $args;
-  -ms-transition: $args;
-  -o-transition: $args;
-  transition: $args;
+  @include prefix('transition', $args);
 }
 
 
-
-%clearfix {
-  *zoom: 1;
-  &:before, &:after {
-    content: " ";
-    display: table;
-  }
-  &:after {
-    clear: both;
-  }
-}
-
-@mixin triangle($direction, $size: 6px, $color: #222){
-  content: '';
-  display: block;
-  position: absolute;
-  height: 0; width: 0;
-  @if ($direction == 'up'){
-    border-bottom: $size solid $color;
-    border-left: 1/2*$size solid transparent;
-    border-right: 1/2*$size solid transparent;
-  }
-  @else if ($direction == 'down'){
-    border-top: $size solid $color;
-    border-left: 1/2*$size solid transparent;
-    border-right: 1/2*$size solid transparent;
-  }
-  @else if ($direction == 'left'){
-    border-top: 1/2*$size solid transparent;
-    border-bottom: 1/2*$size solid transparent;
-    border-right: $size solid $color;
-  }
-  @else if ($direction == 'right'){
-    border-top: 1/2*$size solid transparent;
-    border-bottom: 1/2*$size solid transparent;
-    border-left: $size solid $color;
-  }
-}
-
-%verticalAlign {
-  &:before {
-    content: '';
-    display: inline-block;
-    vertical-align: middle;
-    height: 100%; width: .1px;
-  }
-}
-
-@mixin tooltip($content: attr(data-tooltip), $direction: top) {
-  position: relative;
-  &:before, &:after {
-    display: none;
-    z-index: 98;
-  }
-  &:hover {
-    &:after { // for text bubble
-      content: $content;
-      display: block;
-      position: absolute;
-      height: 12px; // (makes total height including padding 22px)
-      padding: 6px;
-      font-size: 12px;
-      white-space: nowrap;
-      color: #fff;
-      text-shadow: 1px 1px #000;
-      background-color: #222;
-    }
-    @if ($direction == 'top'){
-      &:before {
-        @include triangle(down, 6px, #222);
-        top: -6px; margin-top: 0;
-        left: 47%;
-      }
-      &:after {
-        top: -28px;
-        left: 47%; margin-left: -20px;
-      }
-    }
-    @else if ($direction == 'bottom'){
-      &:before {
-        @include triangle(up, 6px, #222);
-        top: auto; margin-top: 0;
-        bottom: -6px;
-        left: 47%;
-      }
-      &:after {
-        bottom: -28px;
-        left: 47%; margin-left: -20px;
-      }
-    }
-  }
+/**
+ *  » 2D Transforms.
+ *  Mixin Name: transform2d($method)
+ *  Tip: See at  examples (Link: http://www.w3schools.com/css/css3_2dtransforms.asp)
+ *  Parameter Descriptions:
+ *  $method = Method name.
+ *  Method List {
+ *                translate(x,y), translateX(n), translateY(n),
+ *                rotate(angle),
+ *                scale(x,y), scaleX(n), scaleY(n),
+ *                skew(x-angle, y-angle), skewX(angle), skewY(angle),
+ *                matrix(n,n,n,n,n,n)
+ *              }
+ *
+ *  Usage:
+ *    div.rotate {
+ *      transform2d(rotate(20deg));
+ *    }
+ */
+@mixin transform2d($method) {
+  @include prefix('transform', $method);
 }
 
 
-
-@mixin background-gradient($startColor: #3C3C3C, $endColor: #999999) {
-  background-color: $startColor;
-  background-image: -webkit-gradient(linear, left top, left bottom, from($startColor), to($endColor));
-  background-image: -webkit-linear-gradient(top, $startColor, $endColor);
-  background-image:    -moz-linear-gradient(top, $startColor, $endColor);
-  background-image:     -ms-linear-gradient(top, $startColor, $endColor);
-  background-image:      -o-linear-gradient(top, $startColor, $endColor);
-  background-image:         linear-gradient(top, $startColor, $endColor);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$startColor}', endColorStr='#{$endColor}');
+/**
+ *  » 3D Transforms.
+ *  Mixin Name: transform3d($method)
+ *  Parameter Descriptions:
+ *  $method = Method name.
+ *  Method List {
+ *                translate3d(x,y,z), translateX(x), translateY(y), translateZ(z),
+ *                rotate3d(x,y,z,angle), rotateX(angle), rotateY(angle), rotateZ(angle),
+ *                scale3d(x,y,z), scaleX(x), scaleY(y), scaleY(z),
+ *                matrix3d(n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n),
+ *                perspective(n)
+ *              }
+ *
+ *  Usage:
+ *    div.rotate {
+ *      transform3d(rotateZ(90deg));
+ *    }
+ */
+@mixin transform3d($method) {
+  @include prefix('transform', $method);
 }
 
-@mixin background-opacity($color: #000, $opacity: 0.85) {
-  background: $color;
-  background: rgba($color, $opacity);
-}
 
-
-
-@mixin input-placeholder() {
+/**
+ *  » Change Input Placeholder Attributes.
+ *  Mixins Name: changeInputPlaceholder()
+ *  Supported placeholder styles: {
+ *      font
+ *      color
+ *      background
+ *      word-spacing
+ *      letter-spacing
+ *      text-decoration
+ *      vertical-align
+ *      text-transform
+ *      line-height
+ *      text-indent
+ *      opacity
+ *  }
+ *
+ *  Usage:
+ *    input[type="email"] {
+ *      @include changeInputPlaceholder() {
+ *        color: orange;
+ *      }
+ *    }
+ */
+@mixin changeInputPlaceholder() {
   &::-webkit-input-placeholder { @content; }
-  &:-moz-placeholder { @content; }
   &::-moz-placeholder { @content; }
+  &:-moz-placeholder { @content; }
   &:-ms-input-placeholder { @content; }
 }
 
+
+/**
+ *  » Change The Color of All Images to Black and White.
+ *  Mixins Name: grayscale($value)
+ *  Tip: 0..100, 100 full gray.
+ *  Warning: IE not supported.
+ *  Parameter Descriptions:
+ *  $value = Percent.
+ *
+ *  Usage:
+ *    img.poster {
+ *      @include grayscale(20%);
+ *    }
+ */
 @mixin grayscale($value) {
-  -webkit-filter: #{"grayscale(#{$value})"};
-  -moz-filter: #{"grayscale(#{$value})"};
-  filter:#{"grayscale(#{$value})"};
-}
-
-//*********************THE END***************************
-
-@mixin font-adding($font-name, $size, $spacing: 0.5px) {
-  @if($font-name == 'm') {
-    font-family: GraphikMedium, sans-serif;
-  } @else if($font-name == 'r') {
-    font-family: GraphikRegular, sans-serif;
-  } @else {
-    font-family: GraphikSemibold, sans-serif;
-  }
-
-  font-size: $size;
-  letter-spacing: -$spacing;
+  -webkit-filter: "grayscale(#{$value})";
+  filter: "grayscale(#{$value})";
 }
