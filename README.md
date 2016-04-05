@@ -1,10 +1,14 @@
 # Sass Mixins CSS Framework - (Mixins Library)
 **Agile CSS coding library.**
 
+
 ### Version
+---
 1.0.0
 
-### Functions:
+
+### Functions
+---
 ##### `» Pixel converts the "em" format.`
 * **Warning:** Specify the base font size before use. ($baseFontPixel, Default size 16px.)
 * **Function Name:** @convert_em($fontPx)
@@ -19,8 +23,10 @@ p {
 }
 ```
 
-### Mixins:
-`» CSS3 Prefix Adding.`
+
+### Mixins
+---
+##### `» CSS3 Prefix Adding.`
 * **Mixins Name:** @prefix($property, $value)
 
 **Parameter Descriptions:**
@@ -37,7 +43,7 @@ p {
 ```
 
 
-`» Responsive Media Selector.`
+##### `» Responsive Media Selector.`
 * **Mixins Name:** @media($media)
 
 **Parameter Descriptions:**
@@ -53,7 +59,7 @@ nav[data=main-menu] {
 ```
 
 
-`» Alternate Responsive Media Selector.`
+##### `» Alternate Responsive Media Selector.`
 This selective media can be entered in any desired resolution.
 * **Mixins Name:** @mediaQuery($minMax, $width, $eWidth: 0)
 
@@ -78,7 +84,7 @@ h1.caption {
 ```
 
 
-`» Setting The Alpha Channel For Items. Support Cross Browser.`
+##### `» Setting The Alpha Channel For Items. Support Cross Browser.`
 * **Mixins Name:** @opacity($opacity: .85)
 
 **Parameter Descriptions:**
@@ -92,7 +98,7 @@ a:hover {
 ```
 
 
-`» Set Border Radius.`
+##### `» Set Border Radius.`
 * **Mixins Name:** @border-radius($radius)
 
 **Parameter Descriptions:**
@@ -106,7 +112,7 @@ div.box {
 ```
 
 
-`» Set Shorthand Animation.`
+##### `» Set Shorthand Animation.`
 * **Tip:** You can use this feature with keyframes
 * **Mixins Name:** @animation($args...)
 
@@ -132,7 +138,7 @@ div.anim {
 ```
 
 
-`» Animation Creator.`
+##### `» Animation Creator.`
 * **Mixins Name:** keyframes($animationName)
 * **Tip:** [See those for features](Link: http://www.w3schools.com/cssref/css_animatable.asp)
 
@@ -159,7 +165,7 @@ div.anim {
 ```
 
 
-`» Transition.`
+##### `» Transition.`
 * **Mixins Name:** @transition($args...)
 
 **Parameter Descriptions:**
@@ -197,7 +203,7 @@ header.navbar {
 header.navbar slowly change color to adding .navbg-black class.
 
 
-`» 2D Transforms.`
+##### `» 2D Transforms.`
 * **Mixin Name:** transform2d($method)
 * **Tip:** See at  examples (Link: http://www.w3schools.com/css/css3_2dtransforms.asp)
 
@@ -219,7 +225,7 @@ div.rotate {
 ```
 
 
-`» 3D Transforms.`
+##### `» 3D Transforms.`
 * **Mixin Name:** transform3d($method)
 
 **Parameter Descriptions:**
@@ -240,7 +246,7 @@ div.rotate {
 ```
 
 
-`» Change Input Placeholder Attributes.`
+##### `» Change Input Placeholder Attributes.`
 * **Mixins Name:** changeInputPlaceholder()
 * Supported placeholder styles: {
       font
@@ -266,7 +272,7 @@ input[type="email"] {
 ```
 
 
-`» Change The Color of All Images to Black and White.`
+##### `» Change The Color of All Images to Black and White.`
 * **Mixins Name:** grayscale($value)
 * **Tip:** 0..100, 100 full gray.
 * **Warning:** IE not supported.
