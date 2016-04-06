@@ -1,22 +1,40 @@
 # Sass Mixins CSS Framework - (Mixins Library)
 **Agile CSS coding library.**
+---
 
-
-Version
+Version 1.1.0
 ----
 
-1.0.0
+1.1.0
+
+
+Usage
+----
+It is sufficient to include in your project.
+
+```css
+@charset "utf-8";
+...
+
+@import "xcode.css.mixins.fw";
+
+...
+body {
+  margin: 0;
+}
+```
 
 
 Functions
 ----
 
 ##### `» Pixel converts the "em" format.`
-* **Warning:** Specify the base font size before use. ($baseFontPixel, Default size 16px.)
+* **Warning:** Specify the base font size before use. ($baseFontPixel default size 16px.)
 * **Function Name:** @convert_em($fontPx)
 
 **Parameter Descriptions:**
-* $fontPx = Font Size.
+* @param $fontPx = Font Size.
+* @return em
 
 **Usage:**
 ```scss
@@ -30,11 +48,11 @@ Mixins
 ----
 
 ##### `» CSS3 Prefix Adding.`
-* **Mixins Name:** @prefix($property, $value)
+* **Mixin Name:** @prefix($property, $value)
 
 **Parameter Descriptions:**
-* $property: Css property name. Ex. "transition, "border-radius"...
-* $value: For the selected attribute values. Ex. ".3s", "15px"...
+* @param $property: Css property name. Ex. "transition", "border-radius"...
+* @param $value: For the selected attribute values. Ex. ".3s", "15px"...
 
 **Usage:**
 ```scss
@@ -47,15 +65,15 @@ Mixins
 
 
 ##### `» Responsive Media Selector.`
-* **Mixins Name:** @media($media)
+* **Mixin Name:** @media($media)
 
 **Parameter Descriptions:**
-* $media = "$cellphone", "$smartphone", "$tablet", "$desktop", "$largeScreen" or "nil" when full screen.
+* @param $media = $cellphone, $smartphone, $tablet, $desktop, $largeScreen or "nil" when full screen.
 
 **Usage:**
 ```scss
 nav[data=main-menu] {
-	@include media(desktop) {
+	@include media($desktop) {
 		display: none;
 	}
 }
@@ -64,23 +82,23 @@ nav[data=main-menu] {
 
 ##### `» Alternate Responsive Media Selector.`
 This selective media can be entered in any desired resolution.
-* **Mixins Name:** @mediaQuery($minMax, $width, $eWidth: 0)
+* **Mixin Name:** @media-query($minMax, $width, $eWidth: 0)
 
 **Parameter Descriptions:**
-* $minMax = min or max. (min-width, max-width)
-* $width, $eWidth = $cellphoneSize, $smartphoneSize, $tabletSize, $desktopSize, $largeScreenSize, $fullScreenSize
-* $eWidth = Any screen resolution size.
+* @param $minMax = min or max. (min-width, max-width)
+* @param $width, $eWidth = $cellphoneSize, $smartphoneSize, $tabletSize, $desktopSize, $largeScreenSize, $fullScreenSize
+* @param $eWidth = Any screen resolution size.
 
 **Usage:**
 ```scss
 nav.nav-content {
-	@include mediaQuery(min, $desktop) {
+	@include media-query(min, $desktop) {
 		display: none;
 	}
 }
 
 h1.caption {
-	@include mediaQuery(max, nil, 300px) {
+	@include media-query(max, nil, 300px) {
 		font-size: 20%;
 	}
 }
@@ -88,10 +106,10 @@ h1.caption {
 
 
 ##### `» Setting The Alpha Channel For Items. Support Cross Browser.`
-* **Mixins Name:** @opacity($opacity: .85)
+* **Mixin Name:** @opacity($opacity: .85)
 
 **Parameter Descriptions:**
-* $opacity = 0..1
+* @param $opacity = 0..1
 
 **Usage:**
 ```scss
@@ -102,10 +120,10 @@ a:hover {
 
 
 ##### `» Set Border Radius.`
-* **Mixins Name:** @border-radius($radius)
+* **Mixin Name:** @border-radius($radius)
 
 **Parameter Descriptions:**
-* $radius = You know that ;)
+* @param $radius = You know that ;)
 
 **Usage:**
 ```scss
@@ -117,10 +135,10 @@ div.box {
 
 ##### `» Set Shorthand Animation.`
 * **Tip:** You can use this feature with keyframes
-* **Mixins Name:** @animation($args...)
+* **Mixin Name:** @animation($args...)
 
 **Parameter Descriptions:**
-* $args = {
+* @param $args = {
           	Animation name,
             Duration,
             Timing function,
@@ -142,11 +160,11 @@ div.anim {
 
 
 ##### `» Animation Creator.`
-* **Mixins Name:** keyframes($animationName)
-* **Tip:** [See those for features](Link: http://www.w3schools.com/cssref/css_animatable.asp)
+* **Mixin Name:** @keyframes($animationName)
+* **Tip:** [See those for features][anim]
 
 **Parameter Descriptions:**
-* $animationName = Name of the animation. You can put any name.
+* @param $animationName = Name of the animation. You can put any name.
 
 **Usage:**
 ```scss
@@ -169,10 +187,10 @@ div.anim {
 
 
 ##### `» Transition.`
-* **Mixins Name:** @transition($args...)
+* **Mixin Name:** @transition($args...)
 
 **Parameter Descriptions:**
-* $args = {
+* @param $args = {
             Property,
             Duration,
             Timing function,
@@ -203,15 +221,15 @@ header.navbar {
 	background-color: #000 !important;
 }
 ```
-header.navbar slowly change color to adding .navbg-black class.
+» header.navbar slowly change color to adding .navbg-black class.
 
 
 ##### `» 2D Transforms.`
-* **Mixin Name:** transform2d($method)
-* **Tip:** See at  examples (Link: http://www.w3schools.com/css/css3_2dtransforms.asp)
+* **Mixin Name:** @transform2d($method)
+* **Tip:** [See at examples](http://www.w3schools.com/css/css3_2dtransforms.asp)
 
 **Parameter Descriptions:**
-* $method = Method name.
+* @param $method = Method name.
 * Method List {
                 translate(x,y), translateX(n), translateY(n),
                 rotate(angle),
@@ -223,16 +241,16 @@ header.navbar slowly change color to adding .navbg-black class.
 **Usage:**
 ```scss
 div.rotate {
-	transform2d(rotate(20deg));
+	@include transform2d(rotate(20deg));
 }
 ```
 
 
 ##### `» 3D Transforms.`
-* **Mixin Name:** transform3d($method)
+* **Mixin Name:** @transform3d($method)
 
 **Parameter Descriptions:**
-* $method = Method name.
+* @param $method = Method name.
 * Method List {
                 translate3d(x,y,z), translateX(x), translateY(y), translateZ(z),
                 rotate3d(x,y,z,angle), rotateX(angle), rotateY(angle), rotateZ(angle),
@@ -244,13 +262,13 @@ div.rotate {
 **Usage:**
 ```scss
 div.rotate {
-	transform3d(rotateZ(90deg));
+	@include transform3d(rotateZ(90deg));
 }
 ```
 
 
 ##### `» Change Input Placeholder Attributes.`
-* **Mixins Name:** changeInputPlaceholder()
+* **Mixin Name:** @changeInputPlaceholder()
 * Supported placeholder styles: {
       font
       color
@@ -276,12 +294,12 @@ input[type="email"] {
 
 
 ##### `» Change The Color of All Images to Black and White.`
-* **Mixins Name:** grayscale($value)
+* **Mixin Name:** @grayscale($value)
 * **Tip:** 0..100, 100 full gray.
 * **Warning:** IE not supported.
 
 **Parameter Descriptions:**
-* $value = Percent.
+* @param $value = Percent.
 
 **Usage:**
 ```scss
@@ -291,14 +309,142 @@ img.poster {
 ```
 
 
+##### `» Horizontal Navigation Bar.`
+* **Mixin Name:** @h-navigation-bar(
+                    $width: 200px,
+                    $bgColor: #f1f1f1,
+                    $textColor: #000,
+                    $hoverBgColor: #555,
+                    $hoverTextColor: white,
+                    $activeLinkBgColor: #4CAF50,
+                    $activeLinkTextColor: white,
+                    $isFullHeight: false)
+
+**Parameter Descriptions:**
+* @param $width = Navigation bar width. Default size: 200px. Tip: Percentage value enterable.
+* @param bgColor = Navigation bar background color. Default color: #f1f1f1.
+* @param textColor = Link text color. Default color: #000.
+* @param $hoverBgColor = Link hover background color. Default color: #555.
+* @param $hoverTextColor = Link hover text color. Default color: #fff.
+* @param $activeLinkBgColor = Active link background color. Default color: #4CAF50.
+* @param $activeLinkTextColor = Active link text color. Default color: #fff.
+* @param $isFullHeight = Full height navigation bar. Default value: false.
+
+**Usage 1:**
+```scss
+#nav {
+	@include h-navigation-bar(300px);
+}
+
+<div id="nav">
+	 <ul>
+		 <li><a class="active" href="#home">Home</a></li>
+		 <li><a href="#news">News</a></li>
+		 <li><a href="#contact">Contact</a></li>
+		 <li><a href="#about">About</a></li>
+	 </ul>
+</div>
+```
+
+**Usage 2:**
+```scss
+#nav {
+	@include h-navigation-bar($width:150px, $isFullHeight:true);
+}
+
+<div id="nav">
+	 <ul>
+		 <li><a class="active" href="#home">Home</a></li>
+		 <li><a href="#news">News</a></li>
+		 <li><a href="#contact">Contact</a></li>
+		 <li><a href="#about">About</a></li>
+	 </ul>
+</div>
+```
+
+
+##### `» Vertical Navigation Bar.`
+* **Mixin Name:** @mixin v-navigation-bar(
+                    $bgColor: #333,
+                    $textColor: white,
+                    $hoverBgColor: #111,
+                    $activeLinkBgColor: #4CAF50,
+                    $isDivider: false,
+                    $dividerColor: #bbb)
+**Parameter Descriptions:**
+* @param $bgColor = Navigation bar background color. Default color: #333.
+* @param $textColor = Link text color. Default color: #fff.
+* @param $hoverBgColor = Link hover background color. Default color: #111.
+* @param $activeLinkBgColor = Active link background color. Default color: #4CAF50.
+* @param $isDivider = Divider inserts links. Default value: false.
+* @param $dividerColor = Dividers color. Default color: #bbb.
+
+**Usage:**
+```scss
+#nav {
+	@include v-navigation-bar($isDivider:true);
+}
+
+<div id="nav">
+	 <ul>
+		 <li><a class="active" href="#home">Home</a></li>
+		 <li><a href="#news">News</a></li>
+		 <li><a href="#contact">Contact</a></li>
+		 <li style="float:right"><a href="#about">About</a></li> <!-- right link element -->
+	 </ul>
+</div>
+```
+
+
+##### `» Vertical Navigation Bar.`
+* **Mixin Name:** @mixin dropdown(
+                  	$btnBgColor: #4CAF50,
+                  	$btnTextColor: white,
+                  	$contentWidth: 160px,
+                  	$linkTextColor: black,
+                  	$linkHoverBgColor: #f1f1f1)
+**Parameter Descriptions:**
+* @param $btnBgColor: Dropdown button background color. Default color: #4CAF50.
+* @param $btnTextColor: Button text color. Default color: #fff.
+* @param $contentWidth: Dropdown content width. Default value: 160px.
+* @param $linkTextColor: Link text color. Default color: #000.
+* @param $linkHoverBgColor: Link hover background color. Default color: #f1f1f1.
+
+**Usage:**
+```scss
+#drop {
+	 @include dropdown();
+}
+
+<div id="drop">
+	<div class="dropdown">
+		<button class="dropbtn">Dropdown</button>
+		<div class="dropdown-content">
+			<a href="#">Link 1</a>
+			<a href="#">Link 2</a>
+			<a href="#">Link 3</a>
+		</div>
+	</div>
+</div>
+```
+
+
 Version History
 ----
 
 **v.1.0.0**
 * First version.
 
+**v.1.1.0**
+* **Mixin added:** Horizontal Navigation Bar.
+* **Mixin added:** Vertical Navigation Bar.
+* **Mixin added:** Dropdown.
+
 
 License
 ----
 
-[MIT](https://github.com/ozbilgic/sass-mixin-css-framework/blob/master/LICENSE)
+[MIT](https://github.com/ozbilgic/sass-mixin-css-framework/blob/master/LICENSE) 2016 - XCODE
+
+
+[anim]:<http://www.w3schools.com/cssref/css_animatable.asp>
