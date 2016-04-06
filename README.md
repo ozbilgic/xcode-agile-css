@@ -1,5 +1,7 @@
 # Sass Mixins CSS Framework - (Mixins Library)
-**Agile CSS coding library.**
+### Agile CSS coding library.
+
+
 ![cross-browser-support](https://cloud.githubusercontent.com/assets/6649597/14314265/d9f64a76-fbfe-11e5-8ffd-4faa6f652447.jpg)
 
 
@@ -28,7 +30,7 @@ Functions
 * **Function Name:** @convert_em($fontPx)
 
 **Parameter Descriptions:**
-* @param $fontPx: Font Size.
+* @param **$fontPx:** Font Size.
 * @return em
 
 **Usage:**
@@ -46,8 +48,8 @@ Mixins
 * **Mixin Name:** @prefix($property, $value)
 
 **Parameter Descriptions:**
-* @param $property: Css property name. Ex. "transition", "border-radius"...
-* @param $value: For the selected attribute values. Ex. ".3s", "15px"...
+* @param **$property:** Css property name. Ex. "transition", "border-radius"...
+* @param **$value:** For the selected attribute values. Ex. ".3s", "15px"...
 
 **Usage:**
 ```scss
@@ -63,7 +65,7 @@ Mixins
 * **Mixin Name:** @media($media)
 
 **Parameter Descriptions:**
-* @param $media: $cellphone, $smartphone, $tablet, $desktop, $largeScreen or "nil" when full screen.
+* @param **$media:** $cellphone, $smartphone, $tablet, $desktop, $largeScreen or "nil" when full screen.
 
 **Usage:**
 ```scss
@@ -80,9 +82,9 @@ This selective media can be entered in any desired resolution.
 * **Mixin Name:** @media-query($minMax, $width, $eWidth: 0)
 
 **Parameter Descriptions:**
-* @param $minMax: min or max. (min-width, max-width)
-* @param $width, $eWidth: $cellphoneSize, $smartphoneSize, $tabletSize, $desktopSize, $largeScreenSize, $fullScreenSize
-* @param $eWidth: Any screen resolution size.
+* @param **$minMax:** min or max. (min-width, max-width)
+* @param **$width, $eWidth:** $cellphoneSize, $smartphoneSize, $tabletSize, $desktopSize, $largeScreenSize, $fullScreenSize
+* @param **$eWidth:** Any screen resolution size.
 
 **Usage:**
 ```scss
@@ -104,7 +106,7 @@ h1.caption {
 * **Mixin Name:** @opacity($opacity: .85)
 
 **Parameter Descriptions:**
-* @param $opacity: 0..1
+* @param **$opacity:** 0..1
 
 **Usage:**
 ```scss
@@ -118,7 +120,7 @@ a:hover {
 * **Mixin Name:** @border-radius($radius)
 
 **Parameter Descriptions:**
-* @param $radius: You know that ;)
+* @param **$radius:** You know that ;)
 
 **Usage:**
 ```scss
@@ -133,7 +135,7 @@ div.box {
 * **Mixin Name:** @animation($args...)
 
 **Parameter Descriptions:**
-* @param $args: {
+* @param **$args:** {
           	Animation name,
             Duration,
             Timing function,
@@ -159,7 +161,7 @@ div.anim {
 * **Tip:** [See those for features][anim]
 
 **Parameter Descriptions:**
-* @param $animationName: Name of the animation. You can put any name.
+* @param **$animationName:** Name of the animation. You can put any name.
 
 **Usage:**
 ```scss
@@ -185,7 +187,7 @@ div.anim {
 * **Mixin Name:** @transition($args...)
 
 **Parameter Descriptions:**
-* @param $args: {
+* @param **$args:** {
             Property,
             Duration,
             Timing function,
@@ -216,7 +218,7 @@ header.navbar {
 	background-color: #000 !important;
 }
 ```
-» header.navbar slowly change color to adding .navbg-black class.
+---header.navbar slowly change color to adding .navbg-black class.
 
 
 ##### `» 2D Transforms.`
@@ -224,7 +226,7 @@ header.navbar {
 * **Tip:** [See at examples](http://www.w3schools.com/css/css3_2dtransforms.asp)
 
 **Parameter Descriptions:**
-* @param $method: Method name.
+* @param **$method:** Method name.
 * Method List
 	* translate(x,y), translateX(n), translateY(n),
 	* rotate(angle),
@@ -245,7 +247,7 @@ div.rotate {
 * **Mixin Name:** @transform3d($method)
 
 **Parameter Descriptions:**
-* @param $method: Method name.
+* @param **$method:** Method name.
 * Method List
 	* translate3d(x,y,z), translateX(x), translateY(y), translateZ(z),
 	* rotate3d(x,y,z,angle), rotateX(angle), rotateY(angle), rotateZ(angle),
@@ -292,7 +294,7 @@ input[type="email"] {
 * **Warning:** IE not supported.
 
 **Parameter Descriptions:**
-* @param $value: Percent.
+* @param **$value:** Percent.
 
 **Usage:**
 ```scss
@@ -314,14 +316,14 @@ img.poster {
                     $isFullHeight: false)
 
 **Parameter Descriptions:**
-* @param $width: Navigation bar width. Default size: 200px. Tip: Percentage value enterable.
-* @param bgColor: Navigation bar background color. Default color: #f1f1f1.
-* @param textColor: Link text color. Default color: #000.
-* @param $hoverBgColor: Link hover background color. Default color: #555.
-* @param $hoverTextColor: Link hover text color. Default color: #fff.
-* @param $activeLinkBgColor: Active link background color. Default color: #4CAF50.
-* @param $activeLinkTextColor: Active link text color. Default color: #fff.
-* @param $isFullHeight: Full height navigation bar. Default value: false.
+* @param **$width:** Navigation bar width. Default size: 200px. Tip: Percentage value enterable.
+* @param **bgColor:** Navigation bar background color. Default color: #f1f1f1.
+* @param **textColor:** Link text color. Default color: #000.
+* @param **$hoverBgColor:** Link hover background color. Default color: #555.
+* @param **$hoverTextColor:** Link hover text color. Default color: #fff.
+* @param **$activeLinkBgColor:** Active link background color. Default color: #4CAF50.
+* @param **$activeLinkTextColor:** Active link text color. Default color: #fff.
+* @param **$isFullHeight:** Full height navigation bar. Default value: false.
 
 **Usage 1:**
 ```scss
@@ -364,13 +366,14 @@ img.poster {
                     $activeLinkBgColor: #4CAF50,
                     $isDivider: false,
                     $dividerColor: #bbb)
+
 **Parameter Descriptions:**
-* @param $bgColor: Navigation bar background color. Default color: #333.
-* @param $textColor: Link text color. Default color: #fff.
-* @param $hoverBgColor: Link hover background color. Default color: #111.
-* @param $activeLinkBgColor: Active link background color. Default color: #4CAF50.
-* @param $isDivider: Divider inserts links. Default value: false.
-* @param $dividerColor: Dividers color. Default color: #bbb.
+* @param **$bgColor:** Navigation bar background color. Default color: #333.
+* @param **$textColor:** Link text color. Default color: #fff.
+* @param **$hoverBgColor:** Link hover background color. Default color: #111.
+* @param **$activeLinkBgColor:** Active link background color. Default color: #4CAF50.
+* @param **$isDivider:** Divider inserts links. Default value: false.
+* @param **$dividerColor:** Dividers color. Default color: #bbb.
 
 **Usage:**
 ```scss
@@ -389,19 +392,20 @@ img.poster {
 ```
 
 
-##### `» Vertical Navigation Bar.`
+##### `» Dropdown.`
 * **Mixin Name:** @mixin dropdown(
                   	$btnBgColor: #4CAF50,
                   	$btnTextColor: white,
                   	$contentWidth: 160px,
                   	$linkTextColor: black,
                   	$linkHoverBgColor: #f1f1f1)
+
 **Parameter Descriptions:**
-* @param $btnBgColor: Dropdown button background color. Default color: #4CAF50.
-* @param $btnTextColor: Button text color. Default color: #fff.
-* @param $contentWidth: Dropdown content width. Default value: 160px.
-* @param $linkTextColor: Link text color. Default color: #000.
-* @param $linkHoverBgColor: Link hover background color. Default color: #f1f1f1.
+* @param **$btnBgColor:** Dropdown button background color. Default color: #4CAF50.
+* @param **$btnTextColor:** Button text color. Default color: #fff.
+* @param **$contentWidth:** Dropdown content width. Default value: 160px.
+* @param **$linkTextColor:** Link text color. Default color: #000.
+* @param **$linkHoverBgColor:** Link hover background color. Default color: #f1f1f1.
 
 **Usage:**
 ```scss
