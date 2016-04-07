@@ -1,7 +1,7 @@
 /***************************************************************************
 *  XCODE CSS MIXINS FRAMEWORK                                              *
 *  @author  : xcode                                                        *
-*  @version : 1.1.0                                                        *
+*  @version : 1.2.1                                                        *
 *  @since   : 02.2016                                                      *
 *  @mime    : Sass/Scss                                                    *
 *  @contact : ozbilgiclevent@gmail.com                                     *
@@ -28,6 +28,10 @@
 *    » Horizontal Navigation Bar. [It was added in --v.1.1.0]              *
 *    » Vertical Navigation Bar. [It was added in --v.1.1.0]                *
 *    » Dropdown [It was added in --v.1.1.0]                                *
+*    » Tooltip [It was added in --v.1.2.0]                                 *
+*    » Box Shadow. [It was added in --v.1.2.0]                             *
+*    » Gradients. [It was added in --v.1.2.0]                              *
+*    » Image Filter. [It was added in --v.1.2.0]                           *
 *--------------------------------------------------------------------------*
 *  Contributors »                                                          *
 *--------------------------------------------------------------------------*
@@ -88,11 +92,11 @@ $baseFontPixel:   16px    !default;
 
 /**
  *  » CSS3 Prefix Adding.
- *  Mixin Name: @prefix($property, $value)
+ *  Mixin Name: @prefix($property, $args...)
  *  ---
  *  Parameter Descriptions:
  *  @param $property: Css property name. Ex. "transition, "border-radius"...
- *  @param $value: For the selected attribute values. Ex. ".3s", "15px"...
+ *  @param $args: For the selected attribute values. Ex. "color .3s", "15px"...
  *
  *  Usage:
  *     .box {
@@ -101,12 +105,12 @@ $baseFontPixel:   16px    !default;
  *       @include prefix(border-radius, 5px);
  *     }
  */
-@mixin prefix($property, $value) {
-  -webkit-#{$property}: #{$value};
-     -moz-#{$property}: #{$value};
-      -ms-#{$property}: #{$value};
-       -o-#{$property}: #{$value};
-          #{$property}: #{$value};
+@mixin prefix($property, $args...) {
+  -webkit-#{$property}: #{$args};
+     -moz-#{$property}: #{$args};
+      -ms-#{$property}: #{$args};
+       -o-#{$property}: #{$args};
+          #{$property}: #{$args};
 }
 
 
@@ -356,7 +360,7 @@ $baseFontPixel:   16px    !default;
 /**
  *  » 2D Transforms.
  *  Mixin Name: transform2d($method)
- *  Tip: See at  examples (Link: http://www.w3schools.com/css/css3_2dtransforms.asp)
+ *  Tip: See at examples (Link: http://www.w3schools.com/css/css3_2dtransforms.asp)
  *  ---
  *  Parameter Descriptions:
  *  @param $method = Method name.
@@ -449,9 +453,9 @@ $baseFontPixel:   16px    !default;
  *      @include grayscale(20%);
  *    }
  */
-@mixin grayscale($value) {
-  -webkit-filter: "grayscale(#{$value})";
-  filter: "grayscale(#{$value})";
+@mixin grayscale($percent) {
+  -webkit-filter: "grayscale(#{$percent})";
+  filter: "grayscale(#{$percent})";
 }
 
 
@@ -703,5 +707,244 @@ $baseFontPixel:   16px    !default;
 
       &:hover {background-color: $linkHoverBgColor}
     }
+  }
+}
+
+
+/**
+ *  » Tooltip
+ *  Mixin Name: @mixin tooltip(
+ *                  $position: top,
+ *                  $bgColor: #000,
+ *                  $textColor: #fff,
+ *                  $height: 5px)
+ *  ---
+ *  Parameter Descriptions:
+ *  @param $position: Tooltip position. Values(top, bottom, left, right). Default value: top.
+ *  @param $bgColor: Tooltip background color. Default color: #000.
+ *  @param $textColor: Tooltip text color. Default color: #fff.
+ *  @param $height: Tooltip height. Default value: 5px.
+ *
+ *  Usage:
+ *    #tooltip {
+ *      @include tooltip(bottom, $height: 10px);
+ *    }
+ *
+ *    <div id="tooltip">
+ *      <div class="tooltip">Hover over me
+ *        <span class="tooltiptext">Tooltip text</span>
+ *      </div>
+ *    </div>
+ */
+@mixin tooltip($position: top, $bgColor: #000, $textColor: #fff, $height: 5px) {
+  .tooltip {
+    position: relative;
+    display: inline-block;
+
+    .tooltiptext {
+      visibility: hidden;
+      width: 120px;
+      background-color: $bgColor;
+      color: $textColor;
+      text-align: center;
+      border-radius: 6px;
+      padding: $height 0;
+      position: absolute;
+      z-index: 1;
+      @if ($position == top) {
+        bottom: 150%;
+        left: 50%;
+        margin-left: -60px;
+      }
+      @else if($position == bottom) {
+        top: 150%;
+        left: 50%;
+        margin-left: -60px;
+      }
+      @else if($position == right) {
+        top: -$height;
+        left: 110%;
+      }
+      @else if($position == left) {
+        top: -$height;
+        right: 110%;
+      }
+
+      &:after {
+        content: " ";
+        position: absolute;
+        border: 5px solid transparent;
+        @if ($position == top) {
+          top: 100%;
+          left: 50%;
+          border-top-color: $bgColor;
+          margin-left: -5px;
+        }
+        @else if($position == bottom) {
+          bottom: 100%;
+          left: 50%;
+          border-bottom-color: $bgColor;
+          margin-left: -5px;
+        }
+        @else if($position == right) {
+          right: 100%;
+          top: 50%;
+          border-right-color: $bgColor;
+          margin-top: -5px;
+        }
+        @else if($position == left) {
+          left: 100%;
+          top: 50%;
+          border-left-color: $bgColor;
+          margin-top: -5px;
+        }
+      }
+    }
+
+    &:hover .tooltiptext {
+      visibility: visible;
+    }
+  }
+}
+
+
+/**
+ *  » Box Shadow.
+ *  Mixin Name: @mixin box-shadow($args...)
+ *  ---
+ *  Parameter Descriptions:
+ *  @param $args: Values(Horizontal shadow, Vertical shadow, Blur, Shadow color)
+ *
+ *  Usage:
+ *    .box {
+ *      width: 300px;
+ *      height: 200px;
+ *      @include box-shadow(0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19));
+ *    }
+ *
+ *    <div class="box"></div>
+ */
+@mixin box-shadow($args...) {
+  @include prefix('box-shadow', $args);
+}
+
+
+/**
+ *  » Gradients.
+ *  Mixin Name: @mixin gradient($type: linear, $style: diagonal, $args...)
+ *  Tip: See at examples. Link: http://www.w3schools.com/css/css3_gradients.asp
+ *  ---
+ *  Parameter Descriptions:
+ *  @param $type: Values(linear or radial). Default value: linear.
+ *  @param $style: Values(top-bottom, left-right, diagonal or angle). Default value: diagonal.
+ *  @param $angle: Degree. Tip: Enter this value if selected style: angle. Default value: 45deg.
+ *  @param $args: Color-stop#1, Color-stop#2...
+ *
+ *  Usage 1:
+ *    .grad {
+ *      Width: 300px;
+ *      height: 150px;
+ *      @include gradient($args: #000, #fff);
+ *    }
+ *
+ *    <div class="grad"></div>
+ *
+ *  Usage 2:
+ *    .grad {
+ *      Width: 300px;
+ *      height: 150px;
+ *      @include gradient($style: angle, $angle: -90deg, $args: #000, #fff);
+ *    }
+ *
+ *    <div class="grad"></div>
+ */
+@mixin gradient($type: linear, $style: diagonal, $angle: 45deg, $args...) {
+  background: white; /* For browsers that do not support gradients */
+  @if ($type == linear) {
+    @if ($style == diagonal) {
+      background: -webkit-linear-gradient(left top, $args);
+      background: -o-linear-gradient(bottom right, $args);
+      background: -moz-linear-gradient(bottom right, $args);
+      background: linear-gradient(to bottom right, $args);
+    }
+    @else if ($style == top-bottom) {
+      background: -webkit-linear-gradient($args);
+      background: -o-linear-gradient($args);
+      background: -moz-linear-gradient($args);
+      background: linear-gradient($args);
+    }
+    @else if ($style == left-right) {
+      background: -webkit-linear-gradient(left, $args);
+      background: -o-linear-gradient(right, $args);
+      background: -moz-linear-gradient(right, $args);
+      background: linear-gradient(to right, $args);
+    }
+    @else if($style == angle) {
+      background: -webkit-linear-gradient($angle, $args);
+      background: -o-linear-gradient($angle, $args);
+      background: -moz-linear-gradient($angle, $args);
+      background: linear-gradient($angle, $args);
+    }
+  }
+  @else {
+    background: -webkit-repeating-radial-gradient($args);
+    background: -o-repeating-radial-gradient($args);
+    background: -moz-repeating-radial-gradient($args);
+    background: repeating-radial-gradient($args);
+  }
+}
+
+
+/**
+ *  » Image Filter.
+ *  Mixin Name: @mixin image-filter($filterType: grayscale, $args...)
+ *  Warning: IE not supported.
+ *  ---
+ *  Parameter Descriptions:
+ *  @params $filterType: Filter type. Default value: grayscale.
+ *    Filters can be applied:
+ *    blur: Applies a blur effect to the image. A larger value will create more blur. Argument value (px).
+ *    brightness: Adjusts the brightness of the image. Argument value (%).
+ *    contrast: Adjusts the contrast of the image. Argument value (%).
+ *    drop-shadow: Applies a drop shadow effect to the image. Argument value (h-shadow, v-shadow, blur, spread, color)
+ *    grayscale: Converts the image to grayscale.  Argument value (%).
+ *    hue-rotate: Applies a hue rotation on the image. Argument value (deg).
+ *    invert: Inverts the samples in the image. Argument value (%).
+ *    opacity: Sets the opacity level for the image. Argument value (%).
+ *    saturate: Saturates the image. Argument value (%).
+ *    sepia: Converts the image to sepia. Argument value (%).
+ *    url: The url() function takes the location of an XML file that specifies an SVG filter, and may include an anchor to a specific filter element.
+ *      Example: url(svg-url#element-id)
+ *
+ *  Usage 1:
+ *    .filter {
+ *      @include image-filter(blur, 5px);
+ *    }
+ *
+ *    <div class="filter>
+ *      <img src="image.jpg">
+ *    </div>
+ *
+ *  Usage 2:
+ *    #nav ul li a {
+ *      @include image-filter($args: 100%);
+ *      @include transition(.3s);
+ *    }
+ *
+ *    #nav ul li a:hover {
+ *      @include image-filter($args: 0);
+ *    }
+ *
+ *    <div id="nav">
+ *      <ul>
+ *        <li><a href="#"><img src="link1.jpg"></a></li>
+ *        <li><a href="#"><img src="link2.jpg"></a></li>
+ *      </ul>
+ *    </div>
+ */
+@mixin image-filter($filterType: grayscale, $args...) {
+  img {
+    -webkit-filter: $filterType+'('+$args+')';
+    filter: $filterType+'('+$args+')';
   }
 }

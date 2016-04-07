@@ -1,14 +1,14 @@
 # Sass Mixins CSS Framework - (Mixins Library)
-### Agile CSS coding library.
+### Agile and Smart CSS coding library.
 
 
-![cross-browser-support](https://cloud.githubusercontent.com/assets/6649597/14314265/d9f64a76-fbfe-11e5-8ffd-4faa6f652447.jpg)
+![Cross-Browser-Support](https://cloud.githubusercontent.com/assets/6649597/14314265/d9f64a76-fbfe-11e5-8ffd-4faa6f652447.jpg)
 
 
-Version 1.1.0
+Version
 ----
 
-1.1.0
+1.2.1
 
 
 Usage
@@ -45,11 +45,11 @@ Mixins
 ----
 
 ##### `» CSS3 Prefix Adding.`
-* **Mixin Name:** @prefix($property, $value)
+* **Mixin Name:** @prefix($property, $args...)
 
 **Parameter Descriptions:**
 * @param **$property:** Css property name. Ex. "transition", "border-radius"...
-* @param **$value:** For the selected attribute values. Ex. ".3s", "15px"...
+* @param **$args:** For the selected attribute values. Ex. "color .3s", "15px"...
 
 **Usage:**
 ```scss
@@ -131,7 +131,7 @@ div.box {
 
 
 ##### `» Set Shorthand Animation.`
-* **Tip:** You can use this feature with keyframes
+* **Tip:** *You can use this feature with keyframes*
 * **Mixin Name:** @animation($args...)
 
 **Parameter Descriptions:**
@@ -158,7 +158,7 @@ div.anim {
 
 ##### `» Animation Creator.`
 * **Mixin Name:** @keyframes($animationName)
-* **Tip:** [See those for features][anim]
+* **Tip:** *[See those for features][anim]*
 
 **Parameter Descriptions:**
 * @param **$animationName:** Name of the animation. You can put any name.
@@ -223,7 +223,7 @@ header.navbar {
 
 ##### `» 2D Transforms.`
 * **Mixin Name:** @transform2d($method)
-* **Tip:** [See at examples](http://www.w3schools.com/css/css3_2dtransforms.asp)
+* **Tip:** *[See at examples](http://www.w3schools.com/css/css3_2dtransforms.asp)*
 
 **Parameter Descriptions:**
 * @param **$method:** Method name.
@@ -288,9 +288,10 @@ input[type="email"] {
 ```
 
 
-##### `» Change The Color of All Images to Black and White.`
+##### `» Change The Color of All Images to Black and White. - DEPRECATED`
+* **Note:** Instead of Image Filter use.
 * **Mixin Name:** @grayscale($value)
-* **Tip:** 0..100, 100 full gray.
+* **Tip:** *0..100, 100 full gray.*
 * **Warning:** IE not supported.
 
 **Parameter Descriptions:**
@@ -316,9 +317,9 @@ img.poster {
                     $isFullHeight: false)
 
 **Parameter Descriptions:**
-* @param **$width:** Navigation bar width. Default size: 200px. Tip: Percentage value enterable.
-* @param **bgColor:** Navigation bar background color. Default color: #f1f1f1.
-* @param **textColor:** Link text color. Default color: #000.
+* @param **$width:** Navigation bar width. Default size: 200px. **Tip:** *Percentage value enterable.*
+* @param **$bgColor:** Navigation bar background color. Default color: #f1f1f1.
+* @param **$textColor:** Link text color. Default color: #000.
 * @param **$hoverBgColor:** Link hover background color. Default color: #555.
 * @param **$hoverTextColor:** Link hover text color. Default color: #fff.
 * @param **$activeLinkBgColor:** Active link background color. Default color: #4CAF50.
@@ -332,12 +333,12 @@ img.poster {
 }
 
 <div id="nav">
-	 <ul>
-		 <li><a class="active" href="#home">Home</a></li>
-		 <li><a href="#news">News</a></li>
-		 <li><a href="#contact">Contact</a></li>
-		 <li><a href="#about">About</a></li>
-	 </ul>
+	<ul>
+		<li><a class="active" href="#home">Home</a></li>
+		<li><a href="#news">News</a></li>
+		<li><a href="#contact">Contact</a></li>
+		<li><a href="#about">About</a></li>
+	</ul>
 </div>
 ```
 
@@ -348,12 +349,12 @@ img.poster {
 }
 
 <div id="nav">
-	 <ul>
-		 <li><a class="active" href="#home">Home</a></li>
-		 <li><a href="#news">News</a></li>
-		 <li><a href="#contact">Contact</a></li>
-		 <li><a href="#about">About</a></li>
-	 </ul>
+	<ul>
+		<li><a class="active" href="#home">Home</a></li>
+		<li><a href="#news">News</a></li>
+		<li><a href="#contact">Contact</a></li>
+		<li><a href="#about">About</a></li>
+	</ul>
 </div>
 ```
 
@@ -382,12 +383,12 @@ img.poster {
 }
 
 <div id="nav">
-	 <ul>
-		 <li><a class="active" href="#home">Home</a></li>
-		 <li><a href="#news">News</a></li>
-		 <li><a href="#contact">Contact</a></li>
-		 <li style="float:right"><a href="#about">About</a></li> <!-- right link element -->
-	 </ul>
+	<ul>
+		<li><a class="active" href="#home">Home</a></li>
+		<li><a href="#news">News</a></li>
+		<li><a href="#contact">Contact</a></li>
+		<li style="float:right"><a href="#about">About</a></li> <!-- right link element -->
+	</ul>
 </div>
 ```
 
@@ -426,6 +427,135 @@ img.poster {
 ```
 
 
+##### `» Tooltip.`
+* **Mixin Name:** @mixin tooltip(
+                  	$position: top,
+                  	$bgColor: #000,
+                  	$textColor: #fff,
+                  	$height: 5px)
+
+**Parameter Descriptions:**
+* @param **$position:** Tooltip position. Values(top, bottom, left, right). Default value: top.
+* @param **$bgColor:** Tooltip background color. Default color: #000.
+* @param **$textColor:** Tooltip text color. Default color: #fff.
+* @param **$height:** Tooltip height. Default value: 5px.
+
+**Usage:**
+```scss
+#tooltip {
+	@include tooltip(bottom, $height: 10px);
+}
+
+<div id="tooltip">
+	<div class="tooltip">Hover over me
+		<span class="tooltiptext">Tooltip text</span>
+	</div>
+</div>
+```
+
+
+##### `» Box Shadow.`
+* **Mixin Name:** @mixin box-shadow($args...)
+
+**Parameter Descriptions:**
+* @param **$args:** Values(Horizontal shadow, Vertical shadow, Blur, Shadow color)
+
+**Usage:**
+```scss
+.box {
+	width: 300px;
+	height: 200px;
+	@include box-shadow(0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19));
+}
+
+<div class="box"></div>
+```
+
+
+##### `» Gradients.`
+* **Mixin Name:** @mixin gradient($type: linear, $style: diagonal, $args...)
+* **Tip:** *[See at examples.](http://www.w3schools.com/css/css3_gradients.asp)*
+
+**Parameter Descriptions:**
+* @param **$type:** Values(linear or radial). Default value: linear.
+* @param **$style:** Values(top-bottom, left-right, diagonal or angle). Default value: diagonal.
+* @param **$angle:** Degree. **Tip:** *Enter this value if selected style: angle. Default value: 45deg.*
+* @param **$args:** Color-stop#1, Color-stop#2...
+
+**Usage 1:**
+```scss
+.grad {
+	Width: 300px;
+	height: 150px;
+	@include gradient($args: #000, #fff);
+}
+
+<div class="grad"></div>
+```
+
+**Usage 2:**
+```scss
+.grad {
+	Width: 300px;
+	height: 150px;
+	@include gradient($style: angle, $angle: -90deg, $args: #000, #fff);
+}
+
+<div class="grad"></div>
+```
+
+
+##### `» Image Filter.`
+* **Mixin Name:** @mixin image-filter($filterType: grayscale, $args...)
+* **Warning:** IE not supported.
+
+* Parameter Descriptions:
+* @params **$filterType:** Filter type. Default value: grayscale.
+	* **Filters can be applied:**
+		* **blur:** *Applies a blur effect to the image. A larger value will create more blur. Argument value (px).*
+		* **brightness:** *Adjusts the brightness of the image. Argument value (%).*
+		* **contrast:** *Adjusts the contrast of the image. Argument value (%).*
+		* **drop-shadow:** *Applies a drop shadow effect to the image. Argument value (h-shadow, v-shadow, blur, spread, color).*
+		* **grayscale:** *Converts the image to grayscale.  Argument value (%).*
+		* **hue-rotate:** *Applies a hue rotation on the image. Argument value (deg).*
+		* **invert:** *Inverts the samples in the image. Argument value (%).*
+		* **opacity:** *Sets the opacity level for the image. Argument value (%).*
+		* **saturate:** *Saturates the image. Argument value (%).*
+		* **sepia:** *Converts the image to sepia. Argument value (%).*
+		* **url:** *The url() function takes the location of an XML file that specifies an SVG filter, and may include an anchor to a specific filter element.*
+			* **Example:** *url(svg-url#element-id)*
+
+**Usage 1:**
+```scss
+.filter {
+	@include image-filter(blur, 5px);
+}
+
+<div class="filter>
+	<img src="image.jpg">
+</div>
+```
+
+**Usage 2:**
+```scss
+#nav ul li a {
+	@include image-filter($args: 100%);
+	@include transition(.3s);
+
+	&:hover {
+  	@include image-filter($args: 0);
+  }
+}
+
+<div id="nav">
+	<ul>
+		<li><a href="#"><img src="link1.jpg"></a></li>
+		<li><a href="#"><img src="link2.jpg"></a></li>
+	</ul>
+</div>
+```
+
+
 Version History
 ----
 
@@ -436,6 +566,23 @@ Version History
 * **Mixin added:** Horizontal Navigation Bar.
 * **Mixin added:** Vertical Navigation Bar.
 * **Mixin added:** Dropdown.
+
+**v.1.2.0**
+* **Mixin added:** Tooltip.
+* **Mixin added:** Box Shadow.
+* **Mixin added:** Gradients.
+* **Mixin added:** Image Filter.
+
+**v.1.2.1**
+* **Minor fixed:** @mixin prefix($property, $args...)
+	* Rewritten DRY.
+* **Mixin deprecated:** @mixin grayscale($percent)
+	* Instead of Image Filter use.
+
+
+Author
+----
+Levent Özbilgiç - XCODE
 
 
 License
