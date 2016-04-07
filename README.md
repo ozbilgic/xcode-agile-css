@@ -61,6 +61,7 @@ Mixins
 ```
 
 
+----
 ##### `» Responsive Media Selector.`
 * **Mixin Name:** @media($media)
 
@@ -77,6 +78,7 @@ nav[data=main-menu] {
 ```
 
 
+----
 ##### `» Alternate Responsive Media Selector.`
 This selective media can be entered in any desired resolution.
 * **Mixin Name:** @media-query($minMax, $width, $eWidth: 0)
@@ -102,6 +104,7 @@ h1.caption {
 ```
 
 
+----
 ##### `» Setting The Alpha Channel For Items. Support Cross Browser.`
 * **Mixin Name:** @opacity($opacity: .85)
 
@@ -116,6 +119,7 @@ a:hover {
 ```
 
 
+----
 ##### `» Set Border Radius.`
 * **Mixin Name:** @border-radius($radius)
 
@@ -130,6 +134,7 @@ div.box {
 ```
 
 
+----
 ##### `» Set Shorthand Animation.`
 * **Tip:** *You can use this feature with keyframes*
 * **Mixin Name:** @animation($args...)
@@ -156,6 +161,7 @@ div.anim {
 ```
 
 
+----
 ##### `» Animation Creator.`
 * **Mixin Name:** @keyframes($animationName)
 * **Tip:** *[See those for features][anim]*
@@ -183,6 +189,7 @@ div.anim {
 ```
 
 
+----
 ##### `» Transition.`
 * **Mixin Name:** @transition($args...)
 
@@ -221,6 +228,7 @@ header.navbar {
 ---*header.navbar slowly change color to adding .navbg-black class.*
 
 
+----
 ##### `» 2D Transforms.`
 * **Mixin Name:** @transform2d($method)
 * **Tip:** *[See at examples](http://www.w3schools.com/css/css3_2dtransforms.asp)*
@@ -243,6 +251,7 @@ div.rotate {
 ```
 
 
+----
 ##### `» 3D Transforms.`
 * **Mixin Name:** @transform3d($method)
 
@@ -263,6 +272,7 @@ div.rotate {
 ```
 
 
+----
 ##### `» Change Input Placeholder Attributes.`
 * **Mixin Name:** @change-input-placeholder()
 * Supported placeholder styles:
@@ -288,6 +298,7 @@ input[type="email"] {
 ```
 
 
+----
 ##### `» Change The Color of All Images to Black and White. - DEPRECATED`
 * **Note:** Instead of Image Filter use.
 * **Mixin Name:** @grayscale($value)
@@ -305,6 +316,7 @@ img.poster {
 ```
 
 
+----
 ##### `» Horizontal Navigation Bar.`
 * **Mixin Name:** @h-navigation-bar(
                     $width: 200px,
@@ -359,6 +371,7 @@ img.poster {
 ```
 
 
+----
 ##### `» Vertical Navigation Bar.`
 * **Mixin Name:** @mixin v-navigation-bar(
                     $bgColor: #333,
@@ -393,6 +406,7 @@ img.poster {
 ```
 
 
+----
 ##### `» Dropdown.`
 * **Mixin Name:** @mixin dropdown(
                   	$btnBgColor: #4CAF50,
@@ -427,6 +441,7 @@ img.poster {
 ```
 
 
+----
 ##### `» Tooltip.`
 * **Mixin Name:** @mixin tooltip(
                   	$position: top,
@@ -454,6 +469,7 @@ img.poster {
 ```
 
 
+----
 ##### `» Box Shadow.`
 * **Mixin Name:** @mixin box-shadow($args...)
 
@@ -472,6 +488,7 @@ img.poster {
 ```
 
 
+----
 ##### `» Gradients.`
 * **Mixin Name:** @mixin gradient($type: linear, $style: diagonal, $args...)
 * **Tip:** *[See at examples.](http://www.w3schools.com/css/css3_gradients.asp)*
@@ -505,6 +522,7 @@ img.poster {
 ```
 
 
+----
 ##### `» Image Filter.`
 * **Mixin Name:** @mixin image-filter($filterType: grayscale, $args...)
 * **Warning:** IE not supported.
