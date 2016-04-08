@@ -8,7 +8,7 @@
 Version
 ----
 
-1.3.1
+1.3.2
 
 
 Usage
@@ -67,12 +67,12 @@ Mixins
 
 **Parameter Descriptions:**
 * @param **$media:**
-		* **$cellphone:** *Default size 320px.*
-		* **$smartphone:** *Default size 480px.*
-		* **$tablet:** *Default size 768px.*
-		* **$desktop:** *Default size 992px.*
-		* **$largeScreen:** *Default size 1200px.*
-		* **nil:** *When full screen. >1200px.*
+	* **$cellphone:** *Default size 320px.*
+	* **$smartphone:** *Default size 480px.*
+	* **$tablet:** *Default size 768px.*
+	* **$desktop:** *Default size 992px.*
+	* **$largeScreen:** *Default size 1200px.*
+	* **nil:** *When full screen. >1200px.*
 
 **Usage:**
 ```scss
@@ -92,12 +92,12 @@ This selective media can be entered in any desired resolution.
 **Parameter Descriptions:**
 * @param **$minMax:** *min or max. (min-width, max-width)*
 * @param **$width, $eWidth:**
-		* **$cellphoneSize:** *Default size 320px.*
-		* **$smartphoneSize:** *Default size 480px.*
-		* **$tabletSize:** *Default size 768px.*
-		* **$desktopSize:** *Default size 992px.*
-		* **$largeScreenSize:** *Default size 1200px.*
-		* **$fullScreenSize:** *>1200px.*
+	* **$cellphoneSize:** *Default size 320px.*
+	* **$smartphoneSize:** *Default size 480px.*
+	* **$tabletSize:** *Default size 768px.*
+	* **$desktopSize:** *Default size 992px.*
+	* **$largeScreenSize:** *Default size 1200px.*
+	* **$fullScreenSize:** *>1200px.*
 * @param **$eWidth:** *Any screen resolution size.*
 
 **Usage:**
@@ -331,14 +331,14 @@ img.poster {
 ----
 ##### `» Horizontal Navigation Bar.`
 * **Mixin Name:** @h-navigation-bar(
-                   * **$width:** 200px,
-                   * **$bgColor:** #f1f1f1,
-                   * **$textColor:** #000,
-                   * **$hoverBgColor:** #555,
-                   * **$hoverTextColor:** white,
-                   * **$activeLinkBgColor:** #4CAF50,
-                   * **$activeLinkTextColor:** white,
-                   * **$isFullHeight:** false)
+	* **$width:** 200px,
+	* **$bgColor:** #f1f1f1,
+	* **$textColor:** #000,
+	* **$hoverBgColor:** #555,
+	* **$hoverTextColor:** white,
+	* **$activeLinkBgColor:** #4CAF50,
+	* **$activeLinkTextColor:** white,
+	* **$isFullHeight:** false)
 
 **Parameter Descriptions:**
 * @param **$width:** *Navigation bar width. Default size: 200px.* **Tip:** *Percentage value enterable.*
@@ -386,12 +386,12 @@ img.poster {
 ----
 ##### `» Vertical Navigation Bar.`
 * **Mixin Name:** @mixin v-navigation-bar(
-                   * **$bgColor:** #333,
-                   * **$textColor:** white,
-                   * **$hoverBgColor:** #111,
-                   * **$activeLinkBgColor:** #4CAF50,
-                   * **$isDivider:** false,
-                   * **$dividerColor:** #bbb)
+	* **$bgColor:** #333,
+	* **$textColor:** white,
+	* **$hoverBgColor:** #111,
+	* **$activeLinkBgColor:** #4CAF50,
+	* **$isDivider:** false,
+	* **$dividerColor:** #bbb)
 
 **Parameter Descriptions:**
 * @param **$bgColor:** *Navigation bar background color. Default color: #333.*
@@ -421,11 +421,11 @@ img.poster {
 ----
 ##### `» Dropdown.`
 * **Mixin Name:** @mixin dropdown(
-                  *	**$btnBgColor:** #4CAF50,
-                  *	**$btnTextColor:** white,
-                  *	**$contentWidth:** 160px,
-                  *	**$linkTextColor:** black,
-                  *	**$linkHoverBgColor:** #f1f1f1)
+	*	**$btnBgColor:** #4CAF50,
+	*	**$btnTextColor:** white,
+	*	**$contentWidth:** 160px,
+	*	**$linkTextColor:** black,
+	*	**$linkHoverBgColor:** #f1f1f1)
 
 **Parameter Descriptions:**
 * @param **$btnBgColor:** *Dropdown button background color. Default color: #4CAF50.*
@@ -456,10 +456,10 @@ img.poster {
 ----
 ##### `» Tooltip.`
 * **Mixin Name:** @mixin tooltip(
-                  *	**$position:** top,
-                  *	**$bgColor:** #000,
-                  *	**$textColor:** #fff,
-                  *	**$height:** 5px)
+	*	**$position:** top,
+	*	**$bgColor:** #000,
+	*	**$textColor:** #fff,
+	*	**$height:** 5px)
 
 **Parameter Descriptions:**
 * @param **$position:** *Tooltip position. Values(top, bottom, left, right). Default value: top.*
@@ -675,6 +675,11 @@ Version History
 * **Mixin added:** Button to add animation.
 * **Mixin added:** Add Font Icon.
 
+**v.1.3.2**
+* **Minor fixed:** Font path.
+* **License added:** Font Avesome.
+* **Readme:** Improved.
+
 
 Author
 ----
@@ -684,7 +689,8 @@ Levent Özbilgiç - XCODE
 License
 ----
 
-[MIT](https://github.com/ozbilgic/sass-mixin-css-framework/blob/master/LICENSE) 2016 - XCODE
+* [MIT](https://github.com/ozbilgic/sass-mixin-css-framework/blob/master/LICENSE) 2016 - XCODE
+* [Font Avesome](https://fortawesome.github.io/Font-Awesome/license/)
 
 
 [anim]:<http://www.w3schools.com/cssref/css_animatable.asp>
