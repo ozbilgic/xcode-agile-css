@@ -8,7 +8,7 @@
 Version
 ----
 
-1.3.2
+1.4.1
 
 
 Usage
@@ -626,7 +626,7 @@ img.poster {
 * @param **$icon:** *Icon name. Tip: See for icon list ($f-*)*
 * @param **$direction:** *Icon direction. Default value: right.*
 * @param **$size:** *Icon Size. Default size: 14px.*
-* @param **$color:** *Icon color. Default color: #000.*
+* @param **$color:** *Icon color. Default color: #111.*
 * @param **$padding:** *Icon padding. Default value: 0px.*
 
 **Usage 1:**
@@ -645,6 +645,39 @@ i.home {
 }
 
 <i class="home">Home</i>
+```
+
+
+----
+##### `» Font Selector.`
+* **Mixin Name:** @mixin font-select($fontType: 'r', $size: $baseFontPixel, $spacing: 0.5px, $fontName: $baseFontName)
+* **Note:** Before use, enter the value of **$baseFontName.**
+* **Warning:** Use this when you import the fonts to your project:
+```css
+@font-face {
+	font-family: RobotoThin;
+	src: url(font/roboto_thin.woff);
+}
+```
+**Parameter Descriptions:**
+* @param **$fontType:** *Values('t', 'l', 'r', 'm', 's', 'b')*
+	* t: Thin.
+	* l: Light.
+	* r: Regular.
+	* m: Medium.
+	* s: Semibold.
+	* b: Bold.
+* @param **$size:** *Font size. Default value: Base font size.*
+* @param **$spacing:** *Letter spacing. Default value: -0.5px.*
+* @param **$fontName:** *Font name. Default value: Base font name.*
+
+**Usage:**
+```scss
+.caption {
+	@include font-select('m', 18px);
+}
+
+<p class="caption">This is caption.</p>
 ```
 
 
@@ -671,14 +704,20 @@ Version History
 * **Mixin deprecated:** @mixin grayscale($percent)
 	* Instead of Image Filter use.
 
-**v.1.3.1**
+**v.1.3.0**
 * **Mixin added:** Button to add animation.
 * **Mixin added:** Add Font Icon.
 
-**v.1.3.2**
+**v.1.3.1**
 * **Minor fixed:** Font path.
 * **License added:** Font Avesome.
 * **Readme:** Improved.
+
+**v.1.4.0**
+* **Mixin added:** Font Selector.
+
+**v.1.4.1**
+* **Minor fixed:** Improvements were made.
 
 
 Author

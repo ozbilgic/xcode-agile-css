@@ -1,7 +1,7 @@
 /***************************************************************************
 *  XCODE CSS MIXINS FRAMEWORK                                              *
 *  @author  : xcode                                                        *
-*  @version : 1.3.2                                                        *
+*  @version : 1.4.1                                                        *
 *  @since   : 02.2016                                                      *
 *  @mime    : Sass/Scss                                                    *
 *  @contact : ozbilgiclevent@gmail.com                                     *
@@ -32,8 +32,9 @@
 *    » Box Shadow. [It was added in --v.1.2.0]                             *
 *    » Gradients. [It was added in --v.1.2.0]                              *
 *    » Image Filter. [It was added in --v.1.2.0]                           *
-*    » Button to add animation. [It was added in --v.1.3.1]                *
-*    » Add Font Icon. [It was added in --v.1.3.1]                          *
+*    » Button to add animation. [It was added in --v.1.3.0]                *
+*    » Add Font Icon. [It was added in --v.1.3.0]                          *
+*    » Font Selector. [It was added in --v.1.4.0]                          *
 *--------------------------------------------------------------------------*
 *  Contributors »                                                          *
 *--------------------------------------------------------------------------*
@@ -44,12 +45,15 @@
  *  ICON FONTS »
  */
 
-@import "icon.font";
+@import "font.icons";
 
 
 /**
  *  VARIABLES »
  */
+
+$baseFontName: null !default; //Enter the name of the font you use. Required to font-select mixin.
+                              //Ex. 'Roboto'
 
 $cellphone:       cp      !default;   //320px
 $smartphone:      sp      !default;   //480px
@@ -448,7 +452,7 @@ $baseFontPixel:   16px    !default;
 
 
 /**
- *  » Change The Color of All Images to Black and White.
+ *  » Change The Color of All Images to Black and White. - DEPRECATED.
  *  Mixin Name: grayscale($value)
  *  Tip: 0..100, 100 full gray.
  *  Warning: IE not supported.
@@ -462,6 +466,7 @@ $baseFontPixel:   16px    !default;
  *    }
  */
 @mixin grayscale($percent) {
+  @warn "The `grayscale($percent)` mixin will be deprecated in version 1.2.1";
   -webkit-filter: "grayscale(#{$percent})";
   filter: "grayscale(#{$percent})";
 }
@@ -1023,7 +1028,7 @@ $baseFontPixel:   16px    !default;
  *  @param $icon: Icon name. Tip: See for icon list ($f-*)
  *  @param $direction: Icon direction. Default value: right.
  *  @param $size: Icon Size. Default size: 14px.
- *  @param $color: Icon color. Default color: #000.
+ *  @param $color: Icon color. Default color: #111.
  *  @param $padding: Icon padding. Default value: 0px.
  *
  *  Usage 1:
@@ -1040,7 +1045,7 @@ $baseFontPixel:   16px    !default;
  *
  *    <i class="home">Home</i>
  */
-@mixin add-font-icon($icon, $direction: right, $size: 14px, $color: #000, $padding: 0) {
+@mixin add-font-icon($icon, $direction: right, $size: 14px, $color: #111, $padding: 0) {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
@@ -1067,5 +1072,63 @@ $baseFontPixel:   16px    !default;
         padding-left: $padding;
       }
     }
+  }
+}
+
+
+/**
+ *  » Font Selector.
+ *  Mixin Name: @mixin font-select($fontType: 'r', $size: $baseFontPixel, $spacing: 0.5px, $fontName: $baseFontName)
+ *  Note: Before use, enter the value of $baseFontName.
+ *  Warning: Use this when you import the fonts to your project:
+ *    @font-face {
+ *      font-family: RobotoThin;
+ *      src: url(font/roboto_thin.woff);
+ *    }
+ *  ---
+ *  Parameter Descriptions:
+ *  @param $fontType: Values('t', 'l', 'r', 'm', 's', 'b')
+ *    t: Thin.
+ *    l: Light.
+ *    r: Regular.
+ *    m: Medium.
+ *    s: Semibold.
+ *    b: Bold.
+ *  @param $size: Font size. Default value: Base font size.
+ *  @param $spacing: Letter spacing. Default value: -0.5px.
+ *  @param $fontName: Font name. Default value: Base font name.
+ *
+ *  Usage:
+ *    .caption {
+ *      @include font-select('m', 18px);
+ *    }
+ *
+ *    <p class="caption">This is caption.</p>
+ */
+@mixin font-select($fontType: 'r', $size: $baseFontPixel, $spacing: 0.5px, $fontName: $baseFontName) {
+  @if($fontName == null) {
+    &:before {
+      content: '@Error: The font name is null! See "_xcode.css.mixins.fw.scss" at line:54';
+      font-weight: bold;
+      color: red;
+    }
+  }
+  @else {
+    @if ($fontType == 't') {
+      font-family: $fontName+'Thin', sans-serif;
+    } @else if ($fontType == 'l') {
+      font-family: $fontName+'Light', sans-serif;
+    } @else if ($fontType == 'r') {
+      font-family: $fontName+'Regular', sans-serif;
+    } @else if ($fontType == 'm') {
+      font-family: $fontName+'Medium', sans-serif;
+    } @else if ($fontType == 's') {
+      font-family: $fontName+'Semibold', sans-serif;
+    } @else if ($fontType == 'b') {
+      font-family: $fontName+'Bold', sans-serif;
+    }
+
+    font-size: convert_em($size);
+    letter-spacing: -$spacing;
   }
 }
