@@ -8,7 +8,7 @@
 Version
 ----
 
-1.2.1
+1.3.1
 
 
 Usage
@@ -66,11 +66,17 @@ Mixins
 * **Mixin Name:** @media($media)
 
 **Parameter Descriptions:**
-* @param **$media:** *$cellphone, $smartphone, $tablet, $desktop, $largeScreen or "nil" when full screen.*
+* @param **$media:**
+		* **$cellphone:** *Default size 320px.*
+		* **$smartphone:** *Default size 480px.*
+		* **$tablet:** *Default size 768px.*
+		* **$desktop:** *Default size 992px.*
+		* **$largeScreen:** *Default size 1200px.*
+		* **nil:** *When full screen. >1200px.*
 
 **Usage:**
 ```scss
-nav[data=main-menu] {
+nav[data="main-menu"] {
 	@include media($desktop) {
 		display: none;
 	}
@@ -85,7 +91,13 @@ This selective media can be entered in any desired resolution.
 
 **Parameter Descriptions:**
 * @param **$minMax:** *min or max. (min-width, max-width)*
-* @param **$width, $eWidth:** *$cellphoneSize, $smartphoneSize, $tabletSize, $desktopSize, $largeScreenSize, $fullScreenSize*
+* @param **$width, $eWidth:**
+		* **$cellphoneSize:** *Default size 320px.*
+		* **$smartphoneSize:** *Default size 480px.*
+		* **$tabletSize:** *Default size 768px.*
+		* **$desktopSize:** *Default size 992px.*
+		* **$largeScreenSize:** *Default size 1200px.*
+		* **$fullScreenSize:** *>1200px.*
 * @param **$eWidth:** *Any screen resolution size.*
 
 **Usage:**
@@ -208,7 +220,7 @@ a {
 	@include transition(color .3s ease);
 
 	&:hover {
-	color: black;
+		color: black;
 	}
 }
 ```
@@ -225,7 +237,7 @@ header.navbar {
 	background-color: #000 !important;
 }
 ```
----*header.navbar slowly change color to adding .navbg-black class.*
+* *header.navbar slowly change color to adding .navbg-black class.*
 
 
 ----
@@ -319,17 +331,17 @@ img.poster {
 ----
 ##### `» Horizontal Navigation Bar.`
 * **Mixin Name:** @h-navigation-bar(
-                    $width: 200px,
-                    $bgColor: #f1f1f1,
-                    $textColor: #000,
-                    $hoverBgColor: #555,
-                    $hoverTextColor: white,
-                    $activeLinkBgColor: #4CAF50,
-                    $activeLinkTextColor: white,
-                    $isFullHeight: false)
+                   * **$width:** 200px,
+                   * **$bgColor:** #f1f1f1,
+                   * **$textColor:** #000,
+                   * **$hoverBgColor:** #555,
+                   * **$hoverTextColor:** white,
+                   * **$activeLinkBgColor:** #4CAF50,
+                   * **$activeLinkTextColor:** white,
+                   * **$isFullHeight:** false)
 
 **Parameter Descriptions:**
-* @param **$width:** *Navigation bar width. Default size: 200px. **Tip:** *Percentage value enterable.*
+* @param **$width:** *Navigation bar width. Default size: 200px.* **Tip:** *Percentage value enterable.*
 * @param **$bgColor:** *Navigation bar background color. Default color: #f1f1f1.*
 * @param **$textColor:** *Link text color. Default color: #000.*
 * @param **$hoverBgColor:** *Link hover background color. Default color: #555.*
@@ -374,12 +386,12 @@ img.poster {
 ----
 ##### `» Vertical Navigation Bar.`
 * **Mixin Name:** @mixin v-navigation-bar(
-                    $bgColor: #333,
-                    $textColor: white,
-                    $hoverBgColor: #111,
-                    $activeLinkBgColor: #4CAF50,
-                    $isDivider: false,
-                    $dividerColor: #bbb)
+                   * **$bgColor:** #333,
+                   * **$textColor:** white,
+                   * **$hoverBgColor:** #111,
+                   * **$activeLinkBgColor:** #4CAF50,
+                   * **$isDivider:** false,
+                   * **$dividerColor:** #bbb)
 
 **Parameter Descriptions:**
 * @param **$bgColor:** *Navigation bar background color. Default color: #333.*
@@ -409,11 +421,11 @@ img.poster {
 ----
 ##### `» Dropdown.`
 * **Mixin Name:** @mixin dropdown(
-                  	$btnBgColor: #4CAF50,
-                  	$btnTextColor: white,
-                  	$contentWidth: 160px,
-                  	$linkTextColor: black,
-                  	$linkHoverBgColor: #f1f1f1)
+                  *	**$btnBgColor:** #4CAF50,
+                  *	**$btnTextColor:** white,
+                  *	**$contentWidth:** 160px,
+                  *	**$linkTextColor:** black,
+                  *	**$linkHoverBgColor:** #f1f1f1)
 
 **Parameter Descriptions:**
 * @param **$btnBgColor:** *Dropdown button background color. Default color: #4CAF50.*
@@ -444,10 +456,10 @@ img.poster {
 ----
 ##### `» Tooltip.`
 * **Mixin Name:** @mixin tooltip(
-                  	$position: top,
-                  	$bgColor: #000,
-                  	$textColor: #fff,
-                  	$height: 5px)
+                  *	**$position:** top,
+                  *	**$bgColor:** #000,
+                  *	**$textColor:** #fff,
+                  *	**$height:** 5px)
 
 **Parameter Descriptions:**
 * @param **$position:** *Tooltip position. Values(top, bottom, left, right). Default value: top.*
@@ -496,7 +508,7 @@ img.poster {
 **Parameter Descriptions:**
 * @param **$type:** *Values(linear or radial). Default value: linear.*
 * @param **$style:** *Values(top-bottom, left-right, diagonal or angle). Default value: diagonal.*
-* @param **$angle:** *Degree. **Tip:** Enter this value if selected style: angle. Default value: 45deg.*
+* @param **$angle:** *Degree.* **Tip:** *Enter this value if selected style: angle. Default value: 45deg.*
 * @param **$args:** *Color-stop#1, Color-stop#2...*
 
 **Usage 1:**
@@ -574,6 +586,68 @@ img.poster {
 ```
 
 
+----
+##### `» Button to add animation.`
+* **Mixin Name:** @mixin add-button-animation($content: '»')
+
+**Parameter Descriptions:**
+* @params **$content:** *Icon will appear when hovering over the button. Default value: '»'.*
+
+**Usage:**
+```scss
+.button {
+	display: inline-block;
+	border-radius: 4px;
+	background-color: #555555;
+	border: none;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 28px;
+	padding: 25px;
+	width: 200px;
+	cursor: pointer;
+	margin: 5px;
+
+	@include add-button-animation();
+}
+
+<button class="button">
+	<span>Hover</span>
+</button>
+```
+
+
+----
+##### `» Add Font Icon.`
+* **Mixin Name:** @mixin add-font-icon($icon, $direction: right, $size: 14px, $color: #000 $padding: 0)
+* **Tip:** *[Icon list.](https://fortawesome.github.io/Font-Awesome/icons/)*
+
+**Parameter Descriptions:**
+* @param **$icon:** *Icon name. Tip: See for icon list ($f-*)*
+* @param **$direction:** *Icon direction. Default value: right.*
+* @param **$size:** *Icon Size. Default size: 14px.*
+* @param **$color:** *Icon color. Default color: #000.*
+* @param **$padding:** *Icon padding. Default value: 0px.*
+
+**Usage 1:**
+```scss
+i {
+	@include add-font-icon($f-bar-chart, $color: black);
+}
+
+<i>The Chart &nbsp;</i>
+```
+
+**Usage 2:**
+```scss
+i.home {
+	@include add-font-icon($f-home, $padding: 10px);
+}
+
+<i class="home">Home</i>
+```
+
+
 Version History
 ----
 
@@ -596,6 +670,10 @@ Version History
 	* Rewritten DRY.
 * **Mixin deprecated:** @mixin grayscale($percent)
 	* Instead of Image Filter use.
+
+**v.1.3.1**
+* **Mixin added:** Button to add animation.
+* **Mixin added:** Add Font Icon.
 
 
 Author
