@@ -8,7 +8,7 @@
 Version
 ----
 
-1.4.2
+1.5.0
 
 
 Usage
@@ -682,6 +682,51 @@ i.home {
 ```
 
 
+Helpers
+----
+##### `» Clearfix.`
+* **Helper Name:** %clearfix
+
+**Usage:**
+```scss
+.container {
+	background-color: #f1f1f1;
+	@extend %clearfix;
+}
+
+.wrapper {
+	width: 300px;
+	height: 200px;
+	float: left;
+	background-color: #222;
+	margin: 10px;
+}
+
+<div class="container">
+	<div class="wrapper"></div>
+	<div class="wrapper"></div>
+</div>
+```
+
+
+----
+##### `» Affix.`
+* Helper Name: %affix($pos: top)
+
+**Parameter Descriptions:**
+* @param **$pos:** Position. Values(top, bottom)
+
+**Usage:**
+```scss
+.bottom-menu {
+	height: 200px;
+	@extend %affix(bottom);
+}
+
+<div class="bottom-menu"></div>
+```
+
+
 Version History
 ----
 
@@ -724,6 +769,10 @@ Version History
 * **Minor fixed:** @mixin h-navigation-bar() name changed to h-navbar()
 * **Minor fixed:** @mixin v-navigation-bar() name changed to v-navbar()
 * **ReadMe:** More understandable.
+
+**v.1.5.0**
+* **Helper added:** Clearfix.
+* **Helper added:** Affix.
 
 
 Author
