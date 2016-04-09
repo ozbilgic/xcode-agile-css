@@ -1,7 +1,7 @@
 /***************************************************************************
 *  XCODE CSS MIXINS FRAMEWORK                                              *
 *  @author  : xcode                                                        *
-*  @version : 1.4.1                                                        *
+*  @version : 1.4.2                                                        *
 *  @since   : 02.2016                                                      *
 *  @mime    : Sass/Scss                                                    *
 *  @contact : ozbilgiclevent@gmail.com                                     *
@@ -42,7 +42,7 @@
 ****************************************************************************/
 
 /**
- *  ICON FONTS »
+ *  FONT ICONS »
  */
 
 @import "font.icons";
@@ -221,7 +221,7 @@ $baseFontPixel:   16px    !default;
 
 
 /**
- *  » Setting The Alpha Channel For Items. Support Cross Browser.
+ *  » Setting The Alpha Channel For Items.
  *  Mixin Name: @opacity($opacity: .85)
  *  ---
  *  Parameter Descriptions:
@@ -453,6 +453,7 @@ $baseFontPixel:   16px    !default;
 
 /**
  *  » Change The Color of All Images to Black and White. - DEPRECATED.
+ *  Note: Instead of Image Filter use. It will be removed in version 2.0
  *  Mixin Name: grayscale($value)
  *  Tip: 0..100, 100 full gray.
  *  Warning: IE not supported.
@@ -475,7 +476,7 @@ $baseFontPixel:   16px    !default;
 
 /**
  *  » Horizontal Navigation Bar.
- *  Mixin Name: @h-navigation-bar(
+ *  Mixin Name: @h-navbar(
  *                    $width: 200px,
  *                    $bgColor: #f1f1f1,
  *                    $textColor: #000,
@@ -497,7 +498,7 @@ $baseFontPixel:   16px    !default;
  *
  *  Usage 1:
  *    #nav {
- *      @include h-navigation-bar(300px);
+ *      @include h-navbar(300px);
  *    }
  *
  *    <div id="nav">
@@ -511,7 +512,7 @@ $baseFontPixel:   16px    !default;
  *
  *  Usage 2:
  *    #nav {
- *      @include h-navigation-bar($width:150px, $isFullHeight:true);
+ *      @include h-navbar($width:150px, $isFullHeight:true);
  *    }
  *
  *    <div id="nav">
@@ -523,15 +524,15 @@ $baseFontPixel:   16px    !default;
  *       </ul>
  *   </div>
  */
-@mixin h-navigation-bar(
-                  $width: 200px,
-                  $bgColor: #f1f1f1,
-                  $textColor: #000,
-                  $hoverBgColor: #555,
-                  $hoverTextColor: white,
-                  $activeLinkBgColor: #4CAF50,
-                  $activeLinkTextColor: white,
-                  $isFullHeight: false) {
+@mixin h-navbar(
+            $width: 200px,
+            $bgColor: #f1f1f1,
+            $textColor: #000,
+            $hoverBgColor: #555,
+            $hoverTextColor: white,
+            $activeLinkBgColor: #4CAF50,
+            $activeLinkTextColor: white,
+            $isFullHeight: false) {
   ul {
     list-style-type: none;
     margin: 0;
@@ -567,7 +568,7 @@ $baseFontPixel:   16px    !default;
 
 /**
  *  » Vertical Navigation Bar.
- *  Mixin Name: @mixin v-navigation-bar(
+ *  Mixin Name: @mixin v-navbar(
  *                    $bgColor: #333,
  *                    $textColor: white,
  *                    $hoverBgColor: #111,
@@ -585,7 +586,7 @@ $baseFontPixel:   16px    !default;
  *
  *  Usage:
  *    #nav {
- *      @include v-navigation-bar($isDivider:true);
+ *      @include v-navbar($isDivider:true);
  *    }
  *
  *    <div id="nav">
@@ -597,13 +598,13 @@ $baseFontPixel:   16px    !default;
  *       </ul>
  *    </div>
  */
-@mixin v-navigation-bar(
-                  $bgColor: #333,
-                  $textColor: white,
-                  $hoverBgColor: #111,
-                  $activeLinkBgColor: #4CAF50,
-                  $isDivider: false,
-                  $dividerColor: #bbb) {
+@mixin v-navbar(
+          $bgColor: #333,
+          $textColor: white,
+          $hoverBgColor: #111,
+          $activeLinkBgColor: #4CAF50,
+          $isDivider: false,
+          $dividerColor: #bbb) {
   ul {
     list-style-type: none;
     margin: 0;
@@ -966,6 +967,7 @@ $baseFontPixel:   16px    !default;
 /**
  *  » Button to add animation.
  *  Mixin Name: @mixin add-button-animation($content: '»')
+ *  Tip: You can use icon fonts.
  *  ---
  *  Parameter Descriptions:
  *  @params $content: Icon will appear when hovering over the button. Default value: '»'.

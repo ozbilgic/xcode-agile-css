@@ -8,7 +8,7 @@
 Version
 ----
 
-1.4.1
+1.4.2
 
 
 Usage
@@ -66,7 +66,7 @@ Mixins
 * **Mixin Name:** @media($media)
 
 **Parameter Descriptions:**
-* @param **$media:**
+* @param **($media)** *Can take values:*
 	* **$cellphone:** *Default size 320px.*
 	* **$smartphone:** *Default size 480px.*
 	* **$tablet:** *Default size 768px.*
@@ -91,7 +91,7 @@ This selective media can be entered in any desired resolution.
 
 **Parameter Descriptions:**
 * @param **$minMax:** *min or max. (min-width, max-width)*
-* @param **$width, $eWidth:**
+* @param **($width, $eWidth)** *Can take values:*
 	* **$cellphoneSize:** *Default size 320px.*
 	* **$smartphoneSize:** *Default size 480px.*
 	* **$tabletSize:** *Default size 768px.*
@@ -109,7 +109,7 @@ nav.nav-content {
 }
 
 h1.caption {
-	@include media-query(max, nil, 300px) {
+	@include media-query(max, $eWidth:300px) {
 		font-size: 20%;
 	}
 }
@@ -117,7 +117,7 @@ h1.caption {
 
 
 ----
-##### `» Setting The Alpha Channel For Items. Support Cross Browser.`
+##### `» Setting The Alpha Channel For Items.`
 * **Mixin Name:** @opacity($opacity: .85)
 
 **Parameter Descriptions:**
@@ -312,7 +312,7 @@ input[type="email"] {
 
 ----
 ##### `» Change The Color of All Images to Black and White. - DEPRECATED`
-* **Note:** Instead of Image Filter use.
+* **Note:** Instead of Image Filter use. It will be removed in version 2.0
 * **Mixin Name:** @grayscale($value)
 * **Tip:** *0..100, 100 full gray.*
 * **Warning:** IE not supported.
@@ -330,7 +330,7 @@ img.poster {
 
 ----
 ##### `» Horizontal Navigation Bar.`
-* **Mixin Name:** @h-navigation-bar(
+* **Mixin Name:** @h-navbar(
 	* **$width:** 200px,
 	* **$bgColor:** #f1f1f1,
 	* **$textColor:** #000,
@@ -353,7 +353,7 @@ img.poster {
 **Usage 1:**
 ```scss
 #nav {
-	@include h-navigation-bar(300px);
+	@include h-navbar(300px);
 }
 
 <div id="nav">
@@ -369,7 +369,7 @@ img.poster {
 **Usage 2:**
 ```scss
 #nav {
-	@include h-navigation-bar($width:150px, $isFullHeight:true);
+	@include h-navbar($width:150px, $isFullHeight:true);
 }
 
 <div id="nav">
@@ -385,7 +385,7 @@ img.poster {
 
 ----
 ##### `» Vertical Navigation Bar.`
-* **Mixin Name:** @mixin v-navigation-bar(
+* **Mixin Name:** @mixin v-navbar(
 	* **$bgColor:** #333,
 	* **$textColor:** white,
 	* **$hoverBgColor:** #111,
@@ -404,7 +404,7 @@ img.poster {
 **Usage:**
 ```scss
 #nav {
-	@include v-navigation-bar($isDivider:true);
+	@include v-navbar($isDivider:true);
 }
 
 <div id="nav">
@@ -589,6 +589,7 @@ img.poster {
 ----
 ##### `» Button to add animation.`
 * **Mixin Name:** @mixin add-button-animation($content: '»')
+* **Tip:** *You can use icon fonts.*
 
 **Parameter Descriptions:**
 * @params **$content:** *Icon will appear when hovering over the button. Default value: '»'.*
@@ -677,7 +678,7 @@ i.home {
 	@include font-select('m', 18px);
 }
 
-<p class="caption">This is caption.</p>
+<p class="caption">This is a caption.</p>
 ```
 
 
@@ -711,13 +712,18 @@ Version History
 **v.1.3.1**
 * **Minor fixed:** Font path.
 * **License added:** Font Avesome.
-* **Readme:** Improved.
+* **ReadMe:** Improved.
 
 **v.1.4.0**
 * **Mixin added:** Font Selector.
 
 **v.1.4.1**
 * **Minor fixed:** Improvements were made.
+
+**v.1.4.2**
+* **Minor fixed:** @mixin h-navigation-bar() name changed to h-navbar()
+* **Minor fixed:** @mixin v-navigation-bar() name changed to v-navbar()
+* **ReadMe:** More understandable.
 
 
 Author
