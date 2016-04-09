@@ -1,7 +1,7 @@
 /***************************************************************************
 *  XCODE CSS MIXINS FRAMEWORK                                              *
 *  @author  : xcode                                                        *
-*  @version : 1.5.1                                                        *
+*  @version : 1.5.2                                                        *
 *  @since   : 02.2016                                                      *
 *  @mime    : Sass/Scss                                                    *
 *  @contact : ozbilgiclevent@gmail.com                                     *
@@ -1178,21 +1178,26 @@ $baseFontPixel:   14px    !default;
 
 /**
  *  » Affix.
- *  Helper Name: %affix($pos: top)
- *  ---
- *  Parameter Descriptions:
- *  @param $pos: Position. Values(top, bottom)
+ *  Helper Name: %affix-top, %affix-bottom
  *
  *  Usage:
  *    .bottom-menu {
  *      height: 200px;
- *      @extend %affix(bottom);
+ *      @extend %affix-bottom;
  *    }
  *
  *    <div class="bottom-menu"></div>
  */
-%affix($pos: top) {
+%affix-top {
   position: fixed;
-  @if($pos == top) {top: 0; left: 0; right: 0}
-  @if($pos == bottom) {bottom: 0; left: 0; right: 0}
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+%affix-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }

@@ -1,4 +1,4 @@
-# Sass CSS3 Mixin Framework -v.1.5.1
+# Sass CSS3 Mixin Framework -v.1.5.2
 ### Agile and Smart CSS coding library.
 
 
@@ -8,7 +8,7 @@
 Version
 ----
 
-1.5.1
+1.5.2
 
 
 Usage
@@ -711,16 +711,13 @@ Helpers
 
 ----
 ##### `» Affix.`
-* Helper Name: %affix($pos: top)
-
-**Parameter Descriptions:**
-* @param **$pos:** Position. Values(top, bottom)
+* Helper Name: %affix-top, %affix-bottom
 
 **Usage:**
 ```scss
 .bottom-menu {
 	height: 200px;
-	@extend %affix(bottom);
+	@extend %affix-bottom;
 }
 
 <div class="bottom-menu"></div>
@@ -816,6 +813,10 @@ Version History
 * **Tool added:** 12 Columns Responsive Grid System.
 * **Tool added:** 16 Columns Responsive Grid System.
 * **Tool added:** Reset CSS.
+
+**v.1.5.2**
+* **Minor fixed:** %affix change name to %affix-top, %affix-bottom
+* **Minor fixed:** normalize.css bug fixed.
 
 
 Author

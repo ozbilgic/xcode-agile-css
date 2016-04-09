@@ -1,6 +1,10 @@
 Version History
 ----
 
+**v.1.5.2**
+* **Minor fixed:** %affix change name to %affix-top, %affix-bottom
+* **Minor fixed:** normalize.css bug fixed.
+
 **v.1.5.1**
 * **Tool added:** 12 Columns Responsive Grid System.
 * **Tool added:** 16 Columns Responsive Grid System.
