@@ -1,4 +1,4 @@
-# Sass Mixins CSS Framework - (Mixins Library)
+# Sass CSS3 Mixin Framework -v.1.5.1
 ### Agile and Smart CSS coding library.
 
 
@@ -8,7 +8,7 @@
 Version
 ----
 
-1.5.0
+1.5.1
 
 
 Usage
@@ -727,6 +727,44 @@ Helpers
 ```
 
 
+Tools
+----
+##### `» 12 Columns Responsive Grid System.`
+> 12 column grid system that is fully compatible with the `xcode` library.
+
+**Usage**
+```html
+...
+<link rel="stylesheet" href="tools/12columnsGridSystem.css">
+...
+```
+
+
+----
+##### `» 16 Columns Responsive Grid System.`
+> 16 column grid system that is fully compatible with the `xcode` library.
+
+**Usage**
+```html
+...
+<link rel="stylesheet" href="tools/16columnsGridSystem.css">
+...
+```
+
+
+----
+##### `» Reset CSS.`
+> Structured according to these libraries css reset. [Original Source Link](https://github.com/necolas/normalize.css)
+
+**Usage**
+```html
+...
+<!-- Add this code to the top. -->
+<link rel="stylesheet" href="tools/normalize.css">
+...
+```
+
+
 Version History
 ----
 
@@ -774,6 +812,11 @@ Version History
 * **Helper added:** Clearfix.
 * **Helper added:** Affix.
 
+**v.1.5.1**
+* **Tool added:** 12 Columns Responsive Grid System.
+* **Tool added:** 16 Columns Responsive Grid System.
+* **Tool added:** Reset CSS.
+
 
 Author
 ----
@@ -785,6 +828,8 @@ License
 
 * [MIT](https://github.com/ozbilgic/sass-mixin-css-framework/blob/master/LICENSE) 2016 - XCODE
 * [Font Avesome](https://fortawesome.github.io/Font-Awesome/license/)
+* [Bootstrap](https://github.com/twbs/bootstrap/blob/master/LICENSE)
+* [Normalize.css](https://github.com/necolas/normalize.css/blob/master/LICENSE.md)
 
 
 [anim]:<http://www.w3schools.com/cssref/css_animatable.asp>
