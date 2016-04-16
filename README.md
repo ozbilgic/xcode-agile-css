@@ -1,4 +1,4 @@
-# Sass CSS3 Mixin Framework -v.1.5.2
+# Sass CSS3 Mixin Framework -v.1.5.3
 ### Agile and Smart CSS coding library.
 
 
@@ -8,7 +8,7 @@
 Version
 ----
 
-1.5.2
+1.5.3
 
 
 Usage
@@ -630,22 +630,21 @@ img.poster {
 * @param **$color:** *Icon color. Default color: #111.*
 * @param **$padding:** *Icon padding. Default value: 0px.*
 
-**Usage 1:**
+**Usage:**
 ```scss
-i {
-	@include add-font-icon($f-bar-chart, $color: black);
+.chart {
+	color: white;
+	@include font-select('m', 20px);
+
+	i {
+		@include add-font-icon($f-bar-chart, $color: white);
+	}
 }
 
-<i>The Chart &nbsp;</i>
-```
-
-**Usage 2:**
-```scss
-i.home {
-	@include add-font-icon($f-home, $padding: 10px);
-}
-
-<i class="home">Home</i>
+<div class="chart">
+  The Chart &nbsp;
+  <i></i>
+</div>
 ```
 
 
@@ -817,6 +816,13 @@ Version History
 **v.1.5.2**
 * **Minor fixed:** %affix change name to %affix-top, %affix-bottom
 * **Minor fixed:** normalize.css bug fixed.
+
+**v.1.5.3**
+* **Minor fixed:** Grid and normalize extension changed to ".scss"
+* **Minor fixed:** CSS Reset was included in the grid system.
+* **Minor fixed:** Font path changed. (../fonts/).
+* **Minor fixed:** Add the icon font, sample code changed.
+* **Minor fixed:** Tools folder was deleted and the contents were moved to the main index.
 
 
 Author

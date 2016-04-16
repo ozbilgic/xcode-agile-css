@@ -1,7 +1,7 @@
 /***************************************************************************
 *  XCODE CSS MIXINS FRAMEWORK                                              *
 *  @author  : xcode                                                        *
-*  @version : 1.5.2                                                        *
+*  @version : 1.5.3                                                        *
 *  @since   : 02.2016                                                      *
 *  @mime    : Sass/Scss                                                    *
 *  @contact : ozbilgiclevent@gmail.com                                     *
@@ -1037,19 +1037,20 @@ $baseFontPixel:   14px    !default;
  *  @param $color: Icon color. Default color: #111.
  *  @param $padding: Icon padding. Default value: 0px.
  *
- *  Usage 1:
- *    i {
- *      @include add-font-icon($f-bar-chart, $color: black);
+ *  Usage:
+ *    .chart {
+ *      color: white;
+ *      @include font-select('m', 20px);
+ *
+ *      i {
+ *        @include add-font-icon($f-bar-chart, $color: white);
+ *      }
  *    }
  *
- *    <i>The Chart &nbsp;</i>
- *
- *  Usage 2:
- *    i.home {
- *      @include add-font-icon($f-home, $padding: 10px);
- *    }
- *
- *    <i class="home">Home</i>
+ *   <div class="chart">
+ *     The Chart &nbsp;
+ *     <i></i>
+ *   </div>
  */
 @mixin add-font-icon($icon, $direction: right, $size: 14px, $color: #111, $padding: 0) {
   display: inline-block;
