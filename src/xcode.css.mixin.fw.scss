@@ -1,10 +1,11 @@
 /***************************************************************************
 *  XCODE CSS MIXINS FRAMEWORK                                              *
 *  @author  : xcode                                                        *
-*  @version : 1.5.3                                                        *
+*  @version : 1.6.1                                                        *
 *  @since   : 02.2016                                                      *
 *  @mime    : Sass/Scss                                                    *
 *  @contact : ozbilgiclevent@gmail.com                                     *
+*  @link    : https://github.com/ozbilgic/sass-mixin-css-framework         *
 *                                                                          *
 *--------------------------------------------------------------------------*
 *  Features List »                                                         *
@@ -35,6 +36,7 @@
 *    » Button to add animation. [It was added in --v.1.3.0]                *
 *    » Add Font Icon. [It was added in --v.1.3.0]                          *
 *    » Font Selector. [It was added in --v.1.4.0]                          *
+*    » Add Menu Button. [It was added in --v.1.6.0]                        *
 *                                                                          *
 *  Helpers:                                                                *
 *    » Clearfix. [It was added in --v.1.5.0]                               *
@@ -170,13 +172,13 @@ $baseFontPixel:   14px    !default;
 /**
  *  » Alternate Responsive Media Selector.
  *    - This selective media can be entered in any desired resolution.
- *  Mixin Name: @media-query($minMax, $width, $eWidth: 0)
+ *  Mixin Name: @media-query($minMax, $width)
  *  ---
  *  Parameter Descriptions:
  *  @param $minMax = min or max. (min-width, max-width)
- *  @param $width, $eWidth = $cellphoneSize, $smartphoneSize, $tabletSize,
- *                           $desktopSize, $largeScreenSize, $fullScreenSize
- *  @param $eWidth = Any screen resolution size.
+ *  @param $width = $cellphoneSize, $smartphoneSize, $tabletSize,
+ *                  $desktopSize, $largeScreenSize, $fullScreenSize
+ *                  or any screen resolution size.
  *
  *  Usage:
  *    nav.nav-content {
@@ -186,39 +188,20 @@ $baseFontPixel:   14px    !default;
  *    }
  *
  *    h1.caption {
- *      @include media-query(max, nil, 300px) {
+ *      @include media-query(max, 300px) {
  *        font-size: 20%;
  *      }
  *    }
  */
-@mixin media-query($minMax, $width, $eWidth: 0) {
-  @if $width == cp {$width: $cellphoneSize}
-  @else if $width == sp {$width: $smartphoneSize}
-  @else if $width == tablet {$width: $tabletSize}
-  @else if $width == desktop {$width: $desktopSize}
-  @else {$width: $largeScreenSize}
-
-  @if $eWidth > 0 {
-    @if $minMax == min {
-      @media (min-width: $eWidth) {
-        @content;
-      }
-    }
-    @else {
-      @media (max-width: $eWidth) {
-        @content;
-      }
+@mixin media-query($minMax, $width) {
+  @if $minMax == min {
+    @media (min-width: $width) {
+      @content;
     }
   }
   @else {
-    @if $minMax == min {
-      @media (min-width: $width) {
-        @content;
-      }
-    } @else {
-      @media (max-width: $width) {
-        @content;
-      }
+    @media (max-width: $width) {
+      @content;
     }
   }
 }
@@ -479,8 +462,8 @@ $baseFontPixel:   14px    !default;
 
 
 /**
- *  » Horizontal Navigation Bar.
- *  Mixin Name: @h-navbar(
+ *  » Vertical Navigation Bar.
+ *  Mixin Name: @v-navbar(
  *                    $width: 200px,
  *                    $bgColor: #f1f1f1,
  *                    $textColor: #000,
@@ -502,7 +485,7 @@ $baseFontPixel:   14px    !default;
  *
  *  Usage 1:
  *    #nav {
- *      @include h-navbar(300px);
+ *      @include v-navbar(300px);
  *    }
  *
  *    <div id="nav">
@@ -516,7 +499,7 @@ $baseFontPixel:   14px    !default;
  *
  *  Usage 2:
  *    #nav {
- *      @include h-navbar($width:150px, $isFullHeight:true);
+ *      @include v-navbar($width:150px, $isFullHeight:true);
  *    }
  *
  *    <div id="nav">
@@ -528,7 +511,7 @@ $baseFontPixel:   14px    !default;
  *       </ul>
  *   </div>
  */
-@mixin h-navbar(
+@mixin v-navbar(
             $width: 200px,
             $bgColor: #f1f1f1,
             $textColor: #000,
@@ -571,8 +554,8 @@ $baseFontPixel:   14px    !default;
 
 
 /**
- *  » Vertical Navigation Bar.
- *  Mixin Name: @mixin v-navbar(
+ *  » Horizontal Navigation Bar.
+ *  Mixin Name: @mixin h-navbar(
  *                    $bgColor: #333,
  *                    $textColor: white,
  *                    $hoverBgColor: #111,
@@ -590,7 +573,7 @@ $baseFontPixel:   14px    !default;
  *
  *  Usage:
  *    #nav {
- *      @include v-navbar($isDivider:true);
+ *      @include h-navbar($isDivider:true);
  *    }
  *
  *    <div id="nav">
@@ -602,7 +585,7 @@ $baseFontPixel:   14px    !default;
  *       </ul>
  *    </div>
  */
-@mixin v-navbar(
+@mixin h-navbar(
           $bgColor: #333,
           $textColor: white,
           $hoverBgColor: #111,
@@ -1143,9 +1126,62 @@ $baseFontPixel:   14px    !default;
 
 /**
  *  » Add Menu Button.
+ *  Mixin Name: @mixin add-menu-button($color: #fff, $position: right, $radius: 2px, $thickness: 3px, $width: 30px)
+ *  ---
+ *  Parameter Descriptions:
+ *  @param $color: Line color. Default color: #fff.
+ *  @param $position: Menu button position. Default value: right.
+ *  @param $radius: Line border radius. Default value: 2px.
+ *  @param $thickness: Line thickness. Default value: 3px.
+ *  @param $width: Line width. Default value: 30px.
+ *
+ *  Usage:
+ *    SASS:
+ *    #menu-btn {
+ *      @include add-menu-button($radius:0);
+ *    }
+ *
+ *    //Paste this is class main CSS file.
+ *    .menu-active {
+ *      a span {
+ *        background-color: transparent !important;
+ *
+ *        &:before, &:after {
+ *          top: 0px !important;
+ *          background-color: #fff !important;
+ *        }
+ *
+ *        //If the position of the button is left, change in the plus with the minus.
+ *        &:before {@include transform2d(rotate(-45deg))}
+ *        &:after {@include transform2d(rotate(45deg))}
+ *      }
+ *    }
+ *
+ *    HTML:
+ *    <nav>
+ *      <ul>
+ *        <li><a class="active" href="#">Home</a></li>
+ *        <li><a href="#">News</a></li>
+ *        <li><a href="#">Contact</a></li>
+ *        <li id="menu-btn">
+ *          <a href="#">
+ *            <span></span>
+ *          </a>
+ *        </li>
+ *      </ul>
+ *    </nav>
+ *
+ *    JAVASCRIPT(JQUERY):
+ *    $("#menu-btn").click(function() {
+ *      $(this).toggleClass("menu-active");
+ *      return false;
+ *    });
  */
-@mixin add-menu-button() {
-  float: right;
+@mixin add-menu-button($color: $white, $position: right, $radius: 2px, $thickness: 3px, $width: 30px) {
+  float: $position;
+  @include media-query("min", $desktopSize) {
+    display: none;
+  }
 
   a {
     position: relative;
@@ -1155,9 +1191,7 @@ $baseFontPixel:   14px    !default;
     float: right;
     cursor: pointer;
     z-index: 999;
-    text-align: center;
-    line-height: convert_em(20px);
-    vertical-align: middle;
+
     @include prefix('touch-action', 'manipulation');
     @include prefix('user-select', 'none');
 
@@ -1166,12 +1200,12 @@ $baseFontPixel:   14px    !default;
       top: 50%;
       right: 10px;
       display: block;
-      width: 30px;
-      height: 3px;
-      text-indent: -9999px;
-      background-color: #fff;
+      width: $width;
+      height: $thickness;
+      background-color: $color;
 
-      @include transition('all ease-in-out .2s');
+      @include border-radius($radius);
+      @include transition('all .2s ease-in-out 0s');
 
       &:before {top: -8px}
       &:after {top: 8px}
@@ -1180,35 +1214,19 @@ $baseFontPixel:   14px    !default;
         content: "";
         position: absolute;
         width: 100%;
-        height: 3px;
+        height: $thickness;
         left: 0;
-        background-color: #fff;
+        background-color: $color;
         display: block;
-        @include transition('all ease-in-out .3s');
+
+        @include border-radius($radius);
+        @include transition('all .2s ease-in-out 0s');
       }
     }
-
 
     &:focus, &:visited {
       outline: none;
     }
-
-    /*
-    &:focus {
-      span {
-        background-color: transparent;
-
-        &:before {
-          top: 0px;
-          @include transform2d(rotate(-45deg));
-        }
-        &:after {
-          top: 0px;
-          @include transform2d(rotate(45deg));
-        }
-      }
-    }
-    */
   }
 }
 

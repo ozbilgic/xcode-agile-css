@@ -1,6 +1,18 @@
 Version History
 ----
 
+**v.1.6.1**
+* **Minor change:** 480px removed to grid system.
+* **Minor change:** *$padding* added variable grid system.
+* **Improvement:** @mixin media-query(), has been made more convenient.
+* **Error fixed:** 16 columns grid system bug fixed.
+* **Minor fixed:** @mixin h-navbar() and @mixin v-navbar(): The name confusion was fixed.
+* **Minor change:** "12columnsGrid" file name changed to "grid12".
+* **Minor change:** "16columnsGrid" file name changed to "grid16".
+
+**v.1.6.0**
+* **Mixin added:** Add Menu Button.
+
 **v.1.5.3**
 * **Minor fixed:** Grid and normalize extension changed to ".scss"
 * **Minor fixed:** CSS Reset was included in the grid system.

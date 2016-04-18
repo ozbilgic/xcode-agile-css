@@ -1,4 +1,4 @@
-# Sass CSS3 Mixin Framework -v.1.5.3
+# Sass CSS3 Mixin Framework v.1.6.1
 ### Agile and Smart CSS coding library.
 
 
@@ -8,7 +8,7 @@
 Version
 ----
 
-1.5.3
+1.6.1
 
 
 Usage
@@ -87,18 +87,18 @@ nav[data="main-menu"] {
 ----
 ##### `» Alternate Responsive Media Selector.`
 This selective media can be entered in any desired resolution.
-* **Mixin Name:** @media-query($minMax, $width, $eWidth: 0)
+* **Mixin Name:** @media-query($minMax, $width)
 
 **Parameter Descriptions:**
 * @param **$minMax:** *min or max. (min-width, max-width)*
-* @param **($width, $eWidth)** *Can take values:*
+* @param **($width)** *Can take values:*
 	* **$cellphoneSize:** *Default size 320px.*
 	* **$smartphoneSize:** *Default size 480px.*
 	* **$tabletSize:** *Default size 768px.*
 	* **$desktopSize:** *Default size 992px.*
 	* **$largeScreenSize:** *Default size 1200px.*
 	* **$fullScreenSize:** *>1200px.*
-* @param **$eWidth:** *Any screen resolution size.*
+	* *Or any screen resolution size.*
 
 **Usage:**
 ```scss
@@ -109,7 +109,7 @@ nav.nav-content {
 }
 
 h1.caption {
-	@include media-query(max, $eWidth:300px) {
+	@include media-query(max, 300px) {
 		font-size: 20%;
 	}
 }
@@ -329,8 +329,8 @@ img.poster {
 
 
 ----
-##### `» Horizontal Navigation Bar.`
-* **Mixin Name:** @h-navbar(
+##### `» Vertical Navigation Bar.`
+* **Mixin Name:** @v-navbar(
 	* **$width:** 200px,
 	* **$bgColor:** #f1f1f1,
 	* **$textColor:** #000,
@@ -353,7 +353,7 @@ img.poster {
 **Usage 1:**
 ```scss
 #nav {
-	@include h-navbar(300px);
+	@include v-navbar(300px);
 }
 
 <div id="nav">
@@ -369,7 +369,7 @@ img.poster {
 **Usage 2:**
 ```scss
 #nav {
-	@include h-navbar($width:150px, $isFullHeight:true);
+	@include v-navbar($width:150px, $isFullHeight:true);
 }
 
 <div id="nav">
@@ -384,8 +384,8 @@ img.poster {
 
 
 ----
-##### `» Vertical Navigation Bar.`
-* **Mixin Name:** @mixin v-navbar(
+##### `» Horizontal Navigation Bar.`
+* **Mixin Name:** @mixin h-navbar(
 	* **$bgColor:** #333,
 	* **$textColor:** white,
 	* **$hoverBgColor:** #111,
@@ -404,7 +404,7 @@ img.poster {
 **Usage:**
 ```scss
 #nav {
-	@include v-navbar($isDivider:true);
+	@include h-navbar($isDivider:true);
 }
 
 <div id="nav">
@@ -681,6 +681,71 @@ img.poster {
 ```
 
 
+----
+##### `» Add Menu Button.`
+* **Mixin Name:** @mixin add-menu-button(
+	* **$color:** $white,
+	* **$position:** right,
+	* **$radius:** 2px,
+	* **$thickness:** 3px,
+	* **$width:** 30px)
+
+**Parameter Descriptions:**
+* @param **$color:** *Line color. Default color: #fff.*
+* @param **$position:** *Menu button position. Default value: right.*
+* @param **$radius:** *Line border radius. Default value: 2px.*
+* @param **$thickness:** *Line thickness. Default value: 3px.*
+* @param **$width:** *Line width. Default value: 30px.*
+
+**Usage:**
+*SASS:*
+```scss
+#menu-btn {
+	@include add-menu-button($radius:0);
+}
+
+//Paste this is class main CSS file.
+.menu-active {
+	a span {
+		background-color: transparent !important;
+
+		&:before, &:after {
+			top: 0px !important;
+			background-color: #fff !important;
+		}
+
+		//If the position of the button is left, change in the plus with the minus.
+		&:before {@include transform2d(rotate(-45deg))}
+		&:after {@include transform2d(rotate(45deg))}
+	}
+}
+```
+
+*HTML:*
+```html
+<nav>
+	<ul>
+		<li><a class="active" href="#">Home</a></li>
+		<li><a href="#">News</a></li>
+		<li><a href="#">Contact</a></li>
+		<li id="menu-btn">
+			<a href="#">
+				<span></span>
+			</a>
+		</li>
+	</ul>
+</nav>
+```
+
+*JAVASCRIPT(JQUERY):*
+```js
+$("#menu-btn").click(function() {
+	$(this).toggleClass("menu-active");
+	return false;
+});
+```
+
+
 Helpers
 ----
 ##### `» Clearfix.`
@@ -729,9 +794,10 @@ Tools
 > 12 column grid system that is fully compatible with the `xcode` library.
 
 **Usage**
-```html
+*Use main layout adding.*
+```erb
 ...
-<link rel="stylesheet" href="tools/12columnsGridSystem.css">
+<%= stylesheet_link_tag :grid12 %>
 ...
 ```
 
@@ -741,24 +807,18 @@ Tools
 > 16 column grid system that is fully compatible with the `xcode` library.
 
 **Usage**
-```html
+*Use main layout adding.*
+```erb
 ...
-<link rel="stylesheet" href="tools/16columnsGridSystem.css">
+<%= stylesheet_link_tag :grid16 %>
 ...
 ```
 
 
 ----
 ##### `» Reset CSS.`
-> Structured according to these libraries css reset. [Original Source Link](https://github.com/necolas/normalize.css)
-
-**Usage**
-```html
-...
-<!-- Add this code to the top. -->
-<link rel="stylesheet" href="tools/normalize.css">
-...
-```
+> Structured according to these libraries css reset.
+> **Tip:** *This is already attached to the grid system.*
 
 
 Version History
@@ -823,6 +883,18 @@ Version History
 * **Minor fixed:** Font path changed. (../fonts/).
 * **Minor fixed:** Add the icon font, sample code changed.
 * **Minor fixed:** Tools folder was deleted and the contents were moved to the main index.
+
+**v.1.6.0**
+* **Mixin added:** Add Menu Button.
+
+**v.1.6.1**
+* **Minor change:** 480px removed to grid system.
+* **Minor change:** *$padding* added variable grid system.
+* **Improvement:** @mixin media-query(), has been made more convenient.
+* **Error fixed:** 16 columns grid system bug fixed.
+* **Minor fixed:** @mixin h-navbar() and @mixin v-navbar(): The name confusion was fixed.
+* **Minor change:** "12columnsGrid" file name changed to "grid12".
+* **Minor change:** "16columnsGrid" file name changed to "grid16".
 
 
 Author
