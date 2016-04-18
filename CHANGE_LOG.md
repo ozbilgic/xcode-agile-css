@@ -1,6 +1,13 @@
 Version History
 ----
 
+**v.1.5.3**
+* **Minor fixed:** Grid and normalize extension changed to ".scss"
+* **Minor fixed:** CSS Reset was included in the grid system.
+* **Minor fixed:** Font path changed. (../fonts/).
+* **Minor fixed:** Add the icon font, sample code changed.
+* **Minor fixed:** Tools folder was deleted and the contents were moved to the main index.
+
 **v.1.5.2**
 * **Minor fixed:** %affix change name to %affix-top, %affix-bottom
 * **Minor fixed:** normalize.css bug fixed.
