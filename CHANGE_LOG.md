@@ -1,6 +1,9 @@
 Version History
 ----
 
+**v.1.7.0**
+* **Mixin added:** Add Triangle.
+
 **v.1.6.1**
 * **Minor change:** 480px removed to grid system.
 * **Minor change:** *$padding* added variable grid system.

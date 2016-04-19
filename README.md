@@ -1,4 +1,4 @@
-# Sass CSS3 Mixin Framework v.1.6.1
+# Sass CSS3 Mixin Framework v.1.7.0
 ### Agile and Smart CSS coding library.
 
 
@@ -8,7 +8,7 @@
 Version
 ----
 
-1.6.1
+1.7.0
 
 
 Usage
@@ -26,7 +26,7 @@ Functions
 ----
 
 ##### `» Pixel converts the "em" format.`
-* **Warning:** Specify the base font size before use. ($baseFontPixel default size 16px.)
+* **Warning:** Specify the base font size before use. ($baseFontPixel default size 14px.)
 * **Function Name:** @convert_em($fontPx)
 
 **Parameter Descriptions:**
@@ -698,7 +698,7 @@ img.poster {
 * @param **$width:** *Line width. Default value: 30px.*
 
 **Usage:**
-*SASS:*
+* SASS:
 ```scss
 #menu-btn {
 	@include add-menu-button($radius:0);
@@ -721,7 +721,7 @@ img.poster {
 }
 ```
 
-*HTML:*
+* HTML:
 ```html
 <nav>
 	<ul>
@@ -737,12 +737,52 @@ img.poster {
 </nav>
 ```
 
-*JAVASCRIPT(JQUERY):*
+* JAVASCRIPT(JQUERY):
 ```js
 $("#menu-btn").click(function() {
 	$(this).toggleClass("menu-active");
 	return false;
 });
+```
+
+
+----
+##### `» Add Triangle.`
+* **Mixin Name:** @mixin add-triangle(
+	* **$color:** #111,
+	* **$direction:** up,
+	* **$position:** center,
+	* **$indent:** 8px,
+	* **$size:** 10px)
+
+**Parameter Descriptions:**
+* @param **$color:** *Triangle color. Default color: #111.*
+* @param **$direction:** *Triangle direction. Values: {up, down, left, right}*
+* @param **$position:** *Triangle position. Default value: center.* **Tip:** *Value can be specified in "px".*
+* @param **$indent:** *Triangle indentation. Default value: 8px.*
+* @param **$size:** *Triangle size. Default size: 10px.*
+
+**Usage:**
+* SASS
+```scss
+.triangle {
+	position: relative;
+	width: 150px;
+	padding: 10px 20px;
+	background-color: #813efa;
+	text-align: center;
+	color: $white;
+	font-size: 20px;
+	@include border-radius(5px);
+	@include add-triangle(#813efa, right);
+}
+```
+
+* HTML
+```html
+<div class="triangle">
+	Triangle
+</div>
 ```
 
 
@@ -895,6 +935,9 @@ Version History
 * **Minor fixed:** @mixin h-navbar() and @mixin v-navbar(): The name confusion was fixed.
 * **Minor change:** "12columnsGrid" file name changed to "grid12".
 * **Minor change:** "16columnsGrid" file name changed to "grid16".
+
+**v.1.7.0**
+* **Mixin added:** Add Triangle.
 
 
 Author

@@ -1,7 +1,7 @@
 /***************************************************************************
 *  XCODE CSS MIXINS FRAMEWORK                                              *
 *  @author  : xcode                                                        *
-*  @version : 1.6.1                                                        *
+*  @version : 1.7.0                                                        *
 *  @since   : 02.2016                                                      *
 *  @mime    : Sass/Scss                                                    *
 *  @contact : ozbilgiclevent@gmail.com                                     *
@@ -37,6 +37,7 @@
 *    » Add Font Icon. [It was added in --v.1.3.0]                          *
 *    » Font Selector. [It was added in --v.1.4.0]                          *
 *    » Add Menu Button. [It was added in --v.1.6.0]                        *
+*    » Add Triangle. [It was added in --v.1.7.0]                           *
 *                                                                          *
 *  Helpers:                                                                *
 *    » Clearfix. [It was added in --v.1.5.0]                               *
@@ -1226,6 +1227,100 @@ $baseFontPixel:   14px    !default;
 
     &:focus, &:visited {
       outline: none;
+    }
+  }
+}
+
+
+/**
+ *  » Add Triangle.
+ *  Mixin Name: @mixin add-triangle($color: #111, $direction: up, $position: center, $indent: 8px, $size: 10px)
+ *  ---
+ *  Parameter Descriptions:
+ *  @param $color: Triangle color. Default color: #111.
+ *  @param $direction: Triangle direction. Values: {up, down, left, right}
+ *  @param $position: Triangle position. Default value: center. Tip: Value can be specified in "px".
+ *  @param $indent: Triangle indentation. Default value: 8px.
+ *  @param $size: Triangle size. Default size: 10px.
+ *
+ *  Usage:
+ *    SASS
+ *    .triangle {
+ *      position: relative;
+ *      width: 150px;
+ *      padding: 10px 20px;
+ *      background-color: #813efa;
+ *      text-align: center;
+ *      color: $white;
+ *      font-size: 20px;
+ *      @include border-radius(5px);
+ *      @include add-triangle(#813efa, right);
+ *    }
+ *
+ *    HTML
+ *    <div class="triangle">
+ *      Triangle
+ *    </div>
+ */
+@mixin add-triangle($color: #111, $direction: up, $position: center, $indent: 8px, $size: 10px) {
+  &:before {
+    content: "";
+    height: 0;
+    width: 0;
+    display: block;
+    position: absolute;
+
+    @if ($direction == up) {
+      top: 0;
+      margin-top: -$indent;
+      @if ($position == center) {
+        left: calc(50% - #{$size});
+      }
+      @else {
+        left: $position;
+      }
+      border-bottom: $size solid $color;
+      border-left: $size solid transparent;
+      border-right: $size solid transparent;
+    }
+    @else if ($direction == down) {
+      bottom: 0;
+      margin-bottom: -$indent;
+      @if ($position == center) {
+        left: calc(50% - #{$size});
+      }
+      @else {
+        left: $position;
+      }
+      border-top: $size solid $color;
+      border-left: $size solid transparent;
+      border-right: $size solid transparent;
+    }
+    @else if ($direction == left) {
+      left: 0;
+      margin-left: -$indent;
+      @if ($position == center) {
+        top: calc(50% - #{$size});
+      }
+      @else {
+        top: $position;
+      }
+      border-top: $size solid transparent;
+      border-bottom: $size solid transparent;
+      border-right: $size solid $color;
+    }
+    @else if ($direction == right) {
+      right: 0;
+      margin-right: -$indent;
+      @if ($position == center) {
+        top: calc(50% - #{$size});
+      }
+      @else {
+        top: $position;
+      }
+      border-top: $size solid transparent;
+      border-bottom: $size solid transparent;
+      border-left: $size solid $color;
     }
   }
 }
