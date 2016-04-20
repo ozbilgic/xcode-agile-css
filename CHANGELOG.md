@@ -1,6 +1,13 @@
 Version History
 ----
 
+**v.2.0.0**
+* **Mixin deleted:** @mixin grayscale($percent).
+* **Minor fixed:** @mixin x-horizontal-navbar() -> Link width and height adjustable.
+* **Minor fixed:** @mixin x-menu-button() -> Border option added.
+* **Minor fixed:** Edited all of the descriptions in the library.
+* **Major fixed:** All mixins and functions prefix "x" was added.
+
 **v.1.7.1**
 * **Minor fixed:** @mixin font-select() -> Will alert "$baseFontName" value is not entered.
 

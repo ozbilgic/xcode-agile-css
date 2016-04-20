@@ -1,11 +1,12 @@
 /***************************************************************************
-*  XCODE CSS MIXINS FRAMEWORK                                              *
+*  XCODE AGILE CSS MIXIN FRAMEWORK                                         *
 *  @author  : xcode                                                        *
-*  @version : 1.7.1                                                        *
+*  @version : 2.0.0                                                        *
 *  @since   : 02.2016                                                      *
 *  @mime    : Sass/Scss                                                    *
 *  @contact : ozbilgiclevent@gmail.com                                     *
 *  @link    : https://github.com/ozbilgic/sass-mixin-css-framework         *
+*  @www     : http://workz.com.tr                                          *
 *                                                                          *
 *--------------------------------------------------------------------------*
 *  Features List »                                                         *
@@ -25,19 +26,18 @@
 *    » 2D Transforms. [It was added in --v.1.0.0]                          *
 *    » 3D Transforms. [It was added in --v.1.0.0]                          *
 *    » Change Input Placeholder Attributes. [It was added in --v.1.0.0]    *
-*    » Change The Color of All Images to Black and White.                  *
 *    » Horizontal Navigation Bar. [It was added in --v.1.1.0]              *
 *    » Vertical Navigation Bar. [It was added in --v.1.1.0]                *
-*    » Dropdown [It was added in --v.1.1.0]                                *
-*    » Tooltip [It was added in --v.1.2.0]                                 *
+*    » Dropdown. [It was added in --v.1.1.0]                               *
+*    » Tooltip. [It was added in --v.1.2.0]                                *
 *    » Box Shadow. [It was added in --v.1.2.0]                             *
 *    » Gradients. [It was added in --v.1.2.0]                              *
-*    » Image Filter. [It was added in --v.1.2.0]                           *
-*    » Button to add animation. [It was added in --v.1.3.0]                *
-*    » Add Font Icon. [It was added in --v.1.3.0]                          *
+*    » Image Filters. [It was added in --v.1.2.0]                          *
+*    » Button animation. [It was added in --v.1.3.0]                       *
+*    » Font Icon. [It was added in --v.1.3.0]                              *
 *    » Font Selector. [It was added in --v.1.4.0]                          *
-*    » Add Menu Button. [It was added in --v.1.6.0]                        *
-*    » Add Triangle. [It was added in --v.1.7.0]                           *
+*    » Menu Button. [It was added in --v.1.6.0]                            *
+*    » Triangle. [It was added in --v.1.7.0]                               *
 *                                                                          *
 *  Helpers:                                                                *
 *    » Clearfix. [It was added in --v.1.5.0]                               *
@@ -59,8 +59,8 @@
  *  VARIABLES »
  */
 
-$baseFontName: null !default; //Enter the name of the font you use. Required to font-select mixin.
-                              //Ex. 'Roboto'
+//Enter the name of the font you use. Required to x-font mixin.
+$baseFontName:    null    !default;   //Ex. 'Roboto'
 
 $cellphone:       cp      !default;   //320px
 $smartphone:      sp      !default;   //480px
@@ -87,20 +87,21 @@ $baseFontPixel:   14px    !default;
 
 /**
  *  » Pixel converts the "em" format.
- *  Warning: Specify the base font size before use. ($baseFontPixel, Default size 16px.)
- *  Function Name: @convert_em($fontPx)
+ *  Warning: Specify the base font size before use. ($baseFontPixel, Default size 14px.)
+ *  Function Name: @function x-convert_em($fontPx)
  *  ---
  *  Parameter Descriptions:
- *  @param $fontPx = Font Size.
+ *  @param $fontPx: Font Size.
  *  ---
  *  @return em
  *
  *  Usage:
+ *    SCSS:
  *    p {
- *      font-size: convert_em(14px);
+ *      font-size: x-convert_em(14px);
  *    }
  */
-@function convert_em($fontPx) {
+@function x-convert_em($fontPx) {
   @return ($fontPx / $baseFontPixel) * 1em;
 }
 
@@ -111,20 +112,21 @@ $baseFontPixel:   14px    !default;
 
 /**
  *  » CSS3 Prefix Adding.
- *  Mixin Name: @prefix($property, $args...)
+ *  Mixin Name: @mixin x-prefix($property, $args...)
  *  ---
  *  Parameter Descriptions:
- *  @param $property: Css property name. Ex. "transition, "border-radius"...
+ *  @param $property: Css property name. Ex. "transition", "border-radius"...
  *  @param $args: For the selected attribute values. Ex. "color .3s", "15px"...
  *
  *  Usage:
+ *     SCSS:
  *     .box {
  *       Width: 300px;
  *       height: 300px;
- *       @include prefix(border-radius, 5px);
+ *       @include x-prefix(border-radius, 5px);
  *     }
  */
-@mixin prefix($property, $args...) {
+@mixin x-prefix($property, $args...) {
   -webkit-#{$property}: #{$args};
      -moz-#{$property}: #{$args};
       -ms-#{$property}: #{$args};
@@ -135,20 +137,21 @@ $baseFontPixel:   14px    !default;
 
 /**
  *  » Responsive Media Selector.
- *  Mixin Name: @media($media)
+ *  Mixin Name: @mixin x-media($media)
  *  ---
  *  Parameter Descriptions:
- *  @param $media = $cellphone, $smartphone, $tablet, $desktop,
- *                  $largeScreen or "null" when full screen
+ *  @param $media: $cellphone, $smartphone, $tablet, $desktop,
+ *                 $largeScreen or "null" when full screen
  *
  *  Usage:
- *    nav[data=main-menu] {
- *      @include media($desktop) {
+ *    SCSS:
+ *    nav[data="main-menu"] {
+ *      @include x-media($desktop) {
  *        display: none;
  *      }
  *    }
  */
-@mixin media($media) {
+@mixin x-media($media) {
   @if $media == cp {
     @media (max-width: $cellphoneSize) {@content;}
   }
@@ -173,28 +176,31 @@ $baseFontPixel:   14px    !default;
 /**
  *  » Alternate Responsive Media Selector.
  *    - This selective media can be entered in any desired resolution.
- *  Mixin Name: @media-query($minMax, $width)
+ *  Mixin Name: @mixin x-media-query($minMax, $width)
  *  ---
  *  Parameter Descriptions:
- *  @param $minMax = min or max. (min-width, max-width)
- *  @param $width = $cellphoneSize, $smartphoneSize, $tabletSize,
- *                  $desktopSize, $largeScreenSize, $fullScreenSize
- *                  or any screen resolution size.
+ *  @param $minMax: min or max. (min-width, max-width)
+ *  @param $width: $cellphoneSize, $smartphoneSize, $tabletSize,
+ *                 $desktopSize, $largeScreenSize, $fullScreenSize
+ *                 or any screen resolution size.
  *
- *  Usage:
+ *  Usage#1:
+ *    SCSS:
  *    nav.nav-content {
- *      @include media-query(min, $desktop) {
+ *      @include x-media-query("min", $desktop) {
  *        display: none;
  *      }
  *    }
  *
+ *  Usage#2:
+ *    SCSS:
  *    h1.caption {
- *      @include media-query(max, 300px) {
+ *      @include x-media-query("max", 300px) {
  *        font-size: 20%;
  *      }
  *    }
  */
-@mixin media-query($minMax, $width) {
+@mixin x-media-query($minMax, $width) {
   @if $minMax == min {
     @media (min-width: $width) {
       @content;
@@ -210,78 +216,80 @@ $baseFontPixel:   14px    !default;
 
 /**
  *  » Setting The Alpha Channel For Items.
- *  Mixin Name: @opacity($opacity: .85)
+ *  Mixin Name: @mixin x-opacity($opacity: .85)
  *  ---
  *  Parameter Descriptions:
- *  @param $opacity = 0..1
+ *  @param $opacity: 0..1
  *
  *  Usage:
+ *    SCSS:
  *    a:hover {
- *      @include opacity(.7)
+ *      @include x-opacity(.7)
  *    }
  */
-@mixin opacity($opacity: .85) {
+@mixin x-opacity($opacity: .85) {
   opacity: $opacity;
-  filter: alpha(opacity = $opacity * 100); /* For IE8 and earlier */
+  filter: alpha(opacity = $opacity * 100);
 }
 
 
 /**
  *  » Set Border Radius.
- *  Mixin Name: @border-radius($radius)
+ *  Mixin Name: @mixin x-border-radius($radius)
  *  ---
  *  Parameter Descriptions:
- *  @param $radius = You know that ;)
+ *  @param $radius: You know that ;)
  *
  *  Usage:
+ *    SCSS:
  *    div.box {
- *      @include border-radius(15px)
+ *      @include x-border-radius(15px)
  *    }
  */
-@mixin border-radius($radius) {
-  @include prefix('border-radius', $radius);
+@mixin x-border-radius($radius) {
+  @include x-prefix('border-radius', $radius);
 }
 
 
 /**
  *  » Set Shorthand Animation.
  *  Tip: You can use this feature with keyframes
- *  Mixin Name: @animation($args...)
+ *  Mixin Name: @mixin x-animation($args...)
  *  ---
  *  Parameter Descriptions:
- *  @param $args = {
- *                   Animation name,
- *                   Duration,
- *                   Timing function,
- *                   Delay,
- *                   Iteration count,
- *                   Direction
- *                 }
+ *  @param $args: ( Animation name,
+ *                  Duration,
+ *                  Timing function,
+ *                  Delay,
+ *                  Iteration count,
+ *                  Direction )
  *
  *  Usage:
+ *    SCSS:
  *    div.anim {
  *      width: 100px;
  *      height: 100px;
  *      position: relative;
  *      background-color: red;
- *      @include animation('example 4s 3 alternate');
+ *      @include x-animation('example 4s 3 alternate');
  *    }
  */
-@mixin animation($args...) {
-  @include prefix('animation', $args);
+@mixin x-animation($args...) {
+  @include x-prefix('animation', $args);
 }
 
 
 /**
  *  » Animation Creator.
- *  Mixin Name: keyframes($animationName)
- *  Tip: See those for features (Link: http://www.w3schools.com/cssref/css_animatable.asp)
+ *  Mixin Name: @mixin x-keyframes($animationName)
+ *  Tip: See those for features. (Link: http://www.w3schools.com/cssref/css_animatable.asp)
  *  ---
  *  Parameter Descriptions:
- *  @param $animationName = Name of the animation. You can put any name.
+ *  @param $animationName: Name of the animation. You can put any name.
  *
  *  Usage:
- *    @include keyframes(example) {
+ *    SCSS:
+ *    @include x-keyframes(example) {
  *      0%   {background-color: red; left:0px; top:0px;}
  *      25%  {background-color: yellow; left:200px; top:0px;}
  *      50%  {background-color: blue; left:200px; top:200px;}
@@ -294,10 +302,10 @@ $baseFontPixel:   14px    !default;
  *      height: 100px;
  *      position: relative;
  *      background-color: red;
- *      @include animation('example 4s 3 alternate');
+ *      @include x-animation('example 4s 3 alternate');
  *    }
  */
-@mixin keyframes($animationName) {
+@mixin x-keyframes($animationName) {
   @-webkit-keyframes #{$animationName} {
     @content;
   }
@@ -318,20 +326,19 @@ $baseFontPixel:   14px    !default;
 
 /**
  *  » Transition.
- *  Mixin Name: @transition($args...)
+ *  Mixin Name: @mixin x-transition($args...)
  *  ---
  *  Parameter Descriptions:
- *  @param $args = {
- *                   Property,
- *                   Duration,
- *                   Timing function,
- *                   Delay
- *                 }
+ *  @param $args: ( Property,
+ *                  Duration,
+ *                  Timing function,
+ *                  Delay )
  *
  *  Usage#1:
+ *    SCSS:
  *    a {
  *      color: gray;
- *      @include transition(color .3s ease);
+ *      @include x-transition(color .3s ease);
  *
  *      &:hover {
  *        color: black;
@@ -339,76 +346,76 @@ $baseFontPixel:   14px    !default;
  *    }
  *
  *  Usage#2:
+ *    SCSS:
  *    header.navbar {
  *      min-height: 60px;
  *      position: fixed;
  *      margin: 0 auto;
- *      @include transition(.4s);
+ *      @include x-transition(.4s);
  *    }
  *
+ *    CSS:
  *    .navbg-black {
  *       background-color: #000 !important;
  *    }
  *
  *    header.navbar slowly change color to adding .navbg-black class.
  */
-@mixin transition($args...) {
-  @include prefix('transition', $args);
+@mixin x-transition($args...) {
+  @include x-prefix('transition', $args);
 }
 
 
 /**
  *  » 2D Transforms.
- *  Mixin Name: transform2d($method)
+ *  Mixin Name: @mixin x-transform2d($method)
  *  Tip: See at examples (Link: http://www.w3schools.com/css/css3_2dtransforms.asp)
  *  ---
  *  Parameter Descriptions:
- *  @param $method = Method name.
- *  Method List {
- *                translate(x,y), translateX(n), translateY(n),
+ *  @param $method: Method name.
+ *  Method List ( translate(x,y), translateX(n), translateY(n),
  *                rotate(angle),
  *                scale(x,y), scaleX(n), scaleY(n),
  *                skew(x-angle, y-angle), skewX(angle), skewY(angle),
- *                matrix(n,n,n,n,n,n)
- *              }
+ *                matrix(n,n,n,n,n,n) )
  *
  *  Usage:
+ *    SCSS:
  *    div.rotate {
- *      @include transform2d(rotate(20deg));
+ *      @include x-transform2d(rotate(20deg));
  *    }
  */
-@mixin transform2d($method) {
-  @include prefix('transform', $method);
+@mixin x-transform2d($method) {
+  @include x-prefix('transform', $method);
 }
 
 
 /**
  *  » 3D Transforms.
- *  Mixin Name: transform3d($method)
+ *  Mixin Name: @mixin x-transform3d($method)
  *  ---
  *  Parameter Descriptions:
- *  @param $method = Method name.
- *  Method List {
- *                translate3d(x,y,z), translateX(x), translateY(y), translateZ(z),
+ *  @param $method: Method name.
+ *  Method List ( translate3d(x,y,z), translateX(x), translateY(y), translateZ(z),
  *                rotate3d(x,y,z,angle), rotateX(angle), rotateY(angle), rotateZ(angle),
  *                scale3d(x,y,z), scaleX(x), scaleY(y), scaleY(z),
  *                matrix3d(n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n),
- *                perspective(n)
- *              }
+ *                perspective(n) )
  *
  *  Usage:
+ *    SCSS:
  *    div.rotate {
- *      @include transform3d(rotateZ(90deg));
+ *      @include x-transform3d(rotateZ(90deg));
  *    }
  */
-@mixin transform3d($method) {
-  @include prefix('transform', $method);
+@mixin x-transform3d($method) {
+  @include x-prefix('transform', $method);
 }
 
 
 /**
  *  » Change Input Placeholder Attributes.
- *  Mixin Name: change-input-placeholder()
+ *  Mixin Name: @mixin x-change-input-placeholder()
  *  ---
  *  Supported placeholder styles: {
  *      font
@@ -425,13 +432,14 @@ $baseFontPixel:   14px    !default;
  *  }
  *
  *  Usage:
+ *    SCSS:
  *    input[type="email"] {
- *      @include change-input-placeholder() {
+ *      @include x-change-input-placeholder() {
  *        color: orange;
  *      }
  *    }
  */
-@mixin change-input-placeholder() {
+@mixin x-change-input-placeholder() {
   &::-webkit-input-placeholder { @content; }
   &::-moz-placeholder { @content; }
   &:-moz-placeholder { @content; }
@@ -440,55 +448,34 @@ $baseFontPixel:   14px    !default;
 
 
 /**
- *  » Change The Color of All Images to Black and White. - DEPRECATED.
- *  Note: Instead of Image Filter use. It will be removed in version 2.0
- *  Mixin Name: grayscale($value)
- *  Tip: 0..100, 100 full gray.
- *  Warning: IE not supported.
- *  ---
- *  Parameter Descriptions:
- *  @param $value = Percent.
- *
- *  Usage:
- *    img.poster {
- *      @include grayscale(20%);
- *    }
- */
-@mixin grayscale($percent) {
-  @warn "The `grayscale($percent)` mixin will be deprecated in version 1.2.1";
-  -webkit-filter: "grayscale(#{$percent})";
-  filter: "grayscale(#{$percent})";
-}
-
-
-
-/**
  *  » Vertical Navigation Bar.
- *  Mixin Name: @v-navbar(
- *                    $width: 200px,
- *                    $bgColor: #f1f1f1,
- *                    $textColor: #000,
- *                    $hoverBgColor: #555,
- *                    $hoverTextColor: white,
- *                    $activeLinkBgColor: #4CAF50,
- *                    $activeLinkTextColor: white,
- *                    $isFullHeight: false)
+ *  Mixin Name: @mixin x-vertical-navbar(
+ *                          $width: 200px,
+ *                          $bgColor: #f1f1f1,
+ *                          $textColor: #000,
+ *                          $hoverBgColor: #555,
+ *                          $hoverTextColor: white,
+ *                          $activeLinkBgColor: #4CAF50,
+ *                          $activeLinkTextColor: white,
+ *                          $isFullHeight: false)
  *  ---
  *  Parameter Descriptions:
- *  @param $width = Navigation bar width. Default size: 200px. Tip: Percentage value enterable.
- *  @param $bgColor = Navigation bar background color. Default color: #f1f1f1.
- *  @param $textColor = Link text color. Default color: #000.
- *  @param $hoverBgColor = Link hover background color. Default color: #555.
- *  @param $hoverTextColor = Link hover text color. Default color: #fff.
- *  @param $activeLinkBgColor = Active link background color. Default color: #4CAF50.
- *  @param $activeLinkTextColor = Active link text color. Default color: #fff.
- *  @param $isFullHeight = Full height navigation bar. Default value: false.
+ *  @param $width: Navigation bar width. Default size: 200px. Tip: Percentage value enterable.
+ *  @param $bgColor: Navigation bar background color. Default color: #f1f1f1.
+ *  @param $textColor: Link text color. Default color: #000.
+ *  @param $hoverBgColor: Link hover background color. Default color: #555.
+ *  @param $hoverTextColor: Link hover text color. Default color: #fff.
+ *  @param $activeLinkBgColor: Active link background color. Default color: #4CAF50.
+ *  @param $activeLinkTextColor: Active link text color. Default color: #fff.
+ *  @param $isFullHeight: Full height navigation bar. Default value: false.
  *
  *  Usage 1:
+ *    SCSS:
  *    #nav {
- *      @include v-navbar(300px);
+ *      @include x-vertical-navbar(300px);
  *    }
  *
+ *    HTML:
  *    <div id="nav">
  *       <ul>
  *         <li><a class="active" href="#home">Home</a></li>
@@ -499,10 +486,12 @@ $baseFontPixel:   14px    !default;
  *   </div>
  *
  *  Usage 2:
+ *    SCSS:
  *    #nav {
- *      @include v-navbar($width:150px, $isFullHeight:true);
+ *      @include x-vertical-navbar($width:150px, $isFullHeight:true);
  *    }
  *
+ *    HTML:
  *    <div id="nav">
  *       <ul>
  *         <li><a class="active" href="#home">Home</a></li>
@@ -512,7 +501,7 @@ $baseFontPixel:   14px    !default;
  *       </ul>
  *   </div>
  */
-@mixin v-navbar(
+@mixin x-vertical-navbar(
             $width: 200px,
             $bgColor: #f1f1f1,
             $textColor: #000,
@@ -527,6 +516,7 @@ $baseFontPixel:   14px    !default;
     padding: 0;
     width: $width;
     background-color: $bgColor;
+
     @if ($isFullHeight) {
       height: 100%; /* Full height */
       position: fixed; /* Make it stick, even on scroll */
@@ -556,27 +546,36 @@ $baseFontPixel:   14px    !default;
 
 /**
  *  » Horizontal Navigation Bar.
- *  Mixin Name: @mixin h-navbar(
- *                    $bgColor: #333,
- *                    $textColor: white,
- *                    $hoverBgColor: #111,
- *                    $activeLinkBgColor: #4CAF50,
- *                    $isDivider: false,
- *                    $dividerColor: #bbb)
+ *  Mixin Name: @mixin x-horizontal-navbar(
+ *                          $bgColor: #333,
+ *                          $hoverBgColor: #111,
+ *                          $textColor: #fff,
+ *                          $hoverTextColor: #fff,
+ *                          $activeLinkBgColor: #4CAF50,
+ *                          $activeLinkTextColor: #fff,
+ *                          $padding: 14px 16px,
+ *                          $isDivider: false,
+ *                          $dividerColor: #bbb)
  *  ---
  *  Parameter Descriptions:
- *  @param $bgColor = Navigation bar background color. Default color: #333.
- *  @param $textColor = Link text color. Default color: #fff.
- *  @param $hoverBgColor = Link hover background color. Default color: #111.
- *  @param $activeLinkBgColor = Active link background color. Default color: #4CAF50.
- *  @param $isDivider = Divider inserts links. Default value: false.
- *  @param $dividerColor = Dividers color. Default color: #bbb.
+ *  @param $bgColor: Navigation bar background color. Default color: #333.
+ *  @param $hoverBgColor: Link hover background color. Default color: #111.
+ *  @param $textColor: Link text color. Default color: #fff.
+ *  @param $hoverTextColor: Link hover text color. Default color: #fff.
+ *  @param $activeLinkBgColor: Active link background color. Default color: #4CAF50.
+ *  @param $activeLinkTextColor: Active link text color. Default color: #fff.
+ *  @param $padding: Link padding. Default value: 14px 16px.
+ *         Tip: [14px 16px -> top-bottom left-right], [15px 5px 15px 5px -> top, right, bottom, left]
+ *  @param $isDivider: Divider inserts links. Default value: false.
+ *  @param $dividerColor: Dividers color. Default color: #bbb.
  *
  *  Usage:
+ *    SCSS:
  *    #nav {
- *      @include h-navbar($isDivider:true);
+ *      @include x-horizontal-navbar($isDivider:true);
  *    }
  *
+ *    HTML:
  *    <div id="nav">
  *       <ul>
  *         <li><a class="active" href="#home">Home</a></li>
@@ -586,11 +585,14 @@ $baseFontPixel:   14px    !default;
  *       </ul>
  *    </div>
  */
-@mixin h-navbar(
+@mixin x-horizontal-navbar(
           $bgColor: #333,
-          $textColor: white,
           $hoverBgColor: #111,
+          $textColor: #fff,
+          $hoverTextColor: #fff,
           $activeLinkBgColor: #4CAF50,
+          $activeLinkTextColor: #fff,
+          $padding: 14px 16px,
           $isDivider: false,
           $dividerColor: #bbb) {
   ul {
@@ -610,14 +612,16 @@ $baseFontPixel:   14px    !default;
         display: block;
         color: $textColor;
         text-align: center;
-        padding: 14px 16px; /* Link height or width change it */
+        padding: $padding;
         text-decoration: none;
 
         .active {
+          color: $activeLinkTextColor;
           background-color: $activeLinkBgColor;
         }
 
         &:hover:not(.active) {
+          color: $hoverTextColor;
           background-color: $hoverBgColor;
         }
       }
@@ -633,8 +637,8 @@ $baseFontPixel:   14px    !default;
 
 
 /**
- *  » Dropdown
- *  Mixin Name: @mixin dropdown(
+ *  » Dropdown.
+ *  Mixin Name: @mixin x-dropdown(
  *                  $btnBgColor: #4CAF50,
  *                  $btnTextColor: white,
  *                  $contentWidth: 160px,
@@ -649,10 +653,12 @@ $baseFontPixel:   14px    !default;
  *  @param $linkHoverBgColor: Link hover background color. Default color: #f1f1f1.
  *
  *  Usage:
+ *    SCSS:
  *    #drop {
- *       @include dropdown();
+ *       @include x-dropdown();
  *    }
  *
+ *    HTML:
  *    <div id="drop">
  *      <div class="dropdown">
  *        <button class="dropbtn">Dropdown</button>
@@ -664,7 +670,7 @@ $baseFontPixel:   14px    !default;
  *      </div>
  *    </div>
  */
-@mixin dropdown(
+@mixin x-dropdown(
             $btnBgColor: #4CAF50,
             $btnTextColor: white,
             $contentWidth: 160px,
@@ -714,12 +720,12 @@ $baseFontPixel:   14px    !default;
 
 
 /**
- *  » Tooltip
- *  Mixin Name: @mixin tooltip(
- *                  $position: top,
- *                  $bgColor: #000,
- *                  $textColor: #fff,
- *                  $height: 5px)
+ *  » Tooltip.
+ *  Mixin Name: @mixin x-tooltip(
+ *                    $position: top,
+ *                    $bgColor: #000,
+ *                    $textColor: #fff,
+ *                    $height: 5px)
  *  ---
  *  Parameter Descriptions:
  *  @param $position: Tooltip position. Values(top, bottom, left, right). Default value: top.
@@ -728,17 +734,19 @@ $baseFontPixel:   14px    !default;
  *  @param $height: Tooltip height. Default value: 5px.
  *
  *  Usage:
+ *    SCSS:
  *    #tooltip {
- *      @include tooltip(bottom, $height: 10px);
+ *      @include x-tooltip(bottom, $height: 10px);
  *    }
  *
+ *    HTML:
  *    <div id="tooltip">
  *      <div class="tooltip">Hover over me
  *        <span class="tooltiptext">Tooltip text</span>
  *      </div>
  *    </div>
  */
-@mixin tooltip($position: top, $bgColor: #000, $textColor: #fff, $height: 5px) {
+@mixin x-tooltip($position: top, $bgColor: #000, $textColor: #fff, $height: 5px) {
   .tooltip {
     position: relative;
     display: inline-block;
@@ -812,28 +820,30 @@ $baseFontPixel:   14px    !default;
 
 /**
  *  » Box Shadow.
- *  Mixin Name: @mixin box-shadow($args...)
+ *  Mixin Name: @mixin x-box-shadow($args...)
  *  ---
  *  Parameter Descriptions:
  *  @param $args: Values(Horizontal shadow, Vertical shadow, Blur, Shadow color)
  *
  *  Usage:
+ *    SCSS:
  *    .box {
  *      width: 300px;
  *      height: 200px;
- *      @include box-shadow(0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19));
+ *      @include x-box-shadow(0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19));
  *    }
  *
+ *    HTML:
  *    <div class="box"></div>
  */
-@mixin box-shadow($args...) {
-  @include prefix('box-shadow', $args);
+@mixin x-box-shadow($args...) {
+  @include x-prefix('box-shadow', $args);
 }
 
 
 /**
  *  » Gradients.
- *  Mixin Name: @mixin gradient($type: linear, $style: diagonal, $args...)
+ *  Mixin Name: @mixin x-gradient($type: linear, $style: diagonal, $args...)
  *  Tip: See at examples. Link: http://www.w3schools.com/css/css3_gradients.asp
  *  ---
  *  Parameter Descriptions:
@@ -843,24 +853,28 @@ $baseFontPixel:   14px    !default;
  *  @param $args: Color-stop#1, Color-stop#2...
  *
  *  Usage 1:
+ *    SCSS:
  *    .grad {
  *      Width: 300px;
  *      height: 150px;
- *      @include gradient($args: #000, #fff);
+ *      @include x-gradient($args: #000, #fff);
  *    }
  *
+ *    HTML:
  *    <div class="grad"></div>
  *
  *  Usage 2:
+ *    SCSS:
  *    .grad {
  *      Width: 300px;
  *      height: 150px;
- *      @include gradient($style: angle, $angle: -90deg, $args: #000, #fff);
+ *      @include x-gradient($style: angle, $angle: -90deg, $args: #000, #fff);
  *    }
  *
+ *    HTML:
  *    <div class="grad"></div>
  */
-@mixin gradient($type: linear, $style: diagonal, $angle: 45deg, $args...) {
+@mixin x-gradient($type: linear, $style: diagonal, $angle: 45deg, $args...) {
   background: white; /* For browsers that do not support gradients */
   @if ($type == linear) {
     @if ($style == diagonal) {
@@ -899,8 +913,8 @@ $baseFontPixel:   14px    !default;
 
 /**
  *  » Image Filter.
- *  Mixin Name: @mixin image-filter($filterType: grayscale, $args...)
- *  Warning: IE not supported.
+ *  Mixin Name: @mixin x-image-filter($filterType: grayscale, $args...)
+ *  Warning: IE not supported. EDGE supported.
  *  ---
  *  Parameter Descriptions:
  *  @params $filterType: Filter type. Default value: grayscale.
@@ -919,24 +933,28 @@ $baseFontPixel:   14px    !default;
  *      Example: url(svg-url#element-id)
  *
  *  Usage 1:
+ *    SCSS:
  *    .filter {
- *      @include image-filter(blur, 5px);
+ *      @include x-image-filter(blur, 5px);
  *    }
  *
+ *    HTML:
  *    <div class="filter>
  *      <img src="image.jpg">
  *    </div>
  *
  *  Usage 2:
+ *    SCSS:
  *    #nav ul li a {
- *      @include image-filter($args: 100%);
- *      @include transition(.3s);
+ *      @include x-image-filter($args: 100%);
+ *      @include x-transition(.3s);
  *    }
  *
  *    #nav ul li a:hover {
- *      @include image-filter($args: 0);
+ *      @include x-image-filter($args: 0);
  *    }
  *
+ *    HTML:
  *    <div id="nav">
  *      <ul>
  *        <li><a href="#"><img src="link1.jpg"></a></li>
@@ -944,7 +962,7 @@ $baseFontPixel:   14px    !default;
  *      </ul>
  *    </div>
  */
-@mixin image-filter($filterType: grayscale, $args...) {
+@mixin x-image-filter($filterType: grayscale, $args...) {
   img {
     -webkit-filter: $filterType+'('+$args+')';
     filter: $filterType+'('+$args+')';
@@ -954,13 +972,14 @@ $baseFontPixel:   14px    !default;
 
 /**
  *  » Button to add animation.
- *  Mixin Name: @mixin add-button-animation($content: '»')
+ *  Mixin Name: @mixin x-button-animation($content: '»')
  *  Tip: You can use icon fonts.
  *  ---
  *  Parameter Descriptions:
  *  @params $content: Icon will appear when hovering over the button. Default value: '»'.
  *
  *  Usage:
+ *    SCSS:
  *    .button {
  *      display: inline-block;
  *      border-radius: 4px;
@@ -974,19 +993,20 @@ $baseFontPixel:   14px    !default;
  *      cursor: pointer;
  *      margin: 5px;
  *
- *      @include add-button-animation();
+ *      @include x-button-animation();
  *    }
  *
+ *   HTML:
  *   <button class="button">
  *     <span>Hover</span>
  *   </button>
  */
-@mixin add-button-animation($content: '»') {
+@mixin x-button-animation($content: '»') {
   span {
     cursor: pointer;
     display: inline-block;
     position: relative;
-    @include transition(.5s);
+    @include x-transition(.5s);
 
     &:after {
       content: $content;
@@ -994,7 +1014,7 @@ $baseFontPixel:   14px    !default;
       opacity: 0;
       top: 0;
       right: -20px;
-      @include transition(.5s);
+      @include x-transition(.5s);
     }
   }
 
@@ -1010,8 +1030,8 @@ $baseFontPixel:   14px    !default;
 
 
 /**
- *  » Add Font Icon.
- *  Mixin Name: @mixin add-font-icon($icon, $direction: right, $size: 14px, $color: #000, $padding: 0)
+ *  » Font Icon.
+ *  Mixin Name: @mixin x-icon($icon, $direction: right, $size: 14px, $color: #000, $padding: 0)
  *  Tip: Icon list. Link: https://fortawesome.github.io/Font-Awesome/icons/
  *  ---
  *  Parameter Descriptions:
@@ -1022,21 +1042,23 @@ $baseFontPixel:   14px    !default;
  *  @param $padding: Icon padding. Default value: 0px.
  *
  *  Usage:
+ *    SCSS:
  *    .chart {
  *      color: white;
- *      @include font-select('m', 20px);
+ *      @include x-font("m", 20px);
  *
  *      i {
- *        @include add-font-icon($f-bar-chart, $color: white);
+ *        @include x-icon($f-bar-chart, $color: white);
  *      }
  *    }
  *
+ *   HTML:
  *   <div class="chart">
  *     The Chart &nbsp;
  *     <i></i>
  *   </div>
  */
-@mixin add-font-icon($icon, $direction: right, $size: 14px, $color: #111, $padding: 0) {
+@mixin x-icon($icon, $direction: right, $size: $baseFontPixel, $color: #111, $padding: 0) {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
@@ -1047,7 +1069,7 @@ $baseFontPixel:   14px    !default;
   @if($direction == left) {
     &:before {
       content: $icon;
-      font-size: convert_em($size);
+      font-size: x-convert_em($size);
       color: $color;
       @if($padding > 0) {
         padding-right: $padding;
@@ -1057,7 +1079,7 @@ $baseFontPixel:   14px    !default;
   @else {
     &:after {
       content: $icon;
-      font-size: convert_em($size);
+      font-size: x-convert_em($size);
       color: $color;
       @if($padding > 0) {
         padding-left: $padding;
@@ -1069,7 +1091,7 @@ $baseFontPixel:   14px    !default;
 
 /**
  *  » Font Selector.
- *  Mixin Name: @mixin font-select($fontType: 'r', $size: $baseFontPixel, $spacing: 0.5px, $fontName: $baseFontName)
+ *  Mixin Name: @mixin x-font($fontType: 'r', $size: $baseFontPixel, $spacing: 0.5px, $fontName: $baseFontName)
  *  Note: Before use, enter the value of $baseFontName.
  *  Warning: Use this when you import the fonts to your project:
  *    @font-face {
@@ -1090,19 +1112,21 @@ $baseFontPixel:   14px    !default;
  *  @param $fontName: Font name. Default value: Base font name.
  *
  *  Usage:
+ *    SCSS:
  *    .caption {
- *      @include font-select('m', 18px);
+ *      @include x-font('m', 18px);
  *    }
  *
+ *    HTML:
  *    <p class="caption">This is caption.</p>
  */
-@mixin font-select($fontType: 'r', $size: $baseFontPixel, $spacing: 0.5px, $fontName: $baseFontName) {
+@mixin x-font($fontType: 'r', $size: $baseFontPixel, $spacing: 0.5px, $fontName: $baseFontName) {
   @if($fontName == null) {
     &:before {
-      content: '@Error: The font name is null! See "_xcode.css.mixins.fw.scss" at line:62';
+      content: '@Error: The font name is null! See "xcode.css.mixin.fw.scss" at line:63';
       font-weight: bold;
       color: red;
-      text-shadow: 1px 1px 2px rgba(0,0,0,.6);
+      text-shadow: 1px 1px 5px rgba(255,255,255,.6);
     }
   }
   @else {
@@ -1120,15 +1144,22 @@ $baseFontPixel:   14px    !default;
       font-family: $fontName+'Bold', sans-serif;
     }
 
-    font-size: convert_em($size);
+    font-size: x-convert_em($size);
     letter-spacing: -$spacing;
   }
 }
 
 
 /**
- *  » Add Menu Button.
- *  Mixin Name: @mixin add-menu-button($color: #fff, $position: right, $radius: 2px, $thickness: 3px, $width: 30px)
+ *  » Menu Button.
+ *  Mixin Name: @mixin x-menu-button(
+ *                        $color: #fff,
+ *                        $position: right,
+ *                        $radius: 2px,
+ *                        $thickness: 3px,
+ *                        $width: 30px,
+ *                        $isBorder: false,
+ *                        $borderColor: #222)
  *  ---
  *  Parameter Descriptions:
  *  @param $color: Line color. Default color: #fff.
@@ -1136,11 +1167,13 @@ $baseFontPixel:   14px    !default;
  *  @param $radius: Line border radius. Default value: 2px.
  *  @param $thickness: Line thickness. Default value: 3px.
  *  @param $width: Line width. Default value: 30px.
+ *  @param $isBorder: Menu button border. Default value: false.
+ *  @param $borderColor: Border color. Default color: #222.
  *
  *  Usage:
  *    SASS:
  *    #menu-btn {
- *      @include add-menu-button($radius:0);
+ *      @include x-menu-button($radius:0);
  *    }
  *
  *    //Paste this is class main CSS file.
@@ -1154,8 +1187,8 @@ $baseFontPixel:   14px    !default;
  *        }
  *
  *        //If the position of the button is left, change in the plus with the minus.
- *        &:before {@include transform2d(rotate(-45deg))}
- *        &:after {@include transform2d(rotate(45deg))}
+ *        &:before {@include x-transform2d(rotate(-45deg))}
+ *        &:after {@include x-transform2d(rotate(45deg))}
  *      }
  *    }
  *
@@ -1179,9 +1212,20 @@ $baseFontPixel:   14px    !default;
  *      return false;
  *    });
  */
-@mixin add-menu-button($color: $white, $position: right, $radius: 2px, $thickness: 3px, $width: 30px) {
+@mixin x-menu-button(
+          $color: $white,
+          $position: right,
+          $radius: 2px,
+          $thickness: 3px,
+          $width: 30px,
+          $isBorder: false,
+          $borderColor: #222) {
+
   float: $position;
-  @include media-query("min", $desktopSize) {
+  @if($isBorder) {
+    border: 1px solid $borderColor;
+  }
+  @include x-media-query("min", $desktopSize) {
     display: none;
   }
 
@@ -1194,8 +1238,8 @@ $baseFontPixel:   14px    !default;
     cursor: pointer;
     z-index: 999;
 
-    @include prefix('touch-action', 'manipulation');
-    @include prefix('user-select', 'none');
+    @include x-prefix('touch-action', 'manipulation');
+    @include x-prefix('user-select', 'none');
 
     span {
       position: absolute;
@@ -1206,8 +1250,8 @@ $baseFontPixel:   14px    !default;
       height: $thickness;
       background-color: $color;
 
-      @include border-radius($radius);
-      @include transition('all .2s ease-in-out 0s');
+      @include x-border-radius($radius);
+      @include x-transition('all .2s ease-in-out 0s');
 
       &:before {top: -8px}
       &:after {top: 8px}
@@ -1221,8 +1265,8 @@ $baseFontPixel:   14px    !default;
         background-color: $color;
         display: block;
 
-        @include border-radius($radius);
-        @include transition('all .2s ease-in-out 0s');
+        @include x-border-radius($radius);
+        @include x-transition('all .2s ease-in-out 0s');
       }
     }
 
@@ -1234,8 +1278,13 @@ $baseFontPixel:   14px    !default;
 
 
 /**
- *  » Add Triangle.
- *  Mixin Name: @mixin add-triangle($color: #111, $direction: up, $position: center, $indent: 8px, $size: 10px)
+ *  » Triangle.
+ *  Mixin Name: @mixin x-triangle(
+ *                      $color: #111,
+ *                      $direction: up,
+ *                      $position: center,
+ *                      $indent: 8px,
+ *                      $size: 10px)
  *  ---
  *  Parameter Descriptions:
  *  @param $color: Triangle color. Default color: #111.
@@ -1254,8 +1303,9 @@ $baseFontPixel:   14px    !default;
  *      text-align: center;
  *      color: $white;
  *      font-size: 20px;
- *      @include border-radius(5px);
- *      @include add-triangle(#813efa, right);
+ *
+ *      @include x-border-radius(5px);
+ *      @include x-triangle(#813efa, right);
  *    }
  *
  *    HTML
@@ -1263,7 +1313,7 @@ $baseFontPixel:   14px    !default;
  *      Triangle
  *    </div>
  */
-@mixin add-triangle($color: #111, $direction: up, $position: center, $indent: 8px, $size: 10px) {
+@mixin x-triangle($color: #111, $direction: up, $position: center, $indent: 8px, $size: 10px) {
   &:before {
     content: "";
     height: 0;
@@ -1333,14 +1383,16 @@ $baseFontPixel:   14px    !default;
 
 /**
  *  » Clearfix.
- *  Helper Name: %clearfix
+ *  Helper Name: %x-clearfix
  *
  *  Usage:
+ *    SCSS:
  *    .container {
  *      background-color: #f1f1f1;
- *      @extend %clearfix;
+ *      @extend %x-clearfix;
  *    }
  *
+ *    CSS:
  *    .wrapper {
  *      width: 300px;
  *      height: 200px;
@@ -1349,12 +1401,13 @@ $baseFontPixel:   14px    !default;
  *      margin: 10px;
  *    }
  *
+ *    HTML:
  *    <div class="container">
  *      <div class="wrapper"></div>
  *      <div class="wrapper"></div>
  *    </div>
  */
-%clearfix {
+%x-clearfix {
   &:after {
     content: "";
     display: table;
@@ -1365,24 +1418,26 @@ $baseFontPixel:   14px    !default;
 
 /**
  *  » Affix.
- *  Helper Name: %affix-top, %affix-bottom
+ *  Helper Name: %x-affix-top, %x-affix-bottom
  *
  *  Usage:
+ *    SCSS:
  *    .bottom-menu {
  *      height: 200px;
- *      @extend %affix-bottom;
+ *      @extend %x-affix-bottom;
  *    }
  *
+ *    HTML:
  *    <div class="bottom-menu"></div>
  */
-%affix-top {
+%x-affix-top {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
 }
 
-%affix-bottom {
+%x-affix-bottom {
   position: fixed;
   bottom: 0;
   left: 0;

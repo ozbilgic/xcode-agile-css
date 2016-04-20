@@ -1,4 +1,4 @@
-# Sass CSS3 Mixin Framework v.1.7.1
+# XCODE Agile CSS Mixin Framework v.2.0.0
 ### Agile and Smart CSS coding library.
 
 
@@ -8,7 +8,7 @@
 Version
 ----
 
-1.7.1
+2.0.0
 
 
 Usage
@@ -27,7 +27,7 @@ Functions
 
 ##### `» Pixel converts the "em" format.`
 * **Warning:** Specify the base font size before use. ($baseFontPixel default size 14px.)
-* **Function Name:** @convert_em($fontPx)
+* **Function Name:** @function x-convert_em($fontPx)
 
 **Parameter Descriptions:**
 * @param **$fontPx:** *Font Size.*
@@ -37,7 +37,7 @@ Functions
 * SCSS:
 ```scss
 p {
-	font-size: convert_em(14px);
+	font-size: x-convert_em(14px);
 }
 ```
 
@@ -46,7 +46,7 @@ Mixins
 ----
 
 ##### `» CSS3 Prefix Adding.`
-* **Mixin Name:** @prefix($property, $args...)
+* **Mixin Name:** @mixin x-prefix($property, $args...)
 
 **Parameter Descriptions:**
 * @param **$property:** *Css property name. Ex. "transition", "border-radius"...*
@@ -58,14 +58,14 @@ Mixins
 .box {
 	Width: 300px;
 	height: 300px;
-	@include prefix(border-radius, 5px);
+	@include x-prefix("border-radius", 5px);
 }
 ```
 
 
 ----
 ##### `» Responsive Media Selector.`
-* **Mixin Name:** @media($media)
+* **Mixin Name:** @mixin x-media($media)
 
 **Parameter Descriptions:**
 * @param **($media)** *Can take values:*
@@ -80,7 +80,7 @@ Mixins
 * SCSS:
 ```scss
 nav[data="main-menu"] {
-	@include media($desktop) {
+	@include x-media($desktop) {
 		display: none;
 	}
 }
@@ -89,8 +89,8 @@ nav[data="main-menu"] {
 
 ----
 ##### `» Alternate Responsive Media Selector.`
-This selective media can be entered in any desired resolution.
-* **Mixin Name:** @media-query($minMax, $width)
+> This selective media can be entered in any desired resolution.
+* **Mixin Name:** @mixin x-media-query($minMax, $width)
 
 **Parameter Descriptions:**
 * @param **$minMax:** *min or max. (min-width, max-width)*
@@ -107,13 +107,13 @@ This selective media can be entered in any desired resolution.
 * SCSS:
 ```scss
 nav.nav-content {
-	@include media-query(min, $desktop) {
+	@include x-media-query(min, $desktop) {
 		display: none;
 	}
 }
 
 h1.caption {
-	@include media-query(max, 300px) {
+	@include x-media-query(max, 300px) {
 		font-size: 20%;
 	}
 }
@@ -122,7 +122,7 @@ h1.caption {
 
 ----
 ##### `» Setting The Alpha Channel For Items.`
-* **Mixin Name:** @opacity($opacity: .85)
+* **Mixin Name:** @mixin x-opacity($opacity: .85)
 
 **Parameter Descriptions:**
 * @param **$opacity:** *0..1*
@@ -131,14 +131,14 @@ h1.caption {
 * SCSS:
 ```scss
 a:hover {
-	@include opacity(.7)
+	@include x-opacity(.7);
 }
 ```
 
 
 ----
 ##### `» Set Border Radius.`
-* **Mixin Name:** @border-radius($radius)
+* **Mixin Name:** @mixin x-border-radius($radius)
 
 **Parameter Descriptions:**
 * @param **$radius:** *You know that ;)*
@@ -147,7 +147,7 @@ a:hover {
 * SCSS:
 ```scss
 div.box {
-	@include border-radius(15px)
+	@include x-border-radius(15px);
 }
 ```
 
@@ -155,17 +155,16 @@ div.box {
 ----
 ##### `» Set Shorthand Animation.`
 * **Tip:** *You can use this feature with keyframes*
-* **Mixin Name:** @animation($args...)
+* **Mixin Name:** @mixin x-animation($args...)
 
 **Parameter Descriptions:**
-* @param **$args:** *{
-          	Animation name,
-            Duration,
-            Timing function,
-            Delay,
-            Iteration count,
-            Direction
-          }*
+* @param **$args:**
+	* Animation name,
+	* Duration,
+	* Timing function,
+	* Delay,
+	* Iteration count,
+	* Direction
 
 **Usage:**
 * SCSS:
@@ -175,15 +174,16 @@ div.anim {
 	height: 100px;
 	position: relative;
 	background-color: red;
-	@include animation('example 4s 3 alternate');
+
+	@include x-animation('example 4s 3 alternate');
 }
 ```
 
 
 ----
 ##### `» Animation Creator.`
-* **Mixin Name:** @keyframes($animationName)
-* **Tip:** *[See those for features][anim]*
+* **Mixin Name:** @mixin x-keyframes($animationName)
+* **Tip:** *[See those for features.][anim]*
 
 **Parameter Descriptions:**
 * @param **$animationName:** *Name of the animation. You can put any name.*
@@ -191,7 +191,7 @@ div.anim {
 **Usage:**
 * SCSS:
 ```scss
-@include keyframes(example) {
+@include x-keyframes(example) {
 	0%   {background-color: red; left:0px; top:0px;}
 	25%  {background-color: yellow; left:200px; top:0px;}
 	50%  {background-color: blue; left:200px; top:200px;}
@@ -204,7 +204,8 @@ div.anim {
 	height: 100px;
 	position: relative;
 	background-color: red;
-	@include animation('example 4s 3 alternate');
+
+	@include x-animation('example 4s 3 alternate');
 }
 ```
 
@@ -214,19 +215,18 @@ div.anim {
 * **Mixin Name:** @transition($args...)
 
 **Parameter Descriptions:**
-* @param **$args:** *{
-            Property,
-            Duration,
-            Timing function,
-            Delay
-          }*
+* @param **$args:**
+	* Property,
+	* Duration,
+	* Timing function,
+	* Delay
 
 **Usage 1:**
 * SCSS:
 ```scss
 a {
 	color: gray;
-	@include transition(color .3s ease);
+	@include x-transition(color .3s ease);
 
 	&:hover {
 		color: black;
@@ -240,7 +240,8 @@ header.navbar {
 	min-height: 60px;
 	position: fixed;
 	margin: 0 auto;
-	@include transition(.4s);
+
+	@include x-transition(.4s);
 }
 
 .navbg-black {
@@ -252,7 +253,7 @@ header.navbar {
 
 ----
 ##### `» 2D Transforms.`
-* **Mixin Name:** @transform2d($method)
+* **Mixin Name:** @mixin x-transform2d($method)
 * **Tip:** *[See at examples](http://www.w3schools.com/css/css3_2dtransforms.asp)*
 
 **Parameter Descriptions:**
@@ -269,14 +270,14 @@ header.navbar {
 * SCSS:
 ```scss
 div.rotate {
-	@include transform2d(rotate(20deg));
+	@include x-transform2d(rotate(20deg));
 }
 ```
 
 
 ----
 ##### `» 3D Transforms.`
-* **Mixin Name:** @transform3d($method)
+* **Mixin Name:** @mixin transform3d($method)
 
 **Parameter Descriptions:**
 * @param **$method:** Method name.
@@ -291,14 +292,14 @@ div.rotate {
 * SCSS:
 ```scss
 div.rotate {
-	@include transform3d(rotateZ(90deg));
+	@include x-transform3d(rotateZ(90deg));
 }
 ```
 
 
 ----
 ##### `» Change Input Placeholder Attributes.`
-* **Mixin Name:** @change-input-placeholder()
+* **Mixin Name:** @mixin x-change-input-placeholder()
 * Supported placeholder styles:
 	* font
 	* color
@@ -316,7 +317,7 @@ div.rotate {
 * SCSS:
 ```scss
 input[type="email"] {
-	@include change-input-placeholder() {
+	@include x-change-input-placeholder() {
 		color: orange;
 	}
 }
@@ -324,27 +325,8 @@ input[type="email"] {
 
 
 ----
-##### `» Change The Color of All Images to Black and White. - DEPRECATED`
-* **Note:** Instead of Image Filter use. It will be removed in version 2.0
-* **Mixin Name:** @grayscale($value)
-* **Tip:** *0..100, 100 full gray.*
-* **Warning:** IE not supported. EDGE supported.
-
-**Parameter Descriptions:**
-* @param **$value:** *Percent.*
-
-**Usage:**
-* SCSS:
-```scss
-img.poster {
-	@include grayscale(20%);
-}
-```
-
-
-----
 ##### `» Vertical Navigation Bar.`
-* **Mixin Name:** @v-navbar(
+* **Mixin Name:** @mixin x-vertical-navbar(
 	* **$width:** 200px,
 	* **$bgColor:** #f1f1f1,
 	* **$textColor:** #000,
@@ -368,7 +350,7 @@ img.poster {
 * SCSS:
 ```scss
 #nav {
-	@include v-navbar(300px);
+	@include x-vertical-navbar(300px);
 }
 ```
 * HTML:
@@ -387,7 +369,7 @@ img.poster {
 * SCSS:
 ```scss
 #nav {
-	@include v-navbar($width:150px, $isFullHeight:true);
+	@include x-vertical-navbar($width:150px, $isFullHeight:true);
 }
 ```
 * HTML:
@@ -405,7 +387,7 @@ img.poster {
 
 ----
 ##### `» Horizontal Navigation Bar.`
-* **Mixin Name:** @mixin h-navbar(
+* **Mixin Name:** @mixin x-horizontal-navbar(
 	* **$bgColor:** #333,
 	* **$textColor:** white,
 	* **$hoverBgColor:** #111,
@@ -425,7 +407,7 @@ img.poster {
 * SCSS:
 ```scss
 #nav {
-	@include h-navbar($isDivider:true);
+	@include x-horizontal-navbar($isDivider:true);
 }
 ```
 * HTML:
@@ -443,7 +425,7 @@ img.poster {
 
 ----
 ##### `» Dropdown.`
-* **Mixin Name:** @mixin dropdown(
+* **Mixin Name:** @mixin x-dropdown(
 	*	**$btnBgColor:** #4CAF50,
 	*	**$btnTextColor:** white,
 	*	**$contentWidth:** 160px,
@@ -461,7 +443,7 @@ img.poster {
 * SCSS:
 ```scss
 #drop {
-	 @include dropdown();
+	 @include x-dropdown();
 }
 ```
 * HTML:
@@ -481,7 +463,7 @@ img.poster {
 
 ----
 ##### `» Tooltip.`
-* **Mixin Name:** @mixin tooltip(
+* **Mixin Name:** @mixin x-tooltip(
 	*	**$position:** top,
 	*	**$bgColor:** #000,
 	*	**$textColor:** #fff,
@@ -497,7 +479,7 @@ img.poster {
 * SCSS:
 ```scss
 #tooltip {
-	@include tooltip(bottom, $height: 10px);
+	@include x-tooltip(bottom, $height: 10px);
 }
 ```
 * HTML:
@@ -512,7 +494,7 @@ img.poster {
 
 ----
 ##### `» Box Shadow.`
-* **Mixin Name:** @mixin box-shadow($args...)
+* **Mixin Name:** @mixin x-box-shadow($args...)
 
 **Parameter Descriptions:**
 * @param **$args:** *Values(Horizontal shadow, Vertical shadow, Blur, Shadow color)*
@@ -523,7 +505,7 @@ img.poster {
 .box {
 	width: 300px;
 	height: 200px;
-	@include box-shadow(0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19));
+	@include x-box-shadow(0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19));
 }
 ```
 * HTML:
@@ -534,7 +516,7 @@ img.poster {
 
 ----
 ##### `» Gradients.`
-* **Mixin Name:** @mixin gradient($type: linear, $style: diagonal, $args...)
+* **Mixin Name:** @mixin x-gradient($type: linear, $style: diagonal, $args...)
 * **Tip:** *[See at examples.](http://www.w3schools.com/css/css3_gradients.asp)*
 
 **Parameter Descriptions:**
@@ -549,7 +531,7 @@ img.poster {
 .grad {
 	Width: 300px;
 	height: 150px;
-	@include gradient($args: #000, #fff);
+	@include x-gradient($args: #000, #fff);
 }
 ```
 * HTML:
@@ -563,7 +545,7 @@ img.poster {
 .grad {
 	Width: 300px;
 	height: 150px;
-	@include gradient($style: angle, $angle: -90deg, $args: #000, #fff);
+	@include x-gradient($style: angle, $angle: -90deg, $args: #000, #fff);
 }
 ```
 * HTML:
@@ -573,8 +555,8 @@ img.poster {
 
 
 ----
-##### `» Image Filter.`
-* **Mixin Name:** @mixin image-filter($filterType: grayscale, $args...)
+##### `» Image Filters.`
+* **Mixin Name:** @mixin x-image-filter($filterType: grayscale, $args...)
 * **Warning:** IE not supported. EDGE supported.
 
 **Parameter Descriptions:**
@@ -597,7 +579,7 @@ img.poster {
 * SCSS:
 ```scss
 .filter {
-	@include image-filter(blur, 5px);
+	@include x-image-filter(blur, 5px);
 }
 ```
 * HTML:
@@ -611,11 +593,11 @@ img.poster {
 * SCSS:
 ```scss
 #nav ul li a {
-	@include image-filter($args: 100%);
-	@include transition(.3s);
+	@include x-image-filter($args: 100%);
+	@include x-transition(.3s);
 
 	&:hover {
-  	@include image-filter($args: 0);
+  	@include x-image-filter($args: 0);
   }
 }
 ```
@@ -631,8 +613,8 @@ img.poster {
 
 
 ----
-##### `» Button to add animation.`
-* **Mixin Name:** @mixin add-button-animation($content: '»')
+##### `» Button animation.`
+* **Mixin Name:** @mixin x-button-animation($content: '»')
 * **Tip:** *You can use icon fonts.*
 
 **Parameter Descriptions:**
@@ -654,7 +636,7 @@ img.poster {
 	cursor: pointer;
 	margin: 5px;
 
-	@include add-button-animation();
+	@include x-button-animation();
 }
 ```
 * HTML:
@@ -666,8 +648,8 @@ img.poster {
 
 
 ----
-##### `» Add Font Icon.`
-* **Mixin Name:** @mixin add-font-icon(
+##### `» Font Icon.`
+* **Mixin Name:** @mixin x-icon(
 	* $icon,
 	* $direction: right,
 	* $size: 14px,
@@ -687,10 +669,10 @@ img.poster {
 ```scss
 .chart {
 	color: white;
-	@include font-select('m', 20px);
+	@include x-font('m', 20px);
 
 	i {
-		@include add-font-icon($f-bar-chart, $color: white);
+		@include x-icon($f-bar-chart, $color: white);
 	}
 }
 ```
@@ -705,7 +687,7 @@ img.poster {
 
 ----
 ##### `» Font Selector.`
-* **Mixin Name:** @mixin font-select(
+* **Mixin Name:** @mixin x-font(
 	* $fontType: 'r',
 	* $size: $baseFontPixel,
 	* $spacing: 0.5px,
@@ -735,7 +717,7 @@ img.poster {
 * SCSS:
 ```scss
 .caption {
-	@include font-select('m', 18px);
+	@include x-font('m', 18px);
 }
 ```
 * HTML:
@@ -745,8 +727,8 @@ img.poster {
 
 
 ----
-##### `» Add Menu Button.`
-* **Mixin Name:** @mixin add-menu-button(
+##### `» Menu Button.`
+* **Mixin Name:** @mixin x-menu-button(
 	* **$color:** $white,
 	* **$position:** right,
 	* **$radius:** 2px,
@@ -764,7 +746,7 @@ img.poster {
 * SCSS:
 ```scss
 #menu-btn {
-	@include add-menu-button($radius:0);
+	@include x-menu-button($radius:0);
 }
 
 //Paste this is class main CSS file.
@@ -778,8 +760,8 @@ img.poster {
 		}
 
 		//If the position of the button is left, change in the plus with the minus.
-		&:before {@include transform2d(rotate(-45deg))}
-		&:after {@include transform2d(rotate(45deg))}
+		&:before {@include x-transform2d(rotate(-45deg))}
+		&:after {@include x-transform2d(rotate(45deg))}
 	}
 }
 ```
@@ -810,8 +792,8 @@ $("#menu-btn").click(function() {
 
 
 ----
-##### `» Add Triangle.`
-* **Mixin Name:** @mixin add-triangle(
+##### `» Triangle.`
+* **Mixin Name:** @mixin x-triangle(
 	* **$color:** #111,
 	* **$direction:** up,
 	* **$position:** center,
@@ -836,8 +818,9 @@ $("#menu-btn").click(function() {
 	text-align: center;
 	color: $white;
 	font-size: 20px;
-	@include border-radius(5px);
-	@include add-triangle(#813efa, right);
+
+	@include x-border-radius(5px);
+	@include x-triangle(#813efa, right);
 }
 ```
 
@@ -852,14 +835,14 @@ $("#menu-btn").click(function() {
 Helpers
 ----
 ##### `» Clearfix.`
-* **Helper Name:** %clearfix
+* **Helper Name:** %x-clearfix
 
 **Usage:**
 * SCSS:
 ```scss
 .container {
 	background-color: #f1f1f1;
-	@extend %clearfix;
+	@extend %x-clearfix;
 }
 
 .wrapper {
@@ -881,14 +864,14 @@ Helpers
 
 ----
 ##### `» Affix.`
-* Helper Name: %affix-top, %affix-bottom
+* Helper Name: %x-affix-top, %x-affix-bottom
 
 **Usage:**
 * SCSS:
 ```scss
 .bottom-menu {
 	height: 200px;
-	@extend %affix-bottom;
+	@extend %x-affix-bottom;
 }
 ```
 * HTML:
@@ -926,8 +909,7 @@ Tools
 
 ----
 ##### `» Reset CSS.`
-> Structured according to these libraries css reset.
-> **Tip:** *This is already attached to the grid system.*
+> Structured according to these libraries css reset. **Tip:** *This is already attached to the grid system.*
 
 
 Version History
@@ -948,14 +930,14 @@ Version History
 * **Mixin added:** Image Filter.
 
 **v.1.2.1**
-* **Minor fixed:** @mixin prefix($property, $args...)
+* **Minor fixed:** @mixin x-prefix($property, $args...)
 	* Rewritten DRY.
 * **Mixin deprecated:** @mixin grayscale($percent)
 	* Instead of Image Filter use.
 
 **v.1.3.0**
 * **Mixin added:** Button to add animation.
-* **Mixin added:** Add Font Icon.
+* **Mixin added:** Font Icon.
 
 **v.1.3.1**
 * **Minor fixed:** Font path.
@@ -994,22 +976,30 @@ Version History
 * **Minor fixed:** Tools folder was deleted and the contents were moved to the main index.
 
 **v.1.6.0**
-* **Mixin added:** Add Menu Button.
+* **Mixin added:** Menu Button.
 
 **v.1.6.1**
 * **Minor change:** 480px removed to grid system.
 * **Minor change:** *$padding* added variable grid system.
-* **Improvement:** @mixin media-query(), has been made more convenient.
+* **Improvement:** @mixin x-media-query(), has been made more convenient.
 * **Error fixed:** 16 columns grid system bug fixed.
 * **Minor fixed:** @mixin h-navbar() and @mixin v-navbar(): The name confusion was fixed.
 * **Minor change:** "12columnsGrid" file name changed to "grid12".
 * **Minor change:** "16columnsGrid" file name changed to "grid16".
 
 **v.1.7.0**
-* **Mixin added:** Add Triangle.
+* **Mixin added:** Triangle.
 
 **v.1.7.1**
-* **Minor fixed:** @mixin font-select() -> Will alert "$baseFontName" value is not entered.
+* **Minor fixed:** @mixin x-font() -> Will alert "$baseFontName" value is not entered.
+
+**v.2.0.0**
+* **Mixin deleted:** @mixin grayscale($percent).
+* **Minor fixed:** @mixin x-horizontal-navbar() -> Link width and height adjustable.
+* **Minor fixed:** @mixin x-menu-button() -> Border option added.
+* **Minor fixed:** Edited all of the descriptions in the library.
+* **Major fixed:** All mixins and functions prefix "x" was added.
+
 
 
 Author
