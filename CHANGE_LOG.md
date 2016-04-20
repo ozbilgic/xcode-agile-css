@@ -1,6 +1,9 @@
 Version History
 ----
 
+**v.1.7.1**
+* **Minor fixed:** @mixin font-select() -> Will alert "$baseFontName" value is not entered.
+
 **v.1.7.0**
 * **Mixin added:** Add Triangle.
 

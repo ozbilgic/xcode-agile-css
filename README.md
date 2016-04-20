@@ -1,4 +1,4 @@
-# Sass CSS3 Mixin Framework v.1.7.0
+# Sass CSS3 Mixin Framework v.1.7.1
 ### Agile and Smart CSS coding library.
 
 
@@ -8,7 +8,7 @@
 Version
 ----
 
-1.7.0
+1.7.1
 
 
 Usage
@@ -1007,6 +1007,9 @@ Version History
 
 **v.1.7.0**
 * **Mixin added:** Add Triangle.
+
+**v.1.7.1**
+* **Minor fixed:** @mixin font-select() -> Will alert "$baseFontName" value is not entered.
 
 
 Author

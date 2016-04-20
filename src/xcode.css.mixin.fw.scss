@@ -1,7 +1,7 @@
 /***************************************************************************
 *  XCODE CSS MIXINS FRAMEWORK                                              *
 *  @author  : xcode                                                        *
-*  @version : 1.7.0                                                        *
+*  @version : 1.7.1                                                        *
 *  @since   : 02.2016                                                      *
 *  @mime    : Sass/Scss                                                    *
 *  @contact : ozbilgiclevent@gmail.com                                     *
@@ -1099,9 +1099,10 @@ $baseFontPixel:   14px    !default;
 @mixin font-select($fontType: 'r', $size: $baseFontPixel, $spacing: 0.5px, $fontName: $baseFontName) {
   @if($fontName == null) {
     &:before {
-      content: '@Error: The font name is null! See "_xcode.css.mixins.fw.scss" at line:55';
+      content: '@Error: The font name is null! See "_xcode.css.mixins.fw.scss" at line:62';
       font-weight: bold;
       color: red;
+      text-shadow: 1px 1px 2px rgba(0,0,0,.6);
     }
   }
   @else {
