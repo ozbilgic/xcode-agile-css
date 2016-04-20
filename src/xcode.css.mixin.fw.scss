@@ -139,7 +139,7 @@ $baseFontPixel:   14px    !default;
  *  ---
  *  Parameter Descriptions:
  *  @param $media = $cellphone, $smartphone, $tablet, $desktop,
- *                  $largeScreen or "nil" when full screen
+ *                  $largeScreen or "null" when full screen
  *
  *  Usage:
  *    nav[data=main-menu] {
@@ -1011,7 +1011,7 @@ $baseFontPixel:   14px    !default;
 
 /**
  *  » Add Font Icon.
- *  Mixin Name: @mixin add-font-icon($icon, $direction: right, $size: 14px, $color: #000 $padding: 0)
+ *  Mixin Name: @mixin add-font-icon($icon, $direction: right, $size: 14px, $color: #000, $padding: 0)
  *  Tip: Icon list. Link: https://fortawesome.github.io/Font-Awesome/icons/
  *  ---
  *  Parameter Descriptions:

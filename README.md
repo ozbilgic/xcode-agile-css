@@ -17,7 +17,7 @@ It is sufficient to include in your project.
 
 ```css
 ...
-@import "xcode.css.mixins.fw";
+@import "xcode.css.mixin.fw";
 ...
 ```
 
@@ -34,6 +34,7 @@ Functions
 * @return em
 
 **Usage:**
+* SCSS:
 ```scss
 p {
 	font-size: convert_em(14px);
@@ -52,6 +53,7 @@ Mixins
 * @param **$args:** *For the selected attribute values. Ex. "color .3s", "15px"...*
 
 **Usage:**
+* SCSS:
 ```scss
 .box {
 	Width: 300px;
@@ -72,9 +74,10 @@ Mixins
 	* **$tablet:** *Default size 768px.*
 	* **$desktop:** *Default size 992px.*
 	* **$largeScreen:** *Default size 1200px.*
-	* **nil:** *When full screen. >1200px.*
+	* **null:** *When full screen. >1200px.*
 
 **Usage:**
+* SCSS:
 ```scss
 nav[data="main-menu"] {
 	@include media($desktop) {
@@ -101,6 +104,7 @@ This selective media can be entered in any desired resolution.
 	* *Or any screen resolution size.*
 
 **Usage:**
+* SCSS:
 ```scss
 nav.nav-content {
 	@include media-query(min, $desktop) {
@@ -124,6 +128,7 @@ h1.caption {
 * @param **$opacity:** *0..1*
 
 **Usage:**
+* SCSS:
 ```scss
 a:hover {
 	@include opacity(.7)
@@ -139,6 +144,7 @@ a:hover {
 * @param **$radius:** *You know that ;)*
 
 **Usage:**
+* SCSS:
 ```scss
 div.box {
 	@include border-radius(15px)
@@ -162,6 +168,7 @@ div.box {
           }*
 
 **Usage:**
+* SCSS:
 ```scss
 div.anim {
 	width: 100px;
@@ -182,6 +189,7 @@ div.anim {
 * @param **$animationName:** *Name of the animation. You can put any name.*
 
 **Usage:**
+* SCSS:
 ```scss
 @include keyframes(example) {
 	0%   {background-color: red; left:0px; top:0px;}
@@ -214,6 +222,7 @@ div.anim {
           }*
 
 **Usage 1:**
+* SCSS:
 ```scss
 a {
 	color: gray;
@@ -225,6 +234,7 @@ a {
 }
 ```
 **Usage 2:**
+* SCSS:
 ```scss
 header.navbar {
 	min-height: 60px;
@@ -247,7 +257,7 @@ header.navbar {
 
 **Parameter Descriptions:**
 * @param **$method:** Method name.
-* Method List
+* Methods:
 	* translate(x,y), translateX(n), translateY(n),
 	* rotate(angle),
 	* scale(x,y), scaleX(n), scaleY(n),
@@ -256,6 +266,7 @@ header.navbar {
 
 
 **Usage:**
+* SCSS:
 ```scss
 div.rotate {
 	@include transform2d(rotate(20deg));
@@ -269,7 +280,7 @@ div.rotate {
 
 **Parameter Descriptions:**
 * @param **$method:** Method name.
-* Method List
+* Methods:
 	* translate3d(x,y,z), translateX(x), translateY(y), translateZ(z),
 	* rotate3d(x,y,z,angle), rotateX(angle), rotateY(angle), rotateZ(angle),
 	* scale3d(x,y,z), scaleX(x), scaleY(y), scaleY(z),
@@ -277,6 +288,7 @@ div.rotate {
 	* perspective(n)
 
 **Usage:**
+* SCSS:
 ```scss
 div.rotate {
 	@include transform3d(rotateZ(90deg));
@@ -301,6 +313,7 @@ div.rotate {
 	* opacity
 
 **Usage:**
+* SCSS:
 ```scss
 input[type="email"] {
 	@include change-input-placeholder() {
@@ -315,12 +328,13 @@ input[type="email"] {
 * **Note:** Instead of Image Filter use. It will be removed in version 2.0
 * **Mixin Name:** @grayscale($value)
 * **Tip:** *0..100, 100 full gray.*
-* **Warning:** IE not supported.
+* **Warning:** IE not supported. EDGE supported.
 
 **Parameter Descriptions:**
 * @param **$value:** *Percent.*
 
 **Usage:**
+* SCSS:
 ```scss
 img.poster {
 	@include grayscale(20%);
@@ -351,11 +365,14 @@ img.poster {
 * @param **$isFullHeight:** *Full height navigation bar. Default value: false.*
 
 **Usage 1:**
+* SCSS:
 ```scss
 #nav {
 	@include v-navbar(300px);
 }
-
+```
+* HTML:
+```html
 <div id="nav">
 	<ul>
 		<li><a class="active" href="#home">Home</a></li>
@@ -367,11 +384,14 @@ img.poster {
 ```
 
 **Usage 2:**
+* SCSS:
 ```scss
 #nav {
 	@include v-navbar($width:150px, $isFullHeight:true);
 }
-
+```
+* HTML:
+```html
 <div id="nav">
 	<ul>
 		<li><a class="active" href="#home">Home</a></li>
@@ -402,11 +422,14 @@ img.poster {
 * @param **$dividerColor:** *Dividers color. Default color: #bbb.*
 
 **Usage:**
+* SCSS:
 ```scss
 #nav {
 	@include h-navbar($isDivider:true);
 }
-
+```
+* HTML:
+```html
 <div id="nav">
 	<ul>
 		<li><a class="active" href="#home">Home</a></li>
@@ -435,11 +458,14 @@ img.poster {
 * @param **$linkHoverBgColor:** *Link hover background color. Default color: #f1f1f1.*
 
 **Usage:**
+* SCSS:
 ```scss
 #drop {
 	 @include dropdown();
 }
-
+```
+* HTML:
+```html
 <div id="drop">
 	<div class="dropdown">
 		<button class="dropbtn">Dropdown</button>
@@ -468,11 +494,14 @@ img.poster {
 * @param **$height:** *Tooltip height. Default value: 5px.*
 
 **Usage:**
+* SCSS:
 ```scss
 #tooltip {
 	@include tooltip(bottom, $height: 10px);
 }
-
+```
+* HTML:
+```html
 <div id="tooltip">
 	<div class="tooltip">Hover over me
 		<span class="tooltiptext">Tooltip text</span>
@@ -489,13 +518,16 @@ img.poster {
 * @param **$args:** *Values(Horizontal shadow, Vertical shadow, Blur, Shadow color)*
 
 **Usage:**
+* SCSS:
 ```scss
 .box {
 	width: 300px;
 	height: 200px;
 	@include box-shadow(0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19));
 }
-
+```
+* HTML:
+```html
 <div class="box"></div>
 ```
 
@@ -512,24 +544,30 @@ img.poster {
 * @param **$args:** *Color-stop#1, Color-stop#2...*
 
 **Usage 1:**
+* SCSS:
 ```scss
 .grad {
 	Width: 300px;
 	height: 150px;
 	@include gradient($args: #000, #fff);
 }
-
+```
+* HTML:
+```html
 <div class="grad"></div>
 ```
 
 **Usage 2:**
+* SCSS:
 ```scss
 .grad {
 	Width: 300px;
 	height: 150px;
 	@include gradient($style: angle, $angle: -90deg, $args: #000, #fff);
 }
-
+```
+* HTML:
+```html
 <div class="grad"></div>
 ```
 
@@ -537,7 +575,7 @@ img.poster {
 ----
 ##### `» Image Filter.`
 * **Mixin Name:** @mixin image-filter($filterType: grayscale, $args...)
-* **Warning:** IE not supported.
+* **Warning:** IE not supported. EDGE supported.
 
 **Parameter Descriptions:**
 * @params **$filterType:** Filter type. Default value: grayscale.
@@ -556,17 +594,21 @@ img.poster {
 			* **Example:** *url(svg-url#element-id)*
 
 **Usage 1:**
+* SCSS:
 ```scss
 .filter {
 	@include image-filter(blur, 5px);
 }
-
+```
+* HTML:
+```html
 <div class="filter>
 	<img src="image.jpg">
 </div>
 ```
 
 **Usage 2:**
+* SCSS:
 ```scss
 #nav ul li a {
 	@include image-filter($args: 100%);
@@ -576,7 +618,9 @@ img.poster {
   	@include image-filter($args: 0);
   }
 }
-
+```
+* HTML:
+```html
 <div id="nav">
 	<ul>
 		<li><a href="#"><img src="link1.jpg"></a></li>
@@ -595,6 +639,7 @@ img.poster {
 * @params **$content:** *Icon will appear when hovering over the button. Default value: '»'.*
 
 **Usage:**
+* SCSS:
 ```scss
 .button {
 	display: inline-block;
@@ -611,7 +656,9 @@ img.poster {
 
 	@include add-button-animation();
 }
-
+```
+* HTML:
+```html
 <button class="button">
 	<span>Hover</span>
 </button>
@@ -620,8 +667,13 @@ img.poster {
 
 ----
 ##### `» Add Font Icon.`
-* **Mixin Name:** @mixin add-font-icon($icon, $direction: right, $size: 14px, $color: #000 $padding: 0)
-* **Tip:** *[Icon list.](https://fortawesome.github.io/Font-Awesome/icons/)*
+* **Mixin Name:** @mixin add-font-icon(
+	* $icon,
+	* $direction: right,
+	* $size: 14px,
+	* $color: #000,
+	* $padding: 0)
+* **Tip:** *[See icon list.](https://fortawesome.github.io/Font-Awesome/icons/)*
 
 **Parameter Descriptions:**
 * @param **$icon:** *Icon name. Tip: See for icon list ($f-*)*
@@ -631,6 +683,7 @@ img.poster {
 * @param **$padding:** *Icon padding. Default value: 0px.*
 
 **Usage:**
+* SCSS:
 ```scss
 .chart {
 	color: white;
@@ -640,7 +693,9 @@ img.poster {
 		@include add-font-icon($f-bar-chart, $color: white);
 	}
 }
-
+```
+* HTML:
+```html
 <div class="chart">
   The Chart &nbsp;
   <i></i>
@@ -650,9 +705,14 @@ img.poster {
 
 ----
 ##### `» Font Selector.`
-* **Mixin Name:** @mixin font-select($fontType: 'r', $size: $baseFontPixel, $spacing: 0.5px, $fontName: $baseFontName)
+* **Mixin Name:** @mixin font-select(
+	* $fontType: 'r',
+	* $size: $baseFontPixel,
+	* $spacing: 0.5px,
+	* $fontName: $baseFontName)
 * **Note:** Before use, enter the value of **$baseFontName.**
 * **Warning:** Use this when you import the fonts to your project:
+* CSS:
 ```css
 @font-face {
 	font-family: RobotoThin;
@@ -672,11 +732,14 @@ img.poster {
 * @param **$fontName:** *Font name. Default value: Base font name.*
 
 **Usage:**
+* SCSS:
 ```scss
 .caption {
 	@include font-select('m', 18px);
 }
-
+```
+* HTML:
+```html
 <p class="caption">This is a caption.</p>
 ```
 
@@ -698,7 +761,7 @@ img.poster {
 * @param **$width:** *Line width. Default value: 30px.*
 
 **Usage:**
-* SASS:
+* SCSS:
 ```scss
 #menu-btn {
 	@include add-menu-button($radius:0);
@@ -763,7 +826,7 @@ $("#menu-btn").click(function() {
 * @param **$size:** *Triangle size. Default size: 10px.*
 
 **Usage:**
-* SASS
+* SCSS:
 ```scss
 .triangle {
 	position: relative;
@@ -778,7 +841,7 @@ $("#menu-btn").click(function() {
 }
 ```
 
-* HTML
+* HTML:
 ```html
 <div class="triangle">
 	Triangle
@@ -792,6 +855,7 @@ Helpers
 * **Helper Name:** %clearfix
 
 **Usage:**
+* SCSS:
 ```scss
 .container {
 	background-color: #f1f1f1;
@@ -805,7 +869,9 @@ Helpers
 	background-color: #222;
 	margin: 10px;
 }
-
+```
+* HTML:
+```html
 <div class="container">
 	<div class="wrapper"></div>
 	<div class="wrapper"></div>
@@ -818,12 +884,15 @@ Helpers
 * Helper Name: %affix-top, %affix-bottom
 
 **Usage:**
+* SCSS:
 ```scss
 .bottom-menu {
 	height: 200px;
 	@extend %affix-bottom;
 }
-
+```
+* HTML:
+```html
 <div class="bottom-menu"></div>
 ```
 
@@ -833,8 +902,8 @@ Tools
 ##### `» 12 Columns Responsive Grid System.`
 > 12 column grid system that is fully compatible with the `xcode` library.
 
-**Usage**
-*Use main layout adding.*
+**Usage:**
+* *Use main layout adding:*
 ```erb
 ...
 <%= stylesheet_link_tag :grid12 %>
@@ -846,8 +915,8 @@ Tools
 ##### `» 16 Columns Responsive Grid System.`
 > 16 column grid system that is fully compatible with the `xcode` library.
 
-**Usage**
-*Use main layout adding.*
+**Usage:**
+* *Use main layout adding:*
 ```erb
 ...
 <%= stylesheet_link_tag :grid16 %>
