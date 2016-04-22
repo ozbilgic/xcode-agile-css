@@ -22,6 +22,74 @@ It is sufficient to include in your project.
 ```
 
 
+Features
+----
+Functions:
+-------------------------
+» [Pixel converts the "em" format.](#-pixel-converts-the-em-format) | @function x-convert_em($fontPx)
+
+Mixins:
+-------------------------
+» [CSS3 Prefix Adding.](#-css3-prefix-adding) | @mixin x-prefix($property, $args...)
+» [Responsive Media Selector.](#-responsive-media-selector) | @mixin x-media($media)
+» [Alternate Responsive Media Selector.](#-alternate-responsive-media-selector) | @mixin x-media-query($minMax, $width)
+» [Setting The Alpha Channel For Items.](#-setting-the-alpha-channel-for-items) Support Cross Browser. | @mixin x-opacity($opacity: .85)
+» [Set Border Radius.](#-set-border-radius) | @mixin x-border-radius($radius)
+» [Set Shorthand Animation.](#-set-shorthand-animation) | @mixin x-animation($args...)
+» [Animation Creator.](#-animation-creator) | @mixin x-keyframes($animationName)
+» [Transition.](#-transition) | @mixin x-transition($args...)
+» [2D Transforms.](#-2d-transforms) | @mixin x-transform2d($method)
+» [3D Transforms.](#-3d-transforms) | @mixin x-transform3d($method)
+» [Change Input Placeholder Attributes.](#-change-input-placeholder-attributes) | @mixin x-change-input-placeholder()
+» [Horizontal Navigation Bar.](#-horizontal-navigation-bar) | @mixin x-horizontal-navbar(
+                                       $bgColor: #333,
+                                       $hoverBgColor: #111,
+                                       $textColor: #fff,
+                                       $hoverTextColor: #fff,
+                                       $activeLinkBgColor: #4CAF50,
+                                       $activeLinkTextColor: #fff,
+                                       $padding: 14px 16px,
+                                       $isDivider: false,
+                                       $dividerColor: #bbb)
+» [Vertical Navigation Bar.](#-vertical-navigation-bar) | @mixin x-vertical-navbar(
+                                       $width: 200px,
+                                       $bgColor: #f1f1f1,
+                                       $textColor: #000,
+                                       $hoverBgColor: #555,
+                                       $hoverTextColor: white,
+                                       $activeLinkBgColor: #4CAF50,
+                                       $activeLinkTextColor: white,
+                                       $isFullHeight: false)
+» [Dropdown.](#-dropdown) | @mixin x-dropdown(
+                        $btnBgColor: #4CAF50,
+                        $btnTextColor: white,
+                        $contentWidth: 160px,
+                        $contentColor: #f9f9f9,
+                        $linkTextColor: black,
+                        $linkHoverBgColor: #f1f1f1)
+» [Tooltip.](#-tooltip) | @mixin x-tooltip($position: top, $bgColor: #000, $textColor: #fff, $height: 5px)
+» [Box Shadow.](#-box-shadow) | @mixin x-box-shadow($args...)
+» [Gradients.](#-gradients) | @mixin x-gradient($type: linear, $style: diagonal, $angle: 45deg, $args...)
+» [Image Filters.](#-image-filters) | @mixin x-image-filter($filterType: grayscale, $args...)
+» [Button animation.](#-button-animation) | @mixin x-button-animation($content: '»')
+» [Font Icon.](#-font-icon) | @mixin x-icon($icon, $direction: right, $size: $baseFontPixel, $color: #111, $padding: 0)
+» [Font Selector.](#-font-selector) | @mixin x-font($fontType: 'r', $size: $baseFontPixel, $spacing: 0.5px, $fontName: $baseFontName)
+» [Menu Button.](#-menu-button) | @mixin x-menu-button(
+                         $color: $white,
+                         $position: right,
+                         $radius: 2px,
+                         $thickness: 3px,
+                         $width: 30px,
+                         $isBorder: false,
+                         $borderColor: #222)
+» [Triangle.](#-triangle) | @mixin x-triangle($color: #111, $direction: up, $position: center, $indent: 8px, $size: 10px)
+
+Helpers:
+-------------------------
+» [Clearfix.](#-clearfix) | %x-clearfix
+» [Affix.](#-affix) | %x-affix-top, %x-affix-bottom
+
+
 Functions
 ----
 
@@ -89,7 +157,7 @@ nav[data="main-menu"] {
 
 ----
 ##### `» Alternate Responsive Media Selector.`
-> This selective media can be entered in any desired resolution.
+* This selective media can be entered in any desired resolution.
 * **Mixin Name:** @mixin x-media-query($minMax, $width)
 
 **Parameter Descriptions:**
