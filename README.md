@@ -24,8 +24,9 @@ It is sufficient to include in your project.
 
 Features
 ----
-Functions:
------------ | --------------
+** Functions **
+Description | Function Name
+----------- | -----------
 » [Pixel converts the "em" format.](#-pixel-converts-the-em-format) | @function x-convert_em($fontPx)
 
 Mixins:
