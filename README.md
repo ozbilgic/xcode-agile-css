@@ -24,14 +24,16 @@ It is sufficient to include in your project.
 
 Features
 ----
-* Functions:
+* Functions »
 
 Description | Feature
 ------------ | -------------
 » [Pixel converts the "em" format.](#-pixel-converts-the-em-format) | @function x-convert_em($fontPx)
 
-Mixins:
--------------------------
+* Mixins »
+
+Description | Feature
+------------ | -------------
 » [CSS3 Prefix Adding.](#-css3-prefix-adding) | @mixin x-prefix($property, $args...)
 » [Responsive Media Selector.](#-responsive-media-selector) | @mixin x-media($media)
 » [Alternate Responsive Media Selector.](#-alternate-responsive-media-selector) | @mixin x-media-query($minMax, $width)
@@ -86,8 +88,10 @@ Mixins:
                          $borderColor: #222)
 » [Triangle.](#-triangle) | @mixin x-triangle($color: #111, $direction: up, $position: center, $indent: 8px, $size: 10px)
 
-Helpers:
--------------------------
+* Helpers »
+
+Description | Feature
+------------ | -------------
 » [Clearfix.](#-clearfix) | %x-clearfix
 » [Affix.](#-affix) | %x-affix-top, %x-affix-bottom
 
