@@ -28,42 +28,42 @@ Features
 
 Description | Feature
 ------------ | -------------
-» [Pixel converts the "em" format.](#-pixel-converts-the-em-format) | <ul><li>`**Function name:**` **@function x-convert_em()**</li><li>- *Stated "px" is "em" that converts the format.*</li></ul>
+» [Pixel converts the "em" format.](#-pixel-converts-the-em-format) | <ul><li>**@function x-convert_em()**</li><li>*Stated "px" is "em" that converts the format.*</li></ul>
 
 * **Mixins »**
 
 Description | Feature
 ------------ | -------------
-» [CSS3 Prefix Adding.](#-css3-prefix-adding) | @mixin x-prefix($property, $args...)
-» [Responsive Media Selector.](#-responsive-media-selector) | @mixin x-media($media)
-» [Alternate Responsive Media Selector.](#-alternate-responsive-media-selector) | @mixin x-media-query($minMax, $width)
-» [Setting The Alpha Channel For Items.](#-setting-the-alpha-channel-for-items) Support Cross Browser. | @mixin x-opacity($opacity: .85)
-» [Set Border Radius.](#-set-border-radius) | @mixin x-border-radius($radius)
-» [Set Shorthand Animation.](#-set-shorthand-animation) | @mixin x-animation($args...)
-» [Animation Creator.](#-animation-creator) | @mixin x-keyframes($animationName)
-» [Transition.](#-transition) | @mixin x-transition($args...)
-» [2D Transforms.](#-2d-transforms) | @mixin x-transform2d($method)
-» [3D Transforms.](#-3d-transforms) | @mixin x-transform3d($method)
-» [Change Input Placeholder Attributes.](#-change-input-placeholder-attributes) | @mixin x-change-input-placeholder()
-» [Horizontal Navigation Bar.](#-horizontal-navigation-bar) | @mixin x-horizontal-navbar($bgColor: #333, $hoverBgColor: #111, $textColor: #fff, $hoverTextColor: #fff, $activeLinkBgColor: #4CAF50, $activeLinkTextColor: #fff, $padding: 14px 16px, $isDivider: false, $dividerColor: #bbb)
-» [Vertical Navigation Bar.](#-vertical-navigation-bar) | @mixin x-vertical-navbar($width: 200px, $bgColor: #f1f1f1, $textColor: #000, $hoverBgColor: #555, $hoverTextColor: white, $activeLinkBgColor: #4CAF50, $activeLinkTextColor: white, $isFullHeight: false)
-» [Dropdown.](#-dropdown) | @mixin x-dropdown($btnBgColor: #4CAF50, $btnTextColor: white, $contentWidth: 160px, $contentColor: #f9f9f9, $linkTextColor: black, $linkHoverBgColor: #f1f1f1)
-» [Tooltip.](#-tooltip) | @mixin x-tooltip($position: top, $bgColor: #000, $textColor: #fff, $height: 5px)
-» [Box Shadow.](#-box-shadow) | @mixin x-box-shadow($args...)
-» [Gradients.](#-gradients) | @mixin x-gradient($type: linear, $style: diagonal, $angle: 45deg, $args...)
-» [Image Filters.](#-image-filters) | @mixin x-image-filter($filterType: grayscale, $args...)
-» [Button animation.](#-button-animation) | @mixin x-button-animation($content: '»')
-» [Font Icon.](#-font-icon) | @mixin x-icon($icon, $direction: right, $size: $baseFontPixel, $color: #111, $padding: 0)
-» [Font Selector.](#-font-selector) | @mixin x-font($fontType: 'r', $size: $baseFontPixel, $spacing: 0.5px, $fontName: $baseFontName)
-» [Menu Button.](#-menu-button) | @mixin x-menu-button($color: $white, $position: right, $radius: 2px, $thickness: 3px, $width: 30px, $isBorder: false, $borderColor: #222)
-» [Triangle.](#-triangle) | @mixin x-triangle($color: #111, $direction: up, $position: center, $indent: 8px, $size: 10px)
+» [CSS3 Prefix Adding.](#-css3-prefix-adding) | <ul><li>**@mixin x-prefix()**</li><li>*It adds support for browser features.*</li></ul>
+» [Responsive Media Selector.](#-responsive-media-selector) | <ul><li>**@mixin x-media()**</li><li>*Add code for the specific screen resolutions.*</li></ul>
+» [Alternate Responsive Media Selector.](#-alternate-responsive-media-selector) | <ul><li>**@mixin x-media-query()**</li><li>*Add code for different screen resolutions.*</li></ul>
+» [Setting The Alpha Channel For Items. Support Cross Browser.](#-setting-the-alpha-channel-for-items) | <ul><li>**@mixin x-opacity()**</li><li>*It adds an alpha channel to the elements.*</li></ul>
+» [Set Border Radius.](#-set-border-radius) | <ul><li>**@mixin x-border-radius()**</li><li>*Adds border radius.*</li></ul>
+» [Set Shorthand Animation.](#-set-shorthand-animation) | <ul><li>**@mixin x-animation()**</li><li>*It allows you to enter a name and animation features.*</li></ul>
+» [Animation Creator.](#-animation-creator) | <ul><li>**@mixin x-keyframes()**</li><li>*It allows us to define a new animation.*</li></ul>
+» [Transition.](#-transition) | <ul><li>@mixin x-transition()</li><li>*Transitions allows you to change property values smoothly (from one value to another), over a given duration.*</li></ul>
+» [2D Transforms.](#-2d-transforms) | <ul><li>**@mixin x-transform2d()**</li><li>*Transforms allow you to translate, rotate, scale, and skew elements.*</li></ul>
+» [3D Transforms.](#-3d-transforms) | <ul><li>**@mixin x-transform3d()**</li><li>*Allows you to format your elements using 3D transformations.*</li></ul>
+» [Change Input Placeholder Attributes.](#-change-input-placeholder-attributes) | <ul><li>**@mixin x-change-input-placeholder()**</li><li>*Use to change the input placeholders properties.*</li></ul>
+» [Horizontal Navigation Bar.](#-horizontal-navigation-bar) | <ul><li>**@mixin x-horizontal-navbar()**</li><li>*Use it to add a horizontal menu.*</li></ul>
+» [Vertical Navigation Bar.](#-vertical-navigation-bar) | <ul><li>**@mixin x-vertical-navbar()**</li><li>*Use it to add a vertical menu.*</li></ul>
+» [Dropdown.](#-dropdown) | <ul><li>**@mixin x-dropdown()**</li><li>*Add drop-down.*</li></ul>
+» [Tooltip.](#-tooltip) | <ul><li>**@mixin x-tooltip()**</li><li>*Add tooltip.*</li></ul>
+» [Box Shadow.](#-box-shadow) | <ul><li>**@mixin x-box-shadow()**</li><li>*Add box shadow.*</li></ul>
+» [Gradients.](#-gradients) | <ul><li>**@mixin x-gradient()**</li><li>*Add gradient.*</li></ul>
+» [Image Filters.](#-image-filters) | <ul><li>**@mixin x-image-filter()**</li><li>*Use it to add effects or filter to images.*</li></ul>
+» [Button animation.](#-button-animation) | <ul><li>**@mixin x-button-animation()**</li><li>*Create animated buttons.*</li></ul>
+» [Font Icon.](#-font-icon) | <ul><li>**@mixin x-icon()**</li><li>*Add icon in the color and size you want. There are 693 icons.*</li></ul>
+» [Font Selector.](#-font-selector) | <ul><li>**@mixin x-font()**</li><li>*Use practical way to add fonts to the elements.*</li></ul>
+» [Menu Button.](#-menu-button) | <ul><li>**@mixin x-menu-button()**</li><li>*Add menu button for mobile views.*</li></ul>
+» [Triangle.](#-triangle) | <ul><li>**@mixin x-triangle()**</li><li>*To add any element of the triangle.*</li></ul>
 
 * **Helpers »**
 
 Description | Feature
 ------------ | -------------
-» [Clearfix.](#-clearfix) | %x-clearfix
-» [Affix.](#-affix) | %x-affix-top, %x-affix-bottom
+» [Clearfix.](#-clearfix) | <ul><li>**%x-clearfix**</li><li>*A quick way to clean areas that are used to float.*</li></ul>
+» [Affix.](#-affix) | <ul><li>**%x-affix-top, %x-affix-bottom**</li><li>*Top or bottom to add a fixed area.*</li></ul>
 
 
 Functions
