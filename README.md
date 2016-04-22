@@ -41,7 +41,7 @@ Description | Feature
 » [Set Border Radius.](#-set-border-radius) | <ul><li>**@mixin x-border-radius()**</li><li>*Adds border radius.*</li></ul>
 » [Set Shorthand Animation.](#-set-shorthand-animation) | <ul><li>**@mixin x-animation()**</li><li>*It allows you to enter a name and animation features.*</li></ul>
 » [Animation Creator.](#-animation-creator) | <ul><li>**@mixin x-keyframes()**</li><li>*It allows us to define a new animation.*</li></ul>
-» [Transition.](#-transition) | <ul><li>@mixin x-transition()</li><li>*Transitions allows you to change property values smoothly (from one value to another), over a given duration.*</li></ul>
+» [Transition.](#-transition) | <ul><li>**@mixin x-transition()**</li><li>*Transitions allows you to change property values smoothly (from one value to another), over a given duration.*</li></ul>
 » [2D Transforms.](#-2d-transforms) | <ul><li>**@mixin x-transform2d()**</li><li>*Transforms allow you to translate, rotate, scale, and skew elements.*</li></ul>
 » [3D Transforms.](#-3d-transforms) | <ul><li>**@mixin x-transform3d()**</li><li>*Allows you to format your elements using 3D transformations.*</li></ul>
 » [Change Input Placeholder Attributes.](#-change-input-placeholder-attributes) | <ul><li>**@mixin x-change-input-placeholder()**</li><li>*Use to change the input placeholders properties.*</li></ul>
