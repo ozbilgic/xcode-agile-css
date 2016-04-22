@@ -24,6 +24,7 @@ It is sufficient to include in your project.
 
 Features
 ----
+* Functions:
 
 Description | Feature
 ------------ | -------------
