@@ -28,7 +28,7 @@ Features
 
 Description | Feature
 ------------ | -------------
-» [Pixel converts the "em" format.](#-pixel-converts-the-em-format) | Function name: **@function x-convert_em** - *Stated "px" is "em" that converts the format.*
+» [Pixel converts the "em" format.](#-pixel-converts-the-em-format) | <ul><li>`**Function name:**` **@function x-convert_em()**</li><li>- *Stated "px" is "em" that converts the format.*</li></ul>
 
 * **Mixins »**
 
