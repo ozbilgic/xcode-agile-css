@@ -1,7 +1,7 @@
 /***************************************************************************
 *  XCODE AGILE CSS MIXIN FRAMEWORK                                         *
 *  @author  : xcode                                                        *
-*  @version : 2.0.1                                                        *
+*  @version : 2.1.1                                                        *
 *  @since   : 02.2016                                                      *
 *  @mime    : Sass/Scss                                                    *
 *  @contact : ozbilgiclevent@gmail.com                                     *
@@ -38,6 +38,8 @@
 *    » Font Selector. [It was added in --v.1.4.0]                          *
 *    » Menu Button. [It was added in --v.1.6.0]                            *
 *    » Triangle. [It was added in --v.1.7.0]                               *
+*    » Text Shadow. [It was added in --v.2.1.1]                            *
+*    » Info Bar. [It was added in --v.2.1.1]                               *
 *                                                                          *
 *  Helpers:                                                                *
 *    » Clearfix. [It was added in --v.1.5.0]                               *
@@ -1175,7 +1177,7 @@ $baseFontPixel:   14px    !default;
 @mixin x-font($fontType: 'r', $size: $baseFontPixel, $spacing: 0.5px, $fontName: $baseFontName) {
   @if($fontName == null) {
     &:before {
-      content: '@Error: The font name is null! See "xcode.css.mixin.fw.scss" at line:63';
+      content: '@Error: The font name is null! Check "xcode.css.mixin.fw.scss" -> $baseFontName value.';
       font-weight: bold;
       color: red;
       text-shadow: 1px 1px 5px rgba(255,255,255,.6);
@@ -1357,7 +1359,7 @@ $baseFontPixel:   14px    !default;
  *  @param $size: Triangle size. Default size: 10px.
  *
  *  Usage:
- *    SASS
+ *    SASS:
  *    .triangle {
  *      position: relative;
  *      width: 150px;
@@ -1371,7 +1373,7 @@ $baseFontPixel:   14px    !default;
  *      @include x-triangle(#813efa, right);
  *    }
  *
- *    HTML
+ *    HTML:
  *    <div class="triangle">
  *      Triangle
  *    </div>
@@ -1445,6 +1447,95 @@ $baseFontPixel:   14px    !default;
       border-left: $size solid $color;
     }
   }
+}
+
+/**
+ *  » Text Shadow.
+ *  Mixin Name: @mixin x-text-shadow($args...)
+ *  ---
+ *  Parameter Descriptions:
+ *  @param $args: h-shadow, v-shadow, blur-radius, color. Default value: 1px 1px 5px rgba(0, 0, 0, .4).
+ *  Tip: Not required to specify the value.
+ *
+ *  Usage:
+ *    SASS:
+ *    .caption {
+ *      @include x-text-shadow();
+ *    }
+ *
+ *    HTML:
+ *    <div class="caption">
+ *      This is caption.
+ *    </div>
+ */
+@mixin x-text-shadow($args...) {
+  @if length($args) > 1 {
+    text-shadow: $args;
+  }
+  @else {
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, .4);
+  }
+}
+
+/**
+ *  » Info Bar.
+ *  Mixin Name: @mixin x-infobar($position: "bottom-right", $distance: 20px)
+ *  ---
+ *  Parameter Descriptions:
+ *  @param $position: Info bar position. Default value: "bottom-right".
+ *    Values("bottom-right", "bottom-left", "top-right", "top-left").
+ *  @param $distance: The distance from the specified position. Default value: 20px.
+ *
+ *  Usage:
+ *    SASS:
+ *    #info {
+ *      @include x-infobar();
+ *    }
+ *
+ *    HTML:
+ *    <div id="info">
+ *      <p>0</p>
+ *    </div>
+ *
+ *    JQUERY:
+ *    $(document).ready(function() {
+ *      var $scroll = $(window).scrollTop();
+ *      var $screenWidth = $(this).width();
+ *
+ *      $("#info").find("p").html("Scroll: "+$scroll+"px - Width: "+$screenWidth+"px");
+ *    });
+ */
+@mixin x-infobar($position: "bottom-right", $distance: 20px) {
+  position: fixed;
+  background-color: #222;
+  color: white;
+  text-align: center;
+  font-size: $baseFontPixel;
+  border: 1px solid #111;
+  z-index: 9999999999;
+
+  @if ($position == "bottom-right") {
+    right: $distance;
+    bottom: $distance;
+  }
+  @else if ($position == "bottom-left") {
+    left: $distance;
+    bottom: $distance;
+  }
+  @else if ($position == "top-right") {
+    right: $distance;
+    top: $distance;
+  }
+  @else if ($position == "top-left") {
+    left: $distance;
+    top: $distance;
+  }
+
+  @include x-box-shadow(
+                  0 4px 8px 0 rgba(255, 255, 255, 0.2),
+                  0 6px 20px 0 rgba(255, 255, 255, 0.19));
+  @include x-border-radius(5px);
+  p {margin: 8px}
 }
 
 

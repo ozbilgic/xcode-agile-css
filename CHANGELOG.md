@@ -1,6 +1,10 @@
 Version History
 ----
 
+**v.2.1.1**
+* **Mixin added:** Text Shadow.
+* **Mixin added:** Info Bar.
+
 **v.2.0.1**
 * **Minor fixed:** @mixin x-media-query() -> Variable is $minMax adding default value "max".
 * **Mixin changed:** @mixin x-vertical-navbar() ->

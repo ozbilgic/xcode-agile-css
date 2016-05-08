@@ -1,4 +1,4 @@
-# XCODE Agile CSS Mixin Framework v.2.0.1
+# XCODE Agile CSS Mixin Framework v.2.1.1
 ### Agile and Smart CSS coding library.
 
 
@@ -8,7 +8,7 @@
 Version
 ----
 
-2.0.1
+2.1.1
 
 
 Usage
@@ -57,6 +57,8 @@ Description | Feature
 » [Font Selector.](#-font-selector) | <ul><li>**@mixin x-font()**</li><li>*Use practical way to add fonts to the elements.*</li></ul>
 » [Menu Button.](#-menu-button) | <ul><li>**@mixin x-menu-button()**</li><li>*Add menu button for mobile views.*</li></ul>
 » [Triangle.](#-triangle) | <ul><li>**@mixin x-triangle()**</li><li>*To add any element of the triangle.*</li></ul>
+» [Text Shadow.](#-text-shadow) | <ul><li>**@mixin x-text-shadow()**</li><li>*To add text element of the shadow.*</li></ul>
+» [Info Bar.](#-infobar) | <ul><li>**@mixin x-infobar()**</li><li>*Add infobar on the screen.*</li></ul>
 
 * **Helpers »**
 
@@ -902,6 +904,65 @@ $("#menu-btn").click(function() {
 ```
 
 
+----
+##### `» Text Shadow.`
+* **Mixin Name:** @mixin x-text-shadow($args...)
+
+* **Parameter Descriptions:**
+* @param **$args:** *h-shadow, v-shadow, blur-radius, color. Default value: 1px 1px 5px rgba(0, 0, 0, .4).*
+  * **Tip:** *Not required to specify the value.*
+
+* **Usage:**
+* SCSS:
+```scss
+.caption {
+  @include x-text-shadow();
+}
+```
+
+* HTML:
+```html
+<div class="caption">
+ This is caption.
+</div>
+```
+
+
+----
+##### `» Info Bar.`
+* **Mixin Name:** @mixin x-infobar($position: "bottom-right", $distance: 20px)
+
+* **Parameter Descriptions:**
+* @param **$position:** *Info bar position. Default value: "bottom-right".*
+  * Values("bottom-right", "bottom-left", "top-right", "top-left").
+* @param **$distance:** *The distance from the specified position. Default value: 20px.*
+
+* **Usage:**
+* SCSS:
+```scss
+#info {
+  @include x-infobar();
+}
+```
+
+* HTML:
+```html
+<div id="info">
+  <p>0</p>
+</div>
+```
+
+* JQUERY:
+```js
+$(document).ready(function() {
+  var $scroll = $(window).scrollTop();
+  var $screenWidth = $(this).width();
+
+  $("#info").find("p").html("Scroll: "+$scroll+"px - Width: "+$screenWidth+"px");
+});
+```
+
+
 Helpers
 ----
 ##### `» Clearfix.`
@@ -1092,6 +1153,10 @@ Version History
   * **New variable added:** $isBorderRadius. Values(true or false). Default value: false.
   * **New variable added:** $borderRadius. Default value: 3px.
 * **Minor fixed:** @mixin x-triangle() -> Added browser support feature.
+
+**v.2.1.1**
+* **Mixin added:** Text Shadow.
+* **Mixin added:** Info Bar.
 
 
 Author
