@@ -1,6 +1,12 @@
 Version History
 ----
 
+**v.2.1.2**
+* **Mixin changed:** @mixin x-media-query() ->
+  * **Warning:** Your project using the previous version, correct the place changes to your project.
+  * **Variables changed:** $minMax and $width the place has changed.
+  * **Minor fixed:** Performance is  improvement.
+
 **v.2.1.1**
 * **Mixin added:** Text Shadow.
 * **Mixin added:** Info Bar.

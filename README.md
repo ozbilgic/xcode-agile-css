@@ -136,7 +136,7 @@ nav[data="main-menu"] {
 ----
 ##### `» Alternate Responsive Media Selector.`
 * This selective media can be entered in any desired resolution.
-* **Mixin Name:** @mixin x-media-query($minMax: "max", $width)
+* **Mixin Name:** @mixin x-media-query($width, $minMax: "max")
 
 **Parameter Descriptions:**
 * @param **$minMax:** *min or max. Default value: "max". (min-width, max-width)*
@@ -153,7 +153,7 @@ nav[data="main-menu"] {
 * SCSS:
 ```scss
 nav.nav-content {
-	@include x-media-query("min", $desktop) {
+	@include x-media-query($desktop, "min") {
 		display: none;
 	}
 }
@@ -1157,6 +1157,12 @@ Version History
 **v.2.1.1**
 * **Mixin added:** Text Shadow.
 * **Mixin added:** Info Bar.
+
+**v.2.1.2**
+* **Mixin changed:** @mixin x-media-query() ->
+  * **Warning:** Your project using the previous version, correct the place changes to your project.
+  * **Variables changed:** $minMax and $width the place has changed.
+  * **Minor fixed:** Performance is  improvement.
 
 
 Author

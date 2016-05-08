@@ -1,7 +1,7 @@
 /***************************************************************************
 *  XCODE AGILE CSS MIXIN FRAMEWORK                                         *
 *  @author  : xcode                                                        *
-*  @version : 2.1.1                                                        *
+*  @version : 2.1.2                                                        *
 *  @since   : 02.2016                                                      *
 *  @mime    : Sass/Scss                                                    *
 *  @contact : ozbilgiclevent@gmail.com                                     *
@@ -178,7 +178,7 @@ $baseFontPixel:   14px    !default;
 /**
  *  » Alternate Responsive Media Selector.
  *    - This selective media can be entered in any desired resolution.
- *  Mixin Name: @mixin x-media-query($minMax: "max", $width)
+ *  Mixin Name: @mixin x-media-query($width, $minMax: "max")
  *  ---
  *  Parameter Descriptions:
  *  @param $minMax: min or max. Default value: "max". (min-width, max-width)
@@ -189,7 +189,7 @@ $baseFontPixel:   14px    !default;
  *  Usage#1:
  *    SCSS:
  *    nav.nav-content {
- *      @include x-media-query("min", $desktop) {
+ *      @include x-media-query($desktop, "min") {
  *        display: none;
  *      }
  *    }
@@ -202,14 +202,14 @@ $baseFontPixel:   14px    !default;
  *      }
  *    }
  */
-@mixin x-media-query($minMax: "max", $width) {
-  @if $minMax == "min" {
-    @media (min-width: $width) {
+@mixin x-media-query($width, $minMax: "max") {
+  @if $minMax == "max" {
+    @media (max-width: $width) {
       @content;
     }
   }
   @else {
-    @media (max-width: $width) {
+    @media (min-width: $width) {
       @content;
     }
   }
@@ -1290,7 +1290,7 @@ $baseFontPixel:   14px    !default;
     @include x-border-radius($borderRadius);
   }
 
-  @include x-media-query("min", $desktopSize) {
+  @include x-media-query($desktopSize, "min") {
     display: none;
   }
 
