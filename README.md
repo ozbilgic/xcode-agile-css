@@ -58,7 +58,7 @@ Description | Feature
 » [Menu Button.](#-menu-button) | <ul><li>**@mixin x-menu-button()**</li><li>*Add menu button for mobile views.*</li></ul>
 » [Triangle.](#-triangle) | <ul><li>**@mixin x-triangle()**</li><li>*To add any element of the triangle.*</li></ul>
 » [Text Shadow.](#-text-shadow) | <ul><li>**@mixin x-text-shadow()**</li><li>*To add text element of the shadow.*</li></ul>
-» [Info Bar.](#-infobar) | <ul><li>**@mixin x-infobar()**</li><li>*Add infobar on the screen.*</li></ul>
+» [Info Bar.](#-info-bar) | <ul><li>**@mixin x-infobar()**</li><li>*Add infobar on the screen.*</li></ul>
 
 * **Helpers »**
 
