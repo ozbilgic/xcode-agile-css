@@ -1,4 +1,4 @@
-# XCODE Agile CSS Mixin Framework v.2.0.0
+# XCODE Agile CSS Mixin Framework v.2.0.1
 ### Agile and Smart CSS coding library.
 
 
@@ -8,7 +8,7 @@
 Version
 ----
 
-2.0.0
+2.0.1
 
 
 Usage
@@ -134,10 +134,10 @@ nav[data="main-menu"] {
 ----
 ##### `» Alternate Responsive Media Selector.`
 * This selective media can be entered in any desired resolution.
-* **Mixin Name:** @mixin x-media-query($minMax, $width)
+* **Mixin Name:** @mixin x-media-query($minMax: "max", $width)
 
 **Parameter Descriptions:**
-* @param **$minMax:** *min or max. (min-width, max-width)*
+* @param **$minMax:** *min or max. Default value: "max". (min-width, max-width)*
 * @param **($width)** *Can take values:*
 	* **$cellphoneSize:** *Default size 320px.*
 	* **$smartphoneSize:** *Default size 480px.*
@@ -151,13 +151,13 @@ nav[data="main-menu"] {
 * SCSS:
 ```scss
 nav.nav-content {
-	@include x-media-query(min, $desktop) {
+	@include x-media-query("min", $desktop) {
 		display: none;
 	}
 }
 
 h1.caption {
-	@include x-media-query(max, 300px) {
+	@include x-media-query(300px) {
 		font-size: 20%;
 	}
 }
@@ -371,24 +371,42 @@ input[type="email"] {
 ----
 ##### `» Vertical Navigation Bar.`
 * **Mixin Name:** @mixin x-vertical-navbar(
-	* **$width:** 200px,
+	* **$width:** 100%,
 	* **$bgColor:** #f1f1f1,
 	* **$textColor:** #000,
+	* **$textAlign:** left,
 	* **$hoverBgColor:** #555,
 	* **$hoverTextColor:** white,
 	* **$activeLinkBgColor:** #4CAF50,
 	* **$activeLinkTextColor:** white,
-	* **$isFullHeight:** false)
+	* **$linkPadding:** 8px 0 8px 16px,
+	* **$isFullHeight:** false,
+	* **$isBorderRadius:** false,
+  * **$radius:** 5px,
+  * **$isBorder:** false,
+  * **$borderSize:** 1px,
+  * **$borderColor:** #d2d2d2,
+  * **$isBoxShadow:** false,
+  * **$shadowColor:** rgba(0, 0, 0, 0.2))
 
 **Parameter Descriptions:**
-* @param **$width:** *Navigation bar width. Default size: 200px.* **Tip:** *Percentage value enterable.*
+* @param **$width:** *Navigation bar width. Default size: 100%.* **Tip:** *Percentage value enterable.*
 * @param **$bgColor:** *Navigation bar background color. Default color: #f1f1f1.*
 * @param **$textColor:** *Link text color. Default color: #000.*
+* @param **$textAlign:** *Link text align. Default value: left.*
 * @param **$hoverBgColor:** *Link hover background color. Default color: #555.*
 * @param **$hoverTextColor:** *Link hover text color. Default color: #fff.*
 * @param **$activeLinkBgColor:** *Active link background color. Default color: #4CAF50.*
 * @param **$activeLinkTextColor:** *Active link text color. Default color: #fff.*
+* @param **$linkPadding:** *Link paddind. Default value: 8px 0 8px 16px. [top, right, bottom, left].*
 * @param **$isFullHeight:** *Full height navigation bar. Default value: false.*
+* @param **$isBorderRadius:** *Navigation bar border radius. Default value: false.*
+* @param **$radius:** *Border radius value. Default value: 5px.*
+* @param **$isBorder:** *Navigation bar border adding. Default value: false.*
+* @param **$borderSize:** *Border Size. Default value: 1px.*
+* @param **$borderColor:** *Border Color. Default color: #d2d2d2.*
+* @param **$isBoxShadow:** *Navigation bar shadow. Default value: false.*
+* @param **$shadowColor:** *Shadow color. Default color: rgba(0, 0, 0, 0.2).*
 
 **Usage 1:**
 * SCSS:
@@ -777,7 +795,11 @@ input[type="email"] {
 	* **$position:** right,
 	* **$radius:** 2px,
 	* **$thickness:** 3px,
-	* **$width:** 30px)
+	* **$width:** 30px,
+	* **$isBorder:** false,
+  * **$borderColor:** #222,
+  * **$isBorderRadius:** false,
+  * **$borderRadius:** 3px)
 
 **Parameter Descriptions:**
 * @param **$color:** *Line color. Default color: #fff.*
@@ -785,6 +807,10 @@ input[type="email"] {
 * @param **$radius:** *Line border radius. Default value: 2px.*
 * @param **$thickness:** *Line thickness. Default value: 3px.*
 * @param **$width:** *Line width. Default value: 30px.*
+* @param **$isBorder:** *Menu button border. Default value: false.*
+* @param **$borderColor:** *Border color. Default color: #222.*
+* @param **$isBorderRadius:** *Menu button border radius. Default value: false.*
+* @param **$borderRadius:** *Border radius. Default value: 3px.*
 
 **Usage:**
 * SCSS:
@@ -804,8 +830,8 @@ input[type="email"] {
 		}
 
 		//If the position of the button is left, change in the plus with the minus.
-		&:before {@include x-transform2d(rotate(-45deg))}
-		&:after {@include x-transform2d(rotate(45deg))}
+		&:before {@include x-transform2d(rotate(45deg))}
+		&:after {@include x-transform2d(rotate(-45deg))}
 	}
 }
 ```
@@ -1044,6 +1070,28 @@ Version History
 * **Minor fixed:** Edited all of the descriptions in the library.
 * **Major fixed:** All mixins and functions prefix "x" was added.
 
+**v.2.0.1**
+* **Minor fixed:** @mixin x-media-query() -> Variable is $minMax adding default value "max".
+* **Mixin changed:** @mixin x-vertical-navbar() ->
+  * **Default value changed:** $width: 200px change to $width: 100%.
+  * **New variable added:** $textAlign. Values(left, center, right). Default value: left.
+  * **New variable added:** $linkPadding. Values(top, right, bottom, left). Default value: 8px 0 8px 16px.
+  * **New variable added:** $isBorderRadius. Values(true or false). Default value: false.
+  * **New variable added:** $radius. Default value: 5px.
+  * **New variable added:** $isBorder. Values(true or false). Default value: false.
+  * **New variable added:** $borderSize. Default value: 1px.
+  * **New variable added:** $borderColor. Default color: #d2d2d2.
+  * **New variable added:** $isBoxShadow. Values(true or false). Default value: false.
+  * **New variable added:** $shadowColor. Default color: rgba(0, 0, 0, 0.2).
+  * **Class fixed:** This .active class change it. Adding "!important ".
+* **Mixin changed:** @mixin x-horizontal-navbar() ->
+  * **New variable added:** $isCenter. Default value: false.
+  * **Class fixed:** This .active class change it. Adding "!important ".
+* **Minor fixed and changed:** @mixin x-menu-button() ->
+  * **Class fixed:** This .menu-active class changed.Change in the plus with the minus.
+  * **New variable added:** $isBorderRadius. Values(true or false). Default value: false.
+  * **New variable added:** $borderRadius. Default value: 3px.
+* **Minor fixed:** @mixin x-triangle() -> Added browser support feature.
 
 
 Author

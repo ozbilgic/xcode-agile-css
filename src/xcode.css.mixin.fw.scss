@@ -1,12 +1,12 @@
 /***************************************************************************
 *  XCODE AGILE CSS MIXIN FRAMEWORK                                         *
 *  @author  : xcode                                                        *
-*  @version : 2.0.0                                                        *
+*  @version : 2.0.1                                                        *
 *  @since   : 02.2016                                                      *
 *  @mime    : Sass/Scss                                                    *
 *  @contact : ozbilgiclevent@gmail.com                                     *
 *  @link    : https://github.com/ozbilgic/sass-mixin-css-framework         *
-*  @www     : http://workz.com.tr                                          *
+*  @www     : http://workz.com.tr/xcode                                    *
 *                                                                          *
 *--------------------------------------------------------------------------*
 *  Features List »                                                         *
@@ -176,10 +176,10 @@ $baseFontPixel:   14px    !default;
 /**
  *  » Alternate Responsive Media Selector.
  *    - This selective media can be entered in any desired resolution.
- *  Mixin Name: @mixin x-media-query($minMax, $width)
+ *  Mixin Name: @mixin x-media-query($minMax: "max", $width)
  *  ---
  *  Parameter Descriptions:
- *  @param $minMax: min or max. (min-width, max-width)
+ *  @param $minMax: min or max. Default value: "max". (min-width, max-width)
  *  @param $width: $cellphoneSize, $smartphoneSize, $tabletSize,
  *                 $desktopSize, $largeScreenSize, $fullScreenSize
  *                 or any screen resolution size.
@@ -195,13 +195,13 @@ $baseFontPixel:   14px    !default;
  *  Usage#2:
  *    SCSS:
  *    h1.caption {
- *      @include x-media-query("max", 300px) {
+ *      @include x-media-query(300px) {
  *        font-size: 20%;
  *      }
  *    }
  */
-@mixin x-media-query($minMax, $width) {
-  @if $minMax == min {
+@mixin x-media-query($minMax: "max", $width) {
+  @if $minMax == "min" {
     @media (min-width: $width) {
       @content;
     }
@@ -450,24 +450,42 @@ $baseFontPixel:   14px    !default;
 /**
  *  » Vertical Navigation Bar.
  *  Mixin Name: @mixin x-vertical-navbar(
- *                          $width: 200px,
+ *                          $width: 100%,
  *                          $bgColor: #f1f1f1,
  *                          $textColor: #000,
+ *                          $textAlign: left,
  *                          $hoverBgColor: #555,
  *                          $hoverTextColor: white,
  *                          $activeLinkBgColor: #4CAF50,
  *                          $activeLinkTextColor: white,
- *                          $isFullHeight: false)
+ *                          $linkPadding: 8px 0 8px 16px,
+ *                          $isFullHeight: false
+ *                          $isBorderRadius: false,
+ *                          $radius: 5px,
+ *                          $isBorder: false,
+ *                          $borderSize: 1px,
+ *                          $borderColor: #d2d2d2,
+ *                          $isBoxShadow: false,
+ *                          $shadowColor: rgba(0, 0, 0, 0.2))
  *  ---
  *  Parameter Descriptions:
- *  @param $width: Navigation bar width. Default size: 200px. Tip: Percentage value enterable.
+ *  @param $width: Navigation bar width. Default size: 100%.
  *  @param $bgColor: Navigation bar background color. Default color: #f1f1f1.
  *  @param $textColor: Link text color. Default color: #000.
+ *  @param $textAlign: Link text align. Default value: left.
  *  @param $hoverBgColor: Link hover background color. Default color: #555.
  *  @param $hoverTextColor: Link hover text color. Default color: #fff.
  *  @param $activeLinkBgColor: Active link background color. Default color: #4CAF50.
  *  @param $activeLinkTextColor: Active link text color. Default color: #fff.
+ *  @param $linkPadding: Link paddind. Default value: 8px 0 8px 16px. [top, right, bottom, left].
  *  @param $isFullHeight: Full height navigation bar. Default value: false.
+ *  @param $isBorderRadius: Navigation bar border radius. Default value: false.
+ *  @param $radius: Border radius value. Default value: 5px.
+ *  @param $isBorder: Navigation bar border adding. Default value: false.
+ *  @param $borderSize: Border Size. Default value: 1px.
+ *  @param $borderColor: Border Color. Default color: #d2d2d2.
+ *  @param $isBoxShadow: Navigation bar shadow. Default value: false.
+ *  @param $shadowColor: Shadow color. Default color: rgba(0, 0, 0, 0.2).
  *
  *  Usage 1:
  *    SCSS:
@@ -502,14 +520,23 @@ $baseFontPixel:   14px    !default;
  *   </div>
  */
 @mixin x-vertical-navbar(
-            $width: 200px,
+            $width: 100%,
             $bgColor: #f1f1f1,
             $textColor: #000,
+            $textAlign: left,
             $hoverBgColor: #555,
             $hoverTextColor: white,
             $activeLinkBgColor: #4CAF50,
             $activeLinkTextColor: white,
-            $isFullHeight: false) {
+            $linkPadding: 8px 0 8px 16px,
+            $isFullHeight: false,
+            $isBorderRadius: false,
+            $radius: 5px,
+            $isBorder: false,
+            $borderSize: 1px,
+            $borderColor: #d2d2d2,
+            $isBoxShadow: false,
+            $shadowColor: rgba(0, 0, 0, 0.2)) {
   ul {
     list-style-type: none;
     margin: 0;
@@ -517,22 +544,39 @@ $baseFontPixel:   14px    !default;
     width: $width;
     background-color: $bgColor;
 
+    @if ($textAlign == center) {text-align: center}
+    @if ($textAlign == right) {
+      text-align: right;
+      padding-right: 15px;
+    }
+
     @if ($isFullHeight) {
       height: 100%; /* Full height */
       position: fixed; /* Make it stick, even on scroll */
       overflow: auto; /* Enable scrolling if the sidenav has too much content */
     }
 
+    @if ($isBorder) {
+      border: $borderSize solid #d2d2d2;
+    }
+
+    @if ($isBorderRadius) {
+      @include x-border-radius($radius);
+    }
+
+    @if ($isBoxShadow) {
+      @include x-box-shadow(0 4px 8px 0px $shadowColor);
+    }
 
     li a {
       display: block;
       color: $textColor;
-      padding: 8px 0 8px 16px; /* Link height change it */
+      padding: $linkPadding;
       text-decoration: none;
 
       .active {
-        background-color: $activeLinkBgColor;
-        color: $activeLinkTextColor;
+        background-color: $activeLinkBgColor !important;
+        color: $activeLinkTextColor !important;
       }
 
       &:hover:not(.active) {
@@ -555,7 +599,8 @@ $baseFontPixel:   14px    !default;
  *                          $activeLinkTextColor: #fff,
  *                          $padding: 14px 16px,
  *                          $isDivider: false,
- *                          $dividerColor: #bbb)
+ *                          $dividerColor: #bbb,
+ *                          $isCenter: false)
  *  ---
  *  Parameter Descriptions:
  *  @param $bgColor: Navigation bar background color. Default color: #333.
@@ -568,6 +613,7 @@ $baseFontPixel:   14px    !default;
  *         Tip: [14px 16px -> top-bottom left-right], [15px 5px 15px 5px -> top, right, bottom, left]
  *  @param $isDivider: Divider inserts links. Default value: false.
  *  @param $dividerColor: Dividers color. Default color: #bbb.
+ *  @param $isCenter: Navigation to center. Default value: false.
  *
  *  Usage:
  *    SCSS:
@@ -594,13 +640,19 @@ $baseFontPixel:   14px    !default;
           $activeLinkTextColor: #fff,
           $padding: 14px 16px,
           $isDivider: false,
-          $dividerColor: #bbb) {
+          $dividerColor: #bbb,
+          $isCenter: false) {
   ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: $bgColor;
+
+    @if ($isCenter) {
+      display: inline-block;
+      text-align: center;
+    }
 
     li {
       float: left;
@@ -616,8 +668,8 @@ $baseFontPixel:   14px    !default;
         text-decoration: none;
 
         .active {
-          color: $activeLinkTextColor;
-          background-color: $activeLinkBgColor;
+          color: $activeLinkTextColor !important;
+          background-color: $activeLinkBgColor !important;
         }
 
         &:hover:not(.active) {
@@ -1159,7 +1211,9 @@ $baseFontPixel:   14px    !default;
  *                        $thickness: 3px,
  *                        $width: 30px,
  *                        $isBorder: false,
- *                        $borderColor: #222)
+ *                        $borderColor: #222,
+ *                        $isBorderRadius: false,
+ *                        $borderRadius: 3px)
  *  ---
  *  Parameter Descriptions:
  *  @param $color: Line color. Default color: #fff.
@@ -1169,6 +1223,8 @@ $baseFontPixel:   14px    !default;
  *  @param $width: Line width. Default value: 30px.
  *  @param $isBorder: Menu button border. Default value: false.
  *  @param $borderColor: Border color. Default color: #222.
+ *  @param $isBorderRadius: Menu button border radius. Default value: false.
+ *  @param $borderRadius: Border radius. Default value: 3px.
  *
  *  Usage:
  *    SASS:
@@ -1187,8 +1243,8 @@ $baseFontPixel:   14px    !default;
  *        }
  *
  *        //If the position of the button is left, change in the plus with the minus.
- *        &:before {@include x-transform2d(rotate(-45deg))}
- *        &:after {@include x-transform2d(rotate(45deg))}
+ *        &:before {@include x-transform2d(rotate(45deg))}
+ *        &:after {@include x-transform2d(rotate(-45deg))}
  *      }
  *    }
  *
@@ -1219,12 +1275,19 @@ $baseFontPixel:   14px    !default;
           $thickness: 3px,
           $width: 30px,
           $isBorder: false,
-          $borderColor: #222) {
+          $borderColor: #222,
+          $isBorderRadius: false,
+          $borderRadius: 3px) {
 
   float: $position;
-  @if($isBorder) {
+  @if ($isBorder) {
     border: 1px solid $borderColor;
   }
+
+  @if ($isBorderRadius) {
+    @include x-border-radius($borderRadius);
+  }
+
   @include x-media-query("min", $desktopSize) {
     display: none;
   }
@@ -1326,6 +1389,8 @@ $baseFontPixel:   14px    !default;
       margin-top: -$indent;
       @if ($position == center) {
         left: calc(50% - #{$size});
+        left: -webkit-calc(50% - #{$size});
+        left: -moz-calc(50% - #{$size});
       }
       @else {
         left: $position;
@@ -1339,6 +1404,8 @@ $baseFontPixel:   14px    !default;
       margin-bottom: -$indent;
       @if ($position == center) {
         left: calc(50% - #{$size});
+        left: -webkit-calc(50% - #{$size});
+        left: -moz-calc(50% - #{$size});
       }
       @else {
         left: $position;
@@ -1352,6 +1419,8 @@ $baseFontPixel:   14px    !default;
       margin-left: -$indent;
       @if ($position == center) {
         top: calc(50% - #{$size});
+        top: -webkit-calc(50% - #{$size});
+        top: -moz-calc(50% - #{$size});
       }
       @else {
         top: $position;
@@ -1365,6 +1434,8 @@ $baseFontPixel:   14px    !default;
       margin-right: -$indent;
       @if ($position == center) {
         top: calc(50% - #{$size});
+        top: -webkit-calc(50% - #{$size});
+        top: -moz-calc(50% - #{$size});
       }
       @else {
         top: $position;

@@ -1,6 +1,29 @@
 Version History
 ----
 
+**v.2.0.1**
+* **Minor fixed:** @mixin x-media-query() -> Variable is $minMax adding default value "max".
+* **Mixin changed:** @mixin x-vertical-navbar() ->
+  * **Default value changed:** $width: 200px change to $width: 100%.
+  * **New variable added:** $textAlign. Values(left, center, right). Default value: left.
+  * **New variable added:** $linkPadding. Values(top, right, bottom, left). Default value: 8px 0 8px 16px.
+  * **New variable added:** $isBorderRadius. Values(true or false). Default value: false.
+  * **New variable added:** $radius. Default value: 5px.
+  * **New variable added:** $isBorder. Values(true or false). Default value: false.
+  * **New variable added:** $borderSize. Default value: 1px.
+  * **New variable added:** $borderColor. Default color: #d2d2d2.
+  * **New variable added:** $isBoxShadow. Values(true or false). Default value: false.
+  * **New variable added:** $shadowColor. Default color: rgba(0, 0, 0, 0.2).
+  * **Class fixed:** This .active class change it. Adding "!important ".
+* **Mixin changed:** @mixin x-horizontal-navbar() ->
+  * **New variable added:** $isCenter. Default value: false.
+  * **Class fixed:** This .active class change it. Adding "!important ".
+* **Minor fixed and changed:** @mixin x-menu-button() ->
+  * **Class fixed:** This .menu-active class changed.Change in the plus with the minus.
+  * **New variable added:** $isBorderRadius. Values(true or false). Default value: false.
+  * **New variable added:** $borderRadius. Default value: 3px.
+* **Minor fixed:** @mixin x-triangle() -> Added browser support feature.
+
 **v.2.0.0**
 * **Mixin deleted:** @mixin grayscale($percent).
 * **Minor fixed:** @mixin x-horizontal-navbar() -> Link width and height adjustable.
