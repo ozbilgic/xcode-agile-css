@@ -1,4 +1,4 @@
-# XCODE Agile CSS Mixin Framework v.2.1.1
+# XCODE Agile CSS Mixin Framework v.2.1.2
 ### Agile and Smart CSS coding library.
 
 
@@ -8,7 +8,7 @@
 Version
 ----
 
-2.1.1
+2.1.2
 
 
 Usage
