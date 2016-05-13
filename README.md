@@ -1,4 +1,4 @@
-# XCODE Agile CSS Mixin Framework v.2.1.2
+# XCODE Agile CSS Mixin Framework v.2.1.3
 ### Agile and Smart CSS coding library.
 
 
@@ -8,7 +8,7 @@
 Version
 ----
 
-2.1.2
+2.1.3
 
 
 Usage
@@ -867,6 +867,8 @@ $("#menu-btn").click(function() {
 ##### `» Triangle.`
 * **Mixin Name:** @mixin x-triangle(
 	* **$color:** #111,
+  * **$borderColor:** $color,
+  * **$borderWidth:** 1px,
 	* **$direction:** up,
 	* **$position:** center,
 	* **$indent:** 8px,
@@ -874,6 +876,9 @@ $("#menu-btn").click(function() {
 
 **Parameter Descriptions:**
 * @param **$color:** *Triangle color. Default color: #111.*
+* @param **$borderColor:** *Triangle border color. Default color: $color.*
+* @param **$borderWidth:** *Triangle border width. Default size: 1px.*
+  * **Tip:** *The same as the parent object.*
 * @param **$direction:** *Triangle direction. Values: {up, down, left, right}*
 * @param **$position:** *Triangle position. Default value: center.* **Tip:** *Value can be specified in "px".*
 * @param **$indent:** *Triangle indentation. Default value: 8px.*
@@ -892,7 +897,7 @@ $("#menu-btn").click(function() {
 	font-size: 20px;
 
 	@include x-border-radius(5px);
-	@include x-triangle(#813efa, right);
+	@include x-triangle(#813efa, $direction: right);
 }
 ```
 
@@ -1163,6 +1168,11 @@ Version History
   * **Warning:** Your project using the previous version, correct the place changes to your project.
   * **Variables changed:** $minMax and $width the place has changed.
   * **Minor fixed:** Performance is  improvement.
+
+**v.2.1.3**
+* **Mixin changed:** @mixin x-triangle() ->
+  * **New variable added:** $borderColor: Triangle border color. Default color: $color.
+  * **New variable added:** $borderWidth: Triangle border width. Default size: 1px.
 
 
 Author

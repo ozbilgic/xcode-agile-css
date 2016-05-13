@@ -1,7 +1,7 @@
 /***************************************************************************
 *  XCODE AGILE CSS MIXIN FRAMEWORK                                         *
 *  @author  : xcode                                                        *
-*  @version : 2.1.2                                                        *
+*  @version : 2.1.3                                                        *
 *  @since   : 02.2016                                                      *
 *  @mime    : Sass/Scss                                                    *
 *  @contact : ozbilgiclevent@gmail.com                                     *
@@ -1346,6 +1346,8 @@ $baseFontPixel:   14px    !default;
  *  » Triangle.
  *  Mixin Name: @mixin x-triangle(
  *                      $color: #111,
+ *                      $borderColor: $color,
+ *                      $borderWidth: 1px,
  *                      $direction: up,
  *                      $position: center,
  *                      $indent: 8px,
@@ -1353,6 +1355,8 @@ $baseFontPixel:   14px    !default;
  *  ---
  *  Parameter Descriptions:
  *  @param $color: Triangle color. Default color: #111.
+ *  @param $borderColor: Triangle border color. Default color: $color.
+ *  @param $borderWidth: Triangle border width. Default size: 1px. Tip: The same as the parent object.
  *  @param $direction: Triangle direction. Values: {up, down, left, right}
  *  @param $position: Triangle position. Default value: center. Tip: Value can be specified in "px".
  *  @param $indent: Triangle indentation. Default value: 8px.
@@ -1370,7 +1374,7 @@ $baseFontPixel:   14px    !default;
  *      font-size: 20px;
  *
  *      @include x-border-radius(5px);
- *      @include x-triangle(#813efa, right);
+ *      @include x-triangle(#813efa, $direction: right);
  *    }
  *
  *    HTML:
@@ -1378,13 +1382,22 @@ $baseFontPixel:   14px    !default;
  *      Triangle
  *    </div>
  */
-@mixin x-triangle($color: #111, $direction: up, $position: center, $indent: 8px, $size: 10px) {
-  &:before {
+@mixin x-triangle(
+  $color: #111,
+  $borderColor: $color,
+  $borderWidth: 1px,
+  $direction: up,
+  $position: center,
+  $indent: 8px,
+  $size: 10px) {
+
+  &:before, &:after {
     content: "";
-    height: 0;
-    width: 0;
+    height: 0px;
+    width: 0px;
     display: block;
     position: absolute;
+    z-index: 2;
 
     @if ($direction == up) {
       top: 0;
@@ -1445,6 +1458,27 @@ $baseFontPixel:   14px    !default;
       border-top: $size solid transparent;
       border-bottom: $size solid transparent;
       border-left: $size solid $color;
+    }
+  }
+
+  &:after {
+    z-index: 1;
+
+    @if ($direction == up) {
+      margin-top: -($indent+$borderWidth+1);
+      border-bottom: $size solid $borderColor;
+    }
+    @else if ($direction == down) {
+      margin-bottom: -($indent+$borderWidth+1);
+      border-top: $size solid $borderColor;
+    }
+    @else if ($direction == left) {
+      margin-left: -($indent+$borderWidth+1);
+      border-right: $size solid $borderColor;
+    }
+    @else if ($direction == right) {
+      margin-right: -($indent+$borderWidth+1);
+      border-left: $size solid $borderColor;
     }
   }
 }

@@ -1,6 +1,11 @@
 Version History
 ----
 
+**v.2.1.3**
+* **Mixin changed:** @mixin x-triangle() ->
+  * **New variable added:** $borderColor: Triangle border color. Default color: $color.
+  * **New variable added:** $borderWidth: Triangle border width. Default size: 1px.
+
 **v.2.1.2**
 * **Mixin changed:** @mixin x-media-query() ->
   * **Warning:** Your project using the previous version, correct the place changes to your project.
