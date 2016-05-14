@@ -1,4 +1,4 @@
-# XCODE Agile CSS Mixin Framework v.2.1.3
+# XCODE Agile CSS Mixin Framework v.2.1.4
 ### Agile and Smart CSS coding library.
 
 
@@ -8,7 +8,7 @@
 Version
 ----
 
-2.1.3
+2.1.4
 
 
 Usage
@@ -1173,6 +1173,9 @@ Version History
 * **Mixin changed:** @mixin x-triangle() ->
   * **New variable added:** $borderColor: Triangle border color. Default color: $color.
   * **New variable added:** $borderWidth: Triangle border width. Default size: 1px.
+
+**v.2.1.4**
+* **Helper class added:** Grid systems ".hidden-lg", ".hidden-md", ".hidden-sm", ".hidden-xs" added.
 
 
 Author

@@ -1,6 +1,9 @@
 Version History
 ----
 
+**v.2.1.4**
+* **Helper class added:** Grid systems ".hidden-lg", ".hidden-md", ".hidden-sm", ".hidden-xs" added.
+
 **v.2.1.3**
 * **Mixin changed:** @mixin x-triangle() ->
   * **New variable added:** $borderColor: Triangle border color. Default color: $color.
